@@ -7,6 +7,7 @@
 //
 
 #import "ViewController.h"
+#import "Tile.h"
 
 @implementation ViewController
 
@@ -21,6 +22,14 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    CGRect box = self.view.bounds;
+    //resize rectangle
+    //box.size.width -= 100;
+    //box.size.height -= 100;
+    //box.origin.x += 50;
+    //box.origin.y += 50;
+    Tile *subv = [[Tile alloc] initWithFrame: box/*self.view.bounds*/];
+    [self.view addSubview:subv];
 	// Do any additional setup after loading the view, typically from a nib.
 }
 
