@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		530607EE14ED07A50074BD64 /* PixelView.m in Sources */ = {isa = PBXBuildFile; fileRef = 530607ED14ED07A50074BD64 /* PixelView.m */; };
 		BB0D88FD14E8C8E1004FD11A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB0D88FC14E8C8E1004FD11A /* UIKit.framework */; };
 		BB0D88FF14E8C8E1004FD11A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB0D88FE14E8C8E1004FD11A /* Foundation.framework */; };
 		BB0D890114E8C8E1004FD11A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB0D890014E8C8E1004FD11A /* CoreGraphics.framework */; };
@@ -21,6 +22,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		530607EC14ED07A50074BD64 /* PixelView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PixelView.h; sourceTree = "<group>"; };
+		530607ED14ED07A50074BD64 /* PixelView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PixelView.m; sourceTree = "<group>"; };
 		BB0D88F814E8C8E1004FD11A /* PlungingPixels.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PlungingPixels.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BB0D88FC14E8C8E1004FD11A /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		BB0D88FE14E8C8E1004FD11A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -88,15 +91,17 @@
 			children = (
 				BB76EF8514E8D4CC00FEEDD2 /* Tile.h */,
 				BB76EF8614E8D4CC00FEEDD2 /* Tile.m */,
-				BB76EF8814E8E93C00FEEDD2 /* PixelEngine.h */,
-				BB76EF8914E8E93C00FEEDD2 /* PixelEngine.m */,
 				BB76EF8B14E8EA7900FEEDD2 /* Grid.h */,
 				BB76EF8C14E8EA7900FEEDD2 /* Grid.m */,
+				BB76EF8814E8E93C00FEEDD2 /* PixelEngine.h */,
+				BB76EF8914E8E93C00FEEDD2 /* PixelEngine.m */,
+				530607EC14ED07A50074BD64 /* PixelView.h */,
+				530607ED14ED07A50074BD64 /* PixelView.m */,
+				BB0D891114E8C8E1004FD11A /* ViewController.h */,
+				BB0D891214E8C8E1004FD11A /* ViewController.m */,
 				BB0D890B14E8C8E1004FD11A /* AppDelegate.h */,
 				BB0D890C14E8C8E1004FD11A /* AppDelegate.m */,
 				BB0D890E14E8C8E1004FD11A /* MainStoryboard.storyboard */,
-				BB0D891114E8C8E1004FD11A /* ViewController.h */,
-				BB0D891214E8C8E1004FD11A /* ViewController.m */,
 				BB0D890314E8C8E1004FD11A /* Supporting Files */,
 			);
 			path = PlungingPixels;
@@ -182,6 +187,7 @@
 				BB76EF8714E8D4CC00FEEDD2 /* Tile.m in Sources */,
 				BB76EF8A14E8E93C00FEEDD2 /* PixelEngine.m in Sources */,
 				BB76EF8D14E8EA7900FEEDD2 /* Grid.m in Sources */,
+				530607EE14ED07A50074BD64 /* PixelView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

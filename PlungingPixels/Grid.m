@@ -9,7 +9,6 @@
 #import "Grid.h"
 
 @interface Grid()
-@property (strong, nonatomic) NSMutableArray *grid;
 @property (nonatomic) int difficulty;
 @end
 
@@ -19,6 +18,11 @@
 
 - (id) init: withHeight: (int) h withWidth: (int) w
 {
+    self = [super init];
+	if (self) {
+
+	}
+    
     return self;
 }
 

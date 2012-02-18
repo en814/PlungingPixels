@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 
 @interface Grid : NSObject
+@property (strong, nonatomic) NSMutableArray *grid;
 @property (readonly, nonatomic) int difficulty;
 
 - (id) init: withHeight: (int) h withWidth: (int) w;

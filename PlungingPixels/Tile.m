@@ -9,57 +9,50 @@
 #import "Tile.h"
 
 @interface Tile()
+@property (strong, nonatomic) UIColor *color;
 @property (nonatomic) BOOL filled;
-@property (nonatomic) UIColor color;
 @property (nonatomic) int level;
+@property (readwrite, nonatomic) int type;
 @end
 
 @implementation Tile
 @synthesize filled = _filled;
-@synthesize color = _color;
 @synthesize level = _level;
+@synthesize color = _color;
+@synthesize type = _type;
+@synthesize objId = _objId;
+@synthesize location = _location;
 
-- (id)initWithFrame:(CGRect)frame
+- (id) init: (UIColor*) color filled: (BOOL) filled withLevel: (int) level
 {
-    self = [super initWithFrame:frame];
-    if (self) {
-        // Initialization code
-    }
+    self = [super init];
+    
+    self.color = color;
+    self.filled = filled;
+    self.level = level;
+    
     return self;
 }
 
-
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect
-{
-    // Drawing code
-        CGContextRef context = UIGraphicsGetCurrentContext();
-        CGRect box;
-        box.size.width = 64;
-        box.size.height = 64;
-        CGContextBeginPath(context);
-        CGContextAddRect(context, box);
-        CGContextClosePath(context);
-        [[UIColor redColor] setFill];
-        [[UIColor blackColor] setStroke];
-        CGContextDrawPath(context,kCGPathFillStroke);
-        NSLog(@"Drawing %@\n", self);
+- (void) stepInRect: (CGRect) rect {
+    if (self.level > 0)
+        self.level = self.level - 1;
+    //else
+        // update board
+    
+    //CGRect location = self.location;
+    //location.origin.x++;
+    //location.origin.y++;
+    //self.location = location;
 }
 
-- (void) drawTile:(CGRect) rect
-{
-    // Drawing code
-    CGContextRef context = UIGraphicsGetCurrentContext();
-    CGRect box;
-    box = self.bounds;
-    CGContextBeginPath(context);
-    CGContextAddEllipseInRect(context, box);
-    CGContextClosePath(context);
-    [[UIColor redColor] setFill];
-    [[UIColor blackColor] setStroke];
-    CGContextDrawPath(context,kCGPathFillStroke);
-    NSLog(@"Drawing %@\n", self);
+- (id) initWithType: (int) ty andLocation: (CGRect) loc {
+    self = [super init];
+    //self.objId = nextId++;
+    self.type = ty;
+    self.location = loc;
+    
+    return self;
 }
 
 

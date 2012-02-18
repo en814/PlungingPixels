@@ -8,13 +8,26 @@
 
 #import "AppDelegate.h"
 
+@interface AppDelegate ()
+@property (readwrite, nonatomic) BOOL active;
+@end
+
 @implementation AppDelegate
 
 @synthesize window = _window;
+@synthesize engine = _engine;
+@synthesize active = _active;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
+/*
+    if (self.engine == nil)
+        self.engine = [[PixelEngine alloc] init];
+    
+    [(id)self.window.rootViewController setEngine:self.engine];
+*/    
+    NSLog(@"Finish Launching With Options");
     return YES;
 }
 							
@@ -24,6 +37,21 @@
      Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
      Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
      */
+    /*
+    BOOL stopped;
+    if (!self.engine.running)
+        stopped = YES;
+
+    [self.engine stop];
+    
+    if (!stopped)
+        self.active = YES;
+    else
+        self.active = NO;
+    
+    self.active = YES;
+     */
+    NSLog(@"Resign Active");
 }
 
 - (void)applicationDidEnterBackground:(UIApplication *)application
@@ -32,6 +60,11 @@
      Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later. 
      If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
      */
+    /*
+    [self.engine stop];
+    self.active = NO;
+     */
+    NSLog(@"Enter Background");
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application
@@ -39,6 +72,8 @@
     /*
      Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
      */
+    //self.active = NO;
+    NSLog(@"Enter Foreground");
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application
@@ -46,6 +81,11 @@
     /*
      Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
      */
+    
+    //if(self.active)
+      //  [self.engine start];
+    
+    NSLog(@"Became Active");
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application
@@ -55,6 +95,10 @@
      Save data if appropriate.
      See also applicationDidEnterBackground:.
      */
+    
+    //self.active = NO;
+    //[self.engine stop];
+    NSLog(@"Will Terminate");
 }
 
 @end

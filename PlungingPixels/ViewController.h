@@ -6,8 +6,12 @@
 //  Copyright (c) 2012 Cal Poly San Luis Obispo. All rights reserved.
 //
 
+#import <QuartzCore/CADisplayLink.h>
 #import <UIKit/UIKit.h>
+#import "Tile.h"
+#import "PixelEngine.h"
+#import "PixelView.h"
 
 @interface ViewController : UIViewController
-
+@property (weak, nonatomic) PixelEngine *engine;
 @end

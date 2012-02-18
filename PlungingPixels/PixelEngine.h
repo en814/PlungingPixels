@@ -7,7 +7,29 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "Grid.h"
+#import "Tile.h"
+
+#define PixelNumRows 32
+#define PixelNumCols 32
+#define PixelArrSize() ( PixelNumRows * PixelNumCols )
+#define PixelArrIdx(row, col) ( (row) * PixelNumCols + (col) * PixelNumRows )
 
 @interface PixelEngine : NSObject
+@property (readonly, nonatomic) int timer;
+@property (readonly, nonatomic) int score;
+@property (readonly, nonatomic) BOOL pause;
+@property (readonly, nonatomic) BOOL quit;
+@property (readonly, nonatomic) BOOL running;
+
+- (id) init;
+- (void) start;
+- (void) stop;
+- (BOOL) running;
+- (id) initWithRect: (CGRect) rect;
+- (void) step;
+- (void) addObject: (Tile *) tile;
 
 @end
+
+
