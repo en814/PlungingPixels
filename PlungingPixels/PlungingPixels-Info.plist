@@ -11,7 +11,7 @@
 	<key>CFBundleIconFiles</key>
 	<array/>
 	<key>CFBundleIdentifier</key>
-	<string>edu.calpoly.csc.2122.keli.${PRODUCT_NAME:rfc1034identifier}</string>
+	<string>edu.calpoly.csc.2122.tmowyang.${PRODUCT_NAME:rfc1034identifier}</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
