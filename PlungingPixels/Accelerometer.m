@@ -15,19 +15,21 @@
     valueY = acceleration.y*30.0;
     
     int newX = (int)(ball.center.x + valueX);
-    if(newX>320-BALL_RADIUS)
-        newX = 320-BALL_RADIUS;
-    if (newX < 0+BALL_RADIUS)
-        newX=0+BALL_RADIUS;
-    int newY = (int)(ball.center.y + valueY);
-    if(newY > 460-BALL_RADIUS)
-        newY = 460-BALL_RADIUS;
-    if(newY < 0+BALL_RADIUS)
-        newY = 0+BALL_RADIUS;
+    if(newX > 320 - BALL_RADIUS)
+        newX = 320 - BALL_RADIUS;
+    if (newX < 0 + BALL_RADIUS)
+        newX= 0 + BALL_RADIUS;
+    int newY = (int)(ball.center.y - valueY);
+    if(newY > 460 - BALL_RADIUS)
+        newY = 460 - BALL_RADIUS;
+    if(newY < 0 + BALL_RADIUS)
+        newY = 0 + BALL_RADIUS;
     
     CGPoint newCenter = CGPointMake(newX, newY);
     
     ball.center = newCenter;
+    
+    
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -63,6 +65,7 @@
     [super viewDidLoad];
     [[UIAccelerometer sharedAccelerometer] setUpdateInterval:1.0/30.0];
     [[UIAccelerometer sharedAccelerometer] setDelegate:self];
+    
 }
 
 
