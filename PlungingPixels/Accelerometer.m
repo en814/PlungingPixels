@@ -13,7 +13,7 @@
 -(void)accelerometer:(UIAccelerometer *)accelerometer didAccelerate:(UIAcceleration *)acceleration {
     valueX = acceleration.x*30.0;
     valueY = acceleration.y*30.0;
-    
+    //Adding comment here so we can test github commit and push :3
     int newX = (int)(ball.center.x + valueX);
     if(newX > 320 - BALL_RADIUS)
         newX = 320 - BALL_RADIUS;
