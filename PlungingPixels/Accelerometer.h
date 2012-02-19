@@ -7,12 +7,19 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "PixelView.h"
+
 #define BALL_RADIUS 25
 
 @interface Accelerometer : UIViewController <UIAccelerometerDelegate> {
-    IBOutlet UIImageView *ball;
-    float valueX;
-    float valueY;
+    //IBOutlet UIImageView *ball;
+    //float valueX;
+    //float valueY;
 }
+
+@property (readonly, strong, nonatomic) IBOutlet UIImageView *ball;
+@property (readonly, nonatomic) float valueX;
+@property (readonly, nonatomic) float valueY;
+@property (readonly, strong, nonatomic) IBOutlet PixelView *tile;
 
 @end

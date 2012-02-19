@@ -8,18 +8,32 @@
 
 #import "Accelerometer.h"
 
+@interface Accelerometer ()
+
+@property (readwrite, strong, nonatomic) IBOutlet UIImageView *ball;
+@property (readwrite, nonatomic) float valueX;
+@property (readwrite, nonatomic) float valueY;
+@property (readwrite, strong, nonatomic) IBOutlet PixelView *tile;
+
+@end
+
 @implementation Accelerometer
 
+@synthesize ball = _ball;
+@synthesize valueX = _valueX;
+@synthesize valueY = _valueY;
+@synthesize tile = _tile;
+
 -(void)accelerometer:(UIAccelerometer *)accelerometer didAccelerate:(UIAcceleration *)acceleration {
-    valueX = acceleration.x*30.0;
-    valueY = acceleration.y*30.0;
+    self.valueX = acceleration.x*30.0;
+    self.valueY = acceleration.y*30.0;
     //Adding comment here so we can test github commit and push :3
-    int newX = (int)(ball.center.x + valueX);
+    int newX = (int)(self.ball.center.x + self.valueX);
     if(newX > 320 - BALL_RADIUS)
         newX = 320 - BALL_RADIUS;
     if (newX < 0 + BALL_RADIUS)
         newX= 0 + BALL_RADIUS;
-    int newY = (int)(ball.center.y - valueY);
+    int newY = (int)(self.ball.center.y - self.valueY);
     if(newY > 460 - BALL_RADIUS)
         newY = 460 - BALL_RADIUS;
     if(newY < 0 + BALL_RADIUS)
@@ -27,9 +41,23 @@
     
     CGPoint newCenter = CGPointMake(newX, newY);
     
-    ball.center = newCenter;
+    self.ball.center = newCenter;
+    self.tile.center = newCenter;
     
     
+}
+
+- (void) initDraw 
+{
+    CGRect box = self.view.bounds;
+    //resize rectangle
+    box.size.width -= 400;
+    box.size.height -= 400;
+    box.origin.x += 100;
+    box.origin.y += 100;
+    self.tile = [[PixelView alloc] initWithFrame: box/*self.view.bounds*/];
+    [self.view addSubview:self.tile];
+
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -37,6 +65,7 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
+        NSLog(@"I has been initialized\n");
     }
     return self;
 }
@@ -63,6 +92,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [self initDraw];
     [[UIAccelerometer sharedAccelerometer] setUpdateInterval:1.0/30.0];
     [[UIAccelerometer sharedAccelerometer] setDelegate:self];
     
