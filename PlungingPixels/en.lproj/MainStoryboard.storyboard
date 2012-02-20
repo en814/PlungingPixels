@@ -110,14 +110,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="460"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="arrows.jpg" id="vdo-2G-wnV">
-                                <rect key="frame" x="110" y="98" width="101" height="100"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                <gestureRecognizers/>
-                                <connections>
-                                    <outletCollection property="gestureRecognizers" destination="eqs-TV-rqB" appends="YES" id="1zC-HE-z2h"/>
-                                </connections>
-                            </imageView>
                             <view contentMode="scaleToFill" id="uyk-Bd-2CQ" customClass="PixelView">
                                 <rect key="frame" x="110" y="287" width="79" height="93"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -131,7 +123,6 @@
                         </connections>
                     </view>
                     <connections>
-                        <outlet property="ball" destination="vdo-2G-wnV" id="h39-G5-4kZ"/>
                         <outlet property="tile" destination="uyk-Bd-2CQ" id="lWG-sK-Yo8"/>
                     </connections>
                 </viewController>
@@ -285,9 +276,6 @@
             <point key="canvasLocation" x="537" y="678"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="arrows.jpg" width="241" height="210"/>
-    </resources>
     <classes>
         <class className="Accelerometer" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/Accelerometer.h"/>
