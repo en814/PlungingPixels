@@ -18,7 +18,6 @@
 		BB0D891014E8C8E1004FD11A /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB0D890E14E8C8E1004FD11A /* MainStoryboard.storyboard */; };
 		BB0D891314E8C8E1004FD11A /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB0D891214E8C8E1004FD11A /* ViewController.m */; };
 		BB686C9414F05D6A00759EB6 /* Accelerometer.m in Sources */ = {isa = PBXBuildFile; fileRef = BB686C9314F05D6A00759EB6 /* Accelerometer.m */; };
-		BB686C9614F0629800759EB6 /* arrows.jpg in Resources */ = {isa = PBXBuildFile; fileRef = BB686C9514F0629800759EB6 /* arrows.jpg */; };
 		BB76EF8714E8D4CC00FEEDD2 /* Tile.m in Sources */ = {isa = PBXBuildFile; fileRef = BB76EF8614E8D4CC00FEEDD2 /* Tile.m */; };
 		BB76EF8A14E8E93C00FEEDD2 /* PixelEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = BB76EF8914E8E93C00FEEDD2 /* PixelEngine.m */; };
 		BB76EF8D14E8EA7900FEEDD2 /* Grid.m in Sources */ = {isa = PBXBuildFile; fileRef = BB76EF8C14E8EA7900FEEDD2 /* Grid.m */; };
@@ -43,7 +42,6 @@
 		BB0D891214E8C8E1004FD11A /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		BB686C9214F05D6A00759EB6 /* Accelerometer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Accelerometer.h; sourceTree = "<group>"; };
 		BB686C9314F05D6A00759EB6 /* Accelerometer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Accelerometer.m; sourceTree = "<group>"; };
-		BB686C9514F0629800759EB6 /* arrows.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = arrows.jpg; sourceTree = "<group>"; };
 		BB76EF8514E8D4CC00FEEDD2 /* Tile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tile.h; sourceTree = "<group>"; };
 		BB76EF8614E8D4CC00FEEDD2 /* Tile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Tile.m; sourceTree = "<group>"; };
 		BB76EF8814E8E93C00FEEDD2 /* PixelEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PixelEngine.h; sourceTree = "<group>"; };
@@ -97,7 +95,6 @@
 			isa = PBXGroup;
 			children = (
 				5382643314F1E8A20032E40C /* plungingpixels.png */,
-				BB686C9514F0629800759EB6 /* arrows.jpg */,
 				BB686C9214F05D6A00759EB6 /* Accelerometer.h */,
 				BB686C9314F05D6A00759EB6 /* Accelerometer.m */,
 				BB76EF8514E8D4CC00FEEDD2 /* Tile.h */,
@@ -182,7 +179,6 @@
 			files = (
 				BB0D890714E8C8E1004FD11A /* InfoPlist.strings in Resources */,
 				BB0D891014E8C8E1004FD11A /* MainStoryboard.storyboard in Resources */,
-				BB686C9614F0629800759EB6 /* arrows.jpg in Resources */,
 				5382643414F1E8A20032E40C /* plungingpixels.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
