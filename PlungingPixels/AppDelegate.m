@@ -27,7 +27,6 @@
     
     [(id)self.window.rootViewController setEngine:self.engine];
 */    
-    NSLog(@"Finish Launching With Options");
     return YES;
 }
 							
@@ -51,7 +50,6 @@
     
     self.active = YES;
      */
-    NSLog(@"Resign Active");
 }
 
 - (void)applicationDidEnterBackground:(UIApplication *)application
@@ -64,7 +62,6 @@
     [self.engine stop];
     self.active = NO;
      */
-    NSLog(@"Enter Background");
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application
@@ -73,7 +70,6 @@
      Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
      */
     //self.active = NO;
-    NSLog(@"Enter Foreground");
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application
@@ -85,7 +81,6 @@
     //if(self.active)
       //  [self.engine start];
     
-    NSLog(@"Became Active");
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application
@@ -98,7 +93,6 @@
     
     //self.active = NO;
     //[self.engine stop];
-    NSLog(@"Will Terminate");
 }
 
 @end

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		530607EE14ED07A50074BD64 /* PixelView.m in Sources */ = {isa = PBXBuildFile; fileRef = 530607ED14ED07A50074BD64 /* PixelView.m */; };
+		5382643414F1E8A20032E40C /* plungingpixels.png in Resources */ = {isa = PBXBuildFile; fileRef = 5382643314F1E8A20032E40C /* plungingpixels.png */; };
 		BB0D88FD14E8C8E1004FD11A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB0D88FC14E8C8E1004FD11A /* UIKit.framework */; };
 		BB0D88FF14E8C8E1004FD11A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB0D88FE14E8C8E1004FD11A /* Foundation.framework */; };
 		BB0D890114E8C8E1004FD11A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB0D890014E8C8E1004FD11A /* CoreGraphics.framework */; };
@@ -26,6 +27,7 @@
 /* Begin PBXFileReference section */
 		530607EC14ED07A50074BD64 /* PixelView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PixelView.h; sourceTree = "<group>"; };
 		530607ED14ED07A50074BD64 /* PixelView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PixelView.m; sourceTree = "<group>"; };
+		5382643314F1E8A20032E40C /* plungingpixels.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = plungingpixels.png; path = ../plungingpixels.png; sourceTree = "<group>"; };
 		BB0D88F814E8C8E1004FD11A /* PlungingPixels.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PlungingPixels.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BB0D88FC14E8C8E1004FD11A /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		BB0D88FE14E8C8E1004FD11A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -94,6 +96,7 @@
 		BB0D890214E8C8E1004FD11A /* PlungingPixels */ = {
 			isa = PBXGroup;
 			children = (
+				5382643314F1E8A20032E40C /* plungingpixels.png */,
 				BB686C9514F0629800759EB6 /* arrows.jpg */,
 				BB686C9214F05D6A00759EB6 /* Accelerometer.h */,
 				BB686C9314F05D6A00759EB6 /* Accelerometer.m */,
@@ -180,6 +183,7 @@
 				BB0D890714E8C8E1004FD11A /* InfoPlist.strings in Resources */,
 				BB0D891014E8C8E1004FD11A /* MainStoryboard.storyboard in Resources */,
 				BB686C9614F0629800759EB6 /* arrows.jpg in Resources */,
+				5382643414F1E8A20032E40C /* plungingpixels.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -286,6 +290,7 @@
 				GCC_PREFIX_HEADER = "PlungingPixels/PlungingPixels-Prefix.pch";
 				INFOPLIST_FILE = "PlungingPixels/PlungingPixels-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = NO;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
