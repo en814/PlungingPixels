@@ -10,7 +10,6 @@
 
 @interface Accelerometer ()
 
-//@property (readwrite, strong, nonatomic) IBOutlet UIImageView *ball;
 @property (readwrite, nonatomic) float valueX;
 @property (readwrite, nonatomic) float valueY;
 @property (readwrite, strong, nonatomic) IBOutlet PixelView *tile;
@@ -19,7 +18,6 @@
 
 @implementation Accelerometer
 
-//@synthesize ball = _ball;
 @synthesize valueX = _valueX;
 @synthesize valueY = _valueY;
 @synthesize tile = _tile;
@@ -41,7 +39,6 @@
     
     CGPoint newCenter = CGPointMake(newX, newY);
     
-//    self.ball.center = newCenter;
     self.tile.center = newCenter;
     
     

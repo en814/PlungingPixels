@@ -131,11 +131,6 @@
                         <segue destination="ZQA-bV-Djq" kind="modal" id="7ZH-oX-0QA"/>
                     </connections>
                 </swipeGestureRecognizer>
-                <swipeGestureRecognizer direction="left" id="eqs-TV-rqB">
-                    <connections>
-                        <segue destination="ZQA-bV-Djq" kind="modal" id="AIu-yd-GJn"/>
-                    </connections>
-                </swipeGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="537" y="1267"/>
         </scene>
@@ -280,7 +275,6 @@
         <class className="Accelerometer" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/Accelerometer.h"/>
             <relationships>
-                <relationship kind="outlet" name="ball" candidateClass="UIImageView"/>
                 <relationship kind="outlet" name="tile" candidateClass="PixelView"/>
             </relationships>
         </class>
@@ -300,8 +294,4 @@
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
-    <inferredMetricsTieBreakers>
-        <segue reference="VRc-Sh-Puj"/>
-        <segue reference="ier-YM-U7R"/>
-    </inferredMetricsTieBreakers>
 </document>
