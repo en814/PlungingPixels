@@ -88,6 +88,10 @@
                         </connections>
                     </view>
                     <navigationItem key="navigationItem" id="wDK-da-hmC"/>
+                    <connections>
+                        <outlet property="scoreLabel" destination="F5S-Ih-aMc" id="whB-qn-IR9"/>
+                        <outlet property="timeLabel" destination="FTS-la-MCB" id="NtI-17-mOh"/>
+                    </connections>
                 </viewController>
                 <swipeGestureRecognizer direction="up" id="Ms0-uq-5oN">
                     <connections>
@@ -132,7 +136,7 @@
                     </connections>
                 </swipeGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="537" y="1267"/>
+            <point key="canvasLocation" x="-369" y="1350"/>
         </scene>
         <scene sceneID="TBJ-2R-66G">
             <objects>
@@ -268,7 +272,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="537" y="678"/>
+            <point key="canvasLocation" x="537" y="684"/>
         </scene>
     </scenes>
     <classes>

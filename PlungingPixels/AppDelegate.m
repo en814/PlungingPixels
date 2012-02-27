@@ -15,18 +15,19 @@
 @implementation AppDelegate
 
 @synthesize window = _window;
+@synthesize viewController = _viewController;
 @synthesize engine = _engine;
 @synthesize active = _active;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
-/*
+
     if (self.engine == nil)
         self.engine = [[PixelEngine alloc] init];
     
-    [(id)self.window.rootViewController setEngine:self.engine];
-*/    
+    [self.viewController setEngine:self.engine];
+    
     return YES;
 }
 							
