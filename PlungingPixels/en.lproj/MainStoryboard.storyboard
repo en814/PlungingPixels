@@ -135,7 +135,7 @@
                     </connections>
                 </swipeGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="537" y="1267"/>
+            <point key="canvasLocation" x="-369" y="1350"/>
         </scene>
         <scene sceneID="TBJ-2R-66G">
             <objects>
@@ -271,7 +271,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="537" y="678"/>
+            <point key="canvasLocation" x="537" y="684"/>
         </scene>
     </scenes>
     <classes>

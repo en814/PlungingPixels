@@ -22,10 +22,13 @@
 @property (readonly, nonatomic) BOOL quit;
 @property (readonly, nonatomic) BOOL running;
 
+- (int) timer;
+
 - (id) init;
 - (void) start;
 - (void) stop;
 - (BOOL) running;
+- (void) advance;
 - (id) initWithRect: (CGRect) rect;
 - (void) step;
 - (void) addObject: (Tile *) tile;

@@ -13,5 +13,5 @@
 #import "PixelView.h"
 
 @interface ViewController : UIViewController
-@property (weak, nonatomic) PixelEngine *engine;
+@property (strong, nonatomic) PixelEngine *engine;
 @end

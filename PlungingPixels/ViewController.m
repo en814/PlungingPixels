@@ -36,6 +36,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    if (self.engine == nil)
+        self.engine = [[PixelEngine alloc] init];
+    [self.engine start];
     CGRect box = self.view.bounds;
     //resize rectangle
     box.size.width -= 100;
@@ -86,32 +89,41 @@
     
 }
 
-- (void) setEngine:(PixelEngine *)eng
-{
-    [self view];
-    _engine = eng;
-    //[self destroyKVO];
-    //[self setupLabels];
-}
-
 - (void) dealloc
 {
     [self viewDidUnload];
 }
-/*
+
 - (void) addKVO
 {
     [self.engine addObserver:self forKeyPath:@"score" 
                      options: (NSKeyValueObservingOptionNew | NSKeyValueObservingOptionInitial) 
                      context: nil];
-    [self.engine addObserver:self forKeyPath:@"timeStep" 
+    [self.engine addObserver:self forKeyPath:@"timer" 
                      options: (NSKeyValueObservingOptionNew | NSKeyValueObservingOptionInitial) 
                      context: nil];
-    [self.engine addObserver:self forKeyPath:@"gridVersion" 
-                     options: (NSKeyValueObservingOptionNew | NSKeyValueObservingOptionInitial) 
-                     context: nil];
+    //[self.engine addObserver:self forKeyPath:@"gridVersion" 
+      //               options: (NSKeyValueObservingOptionNew | NSKeyValueObservingOptionInitial) 
+        //             context: nil];
 }
-*/
+
+- (void) destroyKVO
+{
+    [self.engine removeObserver:self forKeyPath:@"score"];
+    [self.engine removeObserver:self forKeyPath:@"timer"];
+    //[self.engine removeObserver:self forKeyPath:@"gridVersion"];
+}
+
+- (void) setEngine:(PixelEngine *)eng
+{
+    NSLog(@"setting engine");
+    [self view];
+    _engine = eng;
+    //[self destroyKVO];
+    [self addKVO];
+    //[self setupLabels];
+}
+
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
 {
     if(!self.engine)
@@ -121,7 +133,7 @@
     {
         self.scoreLabel.text = [NSString stringWithFormat:@"%d", self.engine.score];
     }
-    if ([keyPath isEqualToString:@"timeStep"]) 
+    if ([keyPath isEqualToString:@"timer"]) 
     {
         self.timeLabel.text = [NSString stringWithFormat:@"%d", self.engine.timer];
     }
