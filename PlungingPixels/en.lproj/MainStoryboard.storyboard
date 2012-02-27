@@ -89,7 +89,8 @@
                     </view>
                     <navigationItem key="navigationItem" id="wDK-da-hmC"/>
                     <connections>
-                        <outlet property="timeLabel" destination="FTS-la-MCB" id="0jf-Jp-g6v"/>
+                        <outlet property="scoreLabel" destination="F5S-Ih-aMc" id="whB-qn-IR9"/>
+                        <outlet property="timeLabel" destination="FTS-la-MCB" id="NtI-17-mOh"/>
                     </connections>
                 </viewController>
                 <swipeGestureRecognizer direction="up" id="Ms0-uq-5oN">
