@@ -8,13 +8,24 @@
 
 #import "PixelView.h"
 
+@interface PixelView()
+@property (strong, nonatomic) NSMutableArray *pixelGrid;
+@end
+
 @implementation PixelView
+@synthesize column = _column;
+@synthesize row = _row;
+@synthesize pixelGrid = _pixelGrid;
 
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
     if (self) {
         // Initialization code
+        self.pixelGrid = [[NSMutableArray alloc] initWithCapacity: self.column * self.row];
+        
+        for(int i = 0; i < PixelArrIdx(self.row, self.column); i++)
+            [self.pixelGrid addObject: [UIColor whiteColor]];
     }
     return self;
 }
@@ -26,37 +37,36 @@
 - (void)drawRect:(CGRect)rect
 {
     // Drawing code
-    //CGContextRef context = UIGraphicsGetCurrentContext();
-    //CGRect box = self.bounds;
-     //box.size.width = 64;
-     //box.size.height = 64;
-     //box.origin.x = super.bounds.size.width / 2 - box.size.width / 2;
-     //box.origin.y = super.bounds.size.height / 2 - box.size.height / 2;
-    /*
-     CGContextBeginPath(context);
-     CGContextAddRect(context, box);
-     CGContextClosePath(context);
-     [[UIColor purpleColor] setFill];
-     [[UIColor blackColor] setStroke];
-     CGContextDrawPath(context,kCGPathFillStroke);
-     NSLog(@"Drawing %@\n", self);
-     */
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    CGRect box = self.bounds;
+    
+    box.size.width = self.bounds.size.width / 8; // self.column;
+    box.size.height = self.bounds.size.height / 11; // self.row;
+
+
+    NSLog(@"width %f", box.size.width);
+    NSLog(@"height %f", box.size.height);
+    
+    for (int i=0; i<8; i++) {
+        for (int j=0; j<11; j++) {
+            box.origin.x = box.size.width * i;
+            box.origin.y = box.size.height * j;
+            CGContextBeginPath(context);
+            CGContextAddRect(context, box);
+            CGContextClosePath(context);
+            [[UIColor whiteColor] setFill];
+            //[[self.pixelGrid objectAtIndex:PixelArrIdx(j, i)] setFill];
+            [[UIColor blackColor] setStroke];
+            CGContextDrawPath(context,kCGPathFillStroke);
+        }
+    }
+    
+    // draw falling tile
 }
 
-/*
-- (void) drawTile:(CGRect) rect
+- (void) setOpacity: (float) alpha forRow: (int) row column: (int)col
 {
-    // Drawing code
-    CGContextRef context = UIGraphicsGetCurrentContext();
-    CGRect box;
-    box = self.bounds;
-    CGContextBeginPath(context);
-    CGContextAddEllipseInRect(context, box);
-    CGContextClosePath(context);
-    [[UIColor redColor] setFill];
-    [[UIColor blackColor] setStroke];
-    CGContextDrawPath(context,kCGPathFillStroke);
-    NSLog(@"Drawing %@\n", self);
-}*/
+    
+}
 
 @end

@@ -10,13 +10,9 @@
 #import "Grid.h"
 #import "Tile.h"
 
-#define PixelNumRows 32
-#define PixelNumCols 32
-#define PixelArrSize() ( PixelNumRows * PixelNumCols )
-#define PixelArrIdx(row, col) ( (row) * PixelNumCols + (col) * PixelNumRows )
-
 @interface PixelEngine : NSObject
 @property (readonly, nonatomic) int timer;
+@property (readonly, strong, nonatomic) Grid *board;
 @property (readonly, nonatomic) int score;
 @property (readonly, nonatomic) BOOL pause;
 @property (readonly, nonatomic) BOOL quit;

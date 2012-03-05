@@ -9,21 +9,41 @@
 #import "Grid.h"
 
 @interface Grid()
+@property (nonatomic) int picture;
 @property (nonatomic) int difficulty;
+@property (nonatomic) int rows, columns;
 @end
 
 @implementation Grid
+@synthesize picture = _picture;
 @synthesize grid = _grid;
 @synthesize difficulty = _difficulty;
+@synthesize rows = _rows;
+@synthesize columns = _columns;
 
-- (id) init: withHeight: (int) h withWidth: (int) w
+- (id) init: (int) picture
 {
     self = [super init];
+
+    if (picture == 0) {
+        
+    }
+    
 	if (self) {
 
 	}
     
     return self;
 }
-
+/*
+- (NSMutableArray *) spaceInvader
+{
+    self.rows = 8;
+    self.columns = 11;
+    NSMutableArray *invader = [[NSMutableArray alloc] initWithCapacity: self.rows * self.columns];
+    
+    for(int i = 0; i < PixelArrIdx(self.rows, self.columns); i++)
+        [self.colorGrid addObject: [UIColor whiteColor]];
+}
+*/
 @end

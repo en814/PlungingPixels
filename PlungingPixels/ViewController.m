@@ -11,6 +11,8 @@
 @interface ViewController()
 @property (readwrite, weak, nonatomic) IBOutlet UILabel *timeLabel;
 @property (readwrite, weak, nonatomic) IBOutlet UILabel *scoreLabel;
+@property (weak, nonatomic) IBOutlet PixelView *pixelView;
+
 - (void) nextFrame: (CADisplayLink*) df;
 @end
 
@@ -18,6 +20,7 @@
 @synthesize engine = _engine;
 @synthesize timeLabel = _timeLabel;
 @synthesize scoreLabel = _scoreLabel;
+@synthesize pixelView = _pixelView;
 
 - (void) nilObjects
 {
@@ -39,14 +42,7 @@
     if (self.engine == nil)
         self.engine = [[PixelEngine alloc] init];
     [self.engine start];
-    CGRect box = self.view.bounds;
-    //resize rectangle
-    box.size.width -= 100;
-    box.size.height -= 100;
-    box.origin.x += 50;
-    box.origin.y += 50;
-    PixelView *subv = [[PixelView alloc] initWithFrame: box/*self.view.bounds*/];
-    [self.view addSubview:subv];
+    
 	// Do any additional setup after loading the view, typically from a nib.
 }
 
@@ -112,6 +108,20 @@
     [self.engine removeObserver:self forKeyPath:@"score"];
     [self.engine removeObserver:self forKeyPath:@"timer"];
     //[self.engine removeObserver:self forKeyPath:@"gridVersion"];
+}
+
+- (void) setupLabels
+{    
+    CGRect tileFrame;
+    tileFrame.size.width = 16;
+    tileFrame.size.height = 26;
+    NSLog(@"Column: %f\n", tileFrame.size.width);
+    NSLog(@"Row: %f\n", tileFrame.size.height);
+    
+    self.pixelView.row = self.engine.board.rows;
+    self.pixelView.column = self.engine.board.columns;
+    
+    [self addKVO];
 }
 
 - (void) setEngine:(PixelEngine *)eng
