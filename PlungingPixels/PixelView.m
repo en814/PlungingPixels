@@ -22,10 +22,6 @@
     self = [super initWithFrame:frame];
     if (self) {
         // Initialization code
-        self.pixelGrid = [[NSMutableArray alloc] initWithCapacity: self.column * self.row];
-        
-        for(int i = 0; i < PixelArrIdx(self.row, self.column); i++)
-            [self.pixelGrid addObject: [UIColor whiteColor]];
     }
     return self;
 }
@@ -39,10 +35,12 @@
     // Drawing code
     CGContextRef context = UIGraphicsGetCurrentContext();
     CGRect box = self.bounds;
+
+    int tileWidth = self.bounds.size.width / 8;
+    int tileHeight = self.bounds.size.height / 11;
     
     box.size.width = self.bounds.size.width / 8; // self.column;
     box.size.height = self.bounds.size.height / 11; // self.row;
-
 
     NSLog(@"width %f", box.size.width);
     NSLog(@"height %f", box.size.height);
@@ -62,6 +60,16 @@
     }
     
     // draw falling tile
+    box.size.width = tileWidth;
+    box.size.height = tileHeight;
+    box.origin.x = self.bounds.size.width / 2 - tileWidth / 2;
+    box.origin.y = self.bounds.size.height / 2 - tileHeight;
+    CGContextBeginPath(context);
+    CGContextAddRect(context, box);
+    CGContextClosePath(context);
+    [[UIColor purpleColor] setFill];
+    [[UIColor blackColor] setStroke];
+    CGContextDrawPath(context,kCGPathFillStroke);
 }
 
 - (void) setOpacity: (float) alpha forRow: (int) row column: (int)col

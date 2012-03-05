@@ -47,10 +47,7 @@
 
 - (void) start
 {
-    if (self.stepTimer)
-        NSLog(@"and here");
     if (!self.stepTimer) {
-        NSLog(@"and here");
         NSDate *fireDate = [NSDate dateWithTimeIntervalSinceNow:0.0];
         self.stepTimer = [[NSTimer alloc] initWithFireDate:fireDate
                                                   interval:1.0
