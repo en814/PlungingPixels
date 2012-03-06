@@ -93,6 +93,7 @@
     self.world = rect;
     self.objects = [[NSMutableArray alloc] init];
     
+    
     Grid *grid = [[Grid alloc] init:picture];
     TileQueue *tileQueue = [[TileQueue alloc] init:picture];
     

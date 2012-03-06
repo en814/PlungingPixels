@@ -42,10 +42,9 @@
 {
     [super viewDidLoad];
     if (self.engine == nil)
-        self.engine = [[PixelEngine alloc] init];
+        //self.engine = [[PixelEngine alloc] init];
+        self.engine = [[PixelEngine alloc] initWithRect:self.view.bounds andPicture:0];
     [self.engine start];
-    
-	// Do any additional setup after loading the view, typically from a nib.
 }
 
 - (void)viewDidUnload

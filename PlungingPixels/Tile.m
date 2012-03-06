@@ -8,14 +8,11 @@
 
 #import "Tile.h"
 
-static int nextId = 0;
-
 @interface Tile()
 @property (strong, nonatomic) UIColor *color;
 @property (nonatomic) BOOL filled;
 @property (nonatomic) int level;
 @property (nonatomic) int type;
-@property (nonatomic) int objId;
 @end
 
 @implementation Tile
@@ -23,19 +20,34 @@ static int nextId = 0;
 @synthesize level = _level;
 @synthesize color = _color;
 @synthesize type = _type;
-@synthesize objId = _objId;
 @synthesize location = _location;
 @synthesize velocity = _velocity;
 @synthesize acceleration = _acceleration;
 
-- (id) init: (UIColor*) color filled: (BOOL) filled withLevel: (int) level
+- (id) initWithType: (int) ty 
+           andColor: (UIColor*) color
+           andLevel: (int) level
+             filled: (BOOL) filled
 {
     self = [super init];
     
+    self.type = ty;
     self.color = color;
+    self.level = level;
     self.filled = filled;
     self.level = level;
     
+    // initialization values will change
+    self.location = CGRectMake(0, 0, 100, 100);
+    self.velocity = CGPointMake(-100, 0);
+    self.acceleration = CGPointMake(0, 480);
+    
+    return self;
+}
+
+- (id) initWithLocation:(CGRect)loc
+{
+    self.location = loc;
     return self;
 }
 
@@ -45,21 +57,5 @@ static int nextId = 0;
     // if ()
     //  update location, velocity, and acceleration
 }
-
-- (id) initWithType: (int) ty andLocation: (CGRect) loc {
-    self = [super init];
-    self.objId = nextId++;
-    self.type = ty;
-    self.location = loc;
-    
-    // initialization values will change
-    self.velocity = CGPointMake(-100, 0);
-    self.acceleration = CGPointMake(0, 480);
-    
-    return self;
-    
-    return self;
-}
-
 
 @end
