@@ -12,6 +12,7 @@
 @property (readwrite, weak, nonatomic) IBOutlet UILabel *timeLabel;
 @property (readwrite, weak, nonatomic) IBOutlet UILabel *scoreLabel;
 @property (weak, nonatomic) IBOutlet PixelView *pixelView;
+@property (weak, nonatomic) TileView *tileView;
 
 - (void) nextFrame: (CADisplayLink*) df;
 @end
@@ -21,6 +22,7 @@
 @synthesize timeLabel = _timeLabel;
 @synthesize scoreLabel = _scoreLabel;
 @synthesize pixelView = _pixelView;
+@synthesize tileView = _tileView;
 
 - (void) nilObjects
 {
@@ -120,6 +122,8 @@
     
     self.pixelView.row = self.engine.board.rows;
     self.pixelView.column = self.engine.board.columns;
+    self.tileView.row = self.engine.board.rows;
+    self.tileView.column = self.engine.board.columns;
     
     [self addKVO];
 }

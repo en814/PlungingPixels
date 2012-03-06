@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		530607EE14ED07A50074BD64 /* PixelView.m in Sources */ = {isa = PBXBuildFile; fileRef = 530607ED14ED07A50074BD64 /* PixelView.m */; };
+		533CB27D15056CF200F4B36E /* TileView.m in Sources */ = {isa = PBXBuildFile; fileRef = 533CB27C15056CF200F4B36E /* TileView.m */; };
+		533CB2841505B6AF00F4B36E /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 533CB2831505B6AE00F4B36E /* QuartzCore.framework */; };
 		5382643414F1E8A20032E40C /* plungingpixels.png in Resources */ = {isa = PBXBuildFile; fileRef = 5382643314F1E8A20032E40C /* plungingpixels.png */; };
 		BB0D88FD14E8C8E1004FD11A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB0D88FC14E8C8E1004FD11A /* UIKit.framework */; };
 		BB0D88FF14E8C8E1004FD11A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB0D88FE14E8C8E1004FD11A /* Foundation.framework */; };
@@ -26,6 +28,9 @@
 /* Begin PBXFileReference section */
 		530607EC14ED07A50074BD64 /* PixelView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PixelView.h; sourceTree = "<group>"; };
 		530607ED14ED07A50074BD64 /* PixelView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PixelView.m; sourceTree = "<group>"; };
+		533CB27B15056CF200F4B36E /* TileView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TileView.h; sourceTree = "<group>"; };
+		533CB27C15056CF200F4B36E /* TileView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TileView.m; sourceTree = "<group>"; };
+		533CB2831505B6AE00F4B36E /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		5382643314F1E8A20032E40C /* plungingpixels.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = plungingpixels.png; path = ../plungingpixels.png; sourceTree = "<group>"; };
 		BB0D88F814E8C8E1004FD11A /* PlungingPixels.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PlungingPixels.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BB0D88FC14E8C8E1004FD11A /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -55,6 +60,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				533CB2841505B6AF00F4B36E /* QuartzCore.framework in Frameworks */,
 				BB0D88FD14E8C8E1004FD11A /* UIKit.framework in Frameworks */,
 				BB0D88FF14E8C8E1004FD11A /* Foundation.framework in Frameworks */,
 				BB0D890114E8C8E1004FD11A /* CoreGraphics.framework in Frameworks */,
@@ -67,6 +73,7 @@
 		BB0D88ED14E8C8E1004FD11A = {
 			isa = PBXGroup;
 			children = (
+				533CB2831505B6AE00F4B36E /* QuartzCore.framework */,
 				BB0D890214E8C8E1004FD11A /* PlungingPixels */,
 				BB0D88FB14E8C8E1004FD11A /* Frameworks */,
 				BB0D88F914E8C8E1004FD11A /* Products */,
@@ -105,6 +112,8 @@
 				BB76EF8914E8E93C00FEEDD2 /* PixelEngine.m */,
 				530607EC14ED07A50074BD64 /* PixelView.h */,
 				530607ED14ED07A50074BD64 /* PixelView.m */,
+				533CB27B15056CF200F4B36E /* TileView.h */,
+				533CB27C15056CF200F4B36E /* TileView.m */,
 				BB0D891114E8C8E1004FD11A /* ViewController.h */,
 				BB0D891214E8C8E1004FD11A /* ViewController.m */,
 				BB0D890B14E8C8E1004FD11A /* AppDelegate.h */,
@@ -198,6 +207,7 @@
 				BB76EF8D14E8EA7900FEEDD2 /* Grid.m in Sources */,
 				530607EE14ED07A50074BD64 /* PixelView.m in Sources */,
 				BB686C9414F05D6A00759EB6 /* Accelerometer.m in Sources */,
+				533CB27D15056CF200F4B36E /* TileView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

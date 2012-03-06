@@ -7,7 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "PixelEngine.h"
 
 @interface PixelView : UIView
 

@@ -11,6 +11,7 @@
 #import "Tile.h"
 #import "PixelEngine.h"
 #import "PixelView.h"
+#import "TileView.h"
 
 @interface ViewController : UIViewController
 @property (strong, nonatomic) PixelEngine *engine;
