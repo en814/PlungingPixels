@@ -7,9 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Tile.h"
 
 @interface PixelView : UIView
 
+@property (strong, nonatomic) NSMutableArray *grid;
 @property (nonatomic) int column;
 @property (nonatomic) int row;
 

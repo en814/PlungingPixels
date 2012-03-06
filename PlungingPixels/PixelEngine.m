@@ -11,7 +11,7 @@
 @interface PixelEngine()
 @property (nonatomic, strong) NSMutableArray *objects;
 @property (nonatomic) CGRect world;
-@property (nonatomic) int timer, score;
+@property (nonatomic) int timer, score, width, height;
 @property (readwrite, strong, nonatomic) NSTimer *stepTimer;
 @property (readwrite, nonatomic) BOOL running;
 @property (nonatomic) BOOL gameOver;
@@ -29,6 +29,8 @@
 @synthesize quit =_quit;
 @synthesize stepTimer = _stepTimer;
 @synthesize gameOver = _gameOver;
+@synthesize width = _width;
+@synthesize height = _height;
 @dynamic running;
 //@synthesize board = _board;
 //@synthesize tileQueue = _tileQueue;
@@ -95,6 +97,8 @@
     
     
     Grid *grid = [[Grid alloc] init:picture];
+    self.width = grid.columns;
+    self.height = grid.rows;
     TileQueue *tileQueue = [[TileQueue alloc] init:picture];
     
     [self.objects addObject:grid];
@@ -118,6 +122,11 @@
 
 - (void) addObject: (NSObject *) tile {
     // update curTile with new color and toplevel
+}
+
+- (Tile *) tileAtGridIndex: (int) idx
+{
+    return [[self.objects objectAtIndex:0] objectAtIndex:idx];
 }
 
 - (NSObject *) objectWithID: (int) objId

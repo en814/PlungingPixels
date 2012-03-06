@@ -8,14 +8,10 @@
 
 #import "PixelView.h"
 
-@interface PixelView()
-@property (strong, nonatomic) NSMutableArray *pixelGrid;
-@end
-
 @implementation PixelView
+@synthesize grid = _grid;
 @synthesize column = _column;
 @synthesize row = _row;
-@synthesize pixelGrid = _pixelGrid;
 
 - (id)initWithFrame:(CGRect)frame
 {
@@ -42,15 +38,16 @@
     NSLog(@"width %f", box.size.width);
     NSLog(@"height %f", box.size.height);
     
-    for (int i=0; i<8; i++) {
-        for (int j=0; j<11; j++) {
-            box.origin.x = box.size.width * i;
-            box.origin.y = box.size.height * j;
+    for (int column=0; column<8; column++) {
+        for (int row=0; row<11; row++) {
+            box.origin.x = box.size.width * column;
+            box.origin.y = box.size.height * row;
             CGContextBeginPath(context);
             CGContextAddRect(context, box);
             CGContextClosePath(context);
-            [[UIColor whiteColor] setFill];
-            //[[self.pixelGrid objectAtIndex:PixelArrIdx(j, i)] setFill];
+            //[[UIColor whiteColor] setFill];
+            Tile *tile = [self.grid objectAtIndex:PixelArrIdx(row, column)];
+            [tile.color setFill];
             [[UIColor blackColor] setStroke];
             CGContextDrawPath(context,kCGPathFillStroke);
         }

@@ -14,11 +14,13 @@
 
 @interface PixelEngine : NSObject
 @property (readonly, nonatomic) int timer;
-//@property (readonly, strong, nonatomic) Grid *board;
 @property (readonly, nonatomic) int score;
 @property (readonly, nonatomic) BOOL pause;
 @property (readonly, nonatomic) BOOL quit;
 @property (readonly, nonatomic) BOOL running;
+@property (readonly, nonatomic) int width;
+@property (readonly, nonatomic) int height;
+//@property (readonly, strong, nonatomic) Grid *board;
 
 - (int) timer;
 
@@ -31,6 +33,7 @@
 - (id) initWithRect: (CGRect) rect  andPicture: (int) picture;
 - (void) step: (CFTimeInterval) intv;
 - (void) addObject: (NSObject *) obj;
+- (Tile *) tileAtGridIndex: (int) idx;
 - (NSObject *) objectWithID: (int) objId;
 
 @end

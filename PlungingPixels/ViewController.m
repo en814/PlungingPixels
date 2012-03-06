@@ -12,7 +12,7 @@
 @property (readwrite, weak, nonatomic) IBOutlet UILabel *timeLabel;
 @property (readwrite, weak, nonatomic) IBOutlet UILabel *scoreLabel;
 @property (weak, nonatomic) IBOutlet PixelView *pixelView;
-@property (weak, nonatomic) TileView *tileView;
+@property (weak, nonatomic) IBOutlet TileView *tileView;
 
 - (void) nextFrame: (CADisplayLink*) df;
 @end
@@ -28,6 +28,8 @@
 {
     _timeLabel = nil;
     _scoreLabel = nil;
+    _pixelView = nil;
+    _tileView = nil;
 }
 
 - (void)didReceiveMemoryWarning
@@ -85,6 +87,58 @@
 {
     
 }
+
+- (void) updateGrid
+{
+    for(int column = 0; column < [self.engine width]; column++) {
+        for(int row = 0; row < [self.engine height]; row++) {
+            Tile *piece = [self.engine tileAtGridIndex:PixelArrIdx(row, column)];
+            
+            if (piece.color == [UIColor blackColor]) {
+                
+            }
+        }
+    }
+    /*
+    for(int column = 0; column < [self.engine width]; column++) {
+        for(int row = 0; row < [self.engine height]; row++) {
+            int piece = [self.engine pieceAtRow:row column:column];
+            if(piece == NoTetromino) {
+                [self.tetrisView setColor:[UIColor whiteColor] forRow:11-row column:column];
+                //[[self.gridLabels objectAtIndex: TetrisArrIdx(row, column)] setText: @"."];
+            }
+            else if (piece  == ITetromino) {
+                [self.tetrisView setColor:[UIColor cyanColor] forRow:11-row column:column];
+                //[[self.gridLabels objectAtIndex: TetrisArrIdx(row, column)] setText: @"X"];
+            }
+            else if (piece == JTetromino) {
+                [self.tetrisView setColor:[UIColor blueColor] forRow:11-row column:column];
+            }
+            else if (piece == LTetromino) {
+                [self.tetrisView setColor:[UIColor orangeColor] forRow:11-row column:column];
+            }
+            else if (piece == OTetromino) {
+                [self.tetrisView setColor:[UIColor yellowColor] forRow:11-row column:column];
+            }
+            else if (piece == STetromino) {
+                [self.tetrisView setColor:[UIColor greenColor] forRow:11-row column:column];
+            }
+            else if (piece == TTetromino) {
+                [self.tetrisView setColor:[UIColor purpleColor] forRow:11-row column:column];
+            }
+            else if (piece == ZTetromino) {
+                [self.tetrisView setColor:[UIColor redColor] forRow:11-row column:column];
+            }
+        }
+    }
+     */
+}
+
+- (void) refreshView
+{
+    [self updateGrid];
+}
+
 
 - (void) dealloc
 {
