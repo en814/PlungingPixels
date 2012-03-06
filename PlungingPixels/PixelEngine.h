@@ -7,12 +7,14 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "Grid.h"
 #import "Tile.h"
+#import "Grid.h"
+#import "TileQueue.h"
+
 
 @interface PixelEngine : NSObject
 @property (readonly, nonatomic) int timer;
-@property (readonly, strong, nonatomic) Grid *board;
+//@property (readonly, strong, nonatomic) Grid *board;
 @property (readonly, nonatomic) int score;
 @property (readonly, nonatomic) BOOL pause;
 @property (readonly, nonatomic) BOOL quit;
@@ -25,9 +27,11 @@
 - (void) stop;
 - (BOOL) running;
 - (void) advance;
-- (id) initWithRect: (CGRect) rect;
-- (void) step;
-- (void) addObject: (Tile *) tile;
+
+- (id) initWithRect: (CGRect) rect  andPicture: (int) picture;
+- (void) step: (CFTimeInterval) intv;
+- (void) addObject: (NSObject *) obj;
+- (NSObject *) objectWithID: (int) objId;
 
 @end
 

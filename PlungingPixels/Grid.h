@@ -15,11 +15,12 @@
 #define PixelArrIdx(row, col) ( (row) * PixelNumCols + (col) * PixelNumRows )
 
 @interface Grid : NSObject
+
 @property (readonly, nonatomic) int picture;
 @property (strong, nonatomic) NSMutableArray *grid;
 @property (readonly, nonatomic) int difficulty;
 @property (readonly, nonatomic) int rows, columns;
 
 - (id) init: (int) picture;
-@end
 
+@end

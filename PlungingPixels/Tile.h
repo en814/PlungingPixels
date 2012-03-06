@@ -16,8 +16,9 @@
 @property (readonly, nonatomic) int level;
 @property (readonly, nonatomic) int type, objId;
 @property (nonatomic) CGRect location;
+@property (nonatomic) CGPoint velocity, acceleration;
 
-- (id) init: (UIColor*) color filled: (BOOL) filled withLevel: (int) level;
-- (void) stepInRect: (CGRect) rect;
+- (void) stepInRect: (CGRect) rect withInterval: (CFTimeInterval) intv;
 - (id) initWithType: (int) ty andLocation: (CGRect) loc;
+- (id) init: (UIColor*) color filled: (BOOL) filled withLevel: (int) level;
 @end

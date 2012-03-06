@@ -8,11 +8,14 @@
 
 #import "Tile.h"
 
+static int nextId = 0;
+
 @interface Tile()
 @property (strong, nonatomic) UIColor *color;
 @property (nonatomic) BOOL filled;
 @property (nonatomic) int level;
-@property (readwrite, nonatomic) int type;
+@property (nonatomic) int type;
+@property (nonatomic) int objId;
 @end
 
 @implementation Tile
@@ -22,6 +25,8 @@
 @synthesize type = _type;
 @synthesize objId = _objId;
 @synthesize location = _location;
+@synthesize velocity = _velocity;
+@synthesize acceleration = _acceleration;
 
 - (id) init: (UIColor*) color filled: (BOOL) filled withLevel: (int) level
 {
@@ -34,23 +39,24 @@
     return self;
 }
 
-- (void) stepInRect: (CGRect) rect {
-    if (self.level > 0)
-        self.level = self.level - 1;
-    //else
-        // update board
-    
-    //CGRect location = self.location;
-    //location.origin.x++;
-    //location.origin.y++;
-    //self.location = location;
+- (void) stepInRect: (CGRect) rect withInterval: (CFTimeInterval) intv {
+    // calls method each frame
+    // TODO 
+    // if ()
+    //  update location, velocity, and acceleration
 }
 
 - (id) initWithType: (int) ty andLocation: (CGRect) loc {
     self = [super init];
-    //self.objId = nextId++;
+    self.objId = nextId++;
     self.type = ty;
     self.location = loc;
+    
+    // initialization values will change
+    self.velocity = CGPointMake(-100, 0);
+    self.acceleration = CGPointMake(0, 480);
+    
+    return self;
     
     return self;
 }

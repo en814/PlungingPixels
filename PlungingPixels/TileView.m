@@ -30,7 +30,7 @@
 {
     // Drawing code
     self.backgroundColor = nil;
-    self.alpha = .5;
+    self.alpha = .75;
     CGContextRef context = UIGraphicsGetCurrentContext();
     CGRect box = self.bounds;
     

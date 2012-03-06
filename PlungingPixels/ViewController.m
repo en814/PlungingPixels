@@ -120,10 +120,10 @@
     NSLog(@"Column: %f\n", tileFrame.size.width);
     NSLog(@"Row: %f\n", tileFrame.size.height);
     
-    self.pixelView.row = self.engine.board.rows;
-    self.pixelView.column = self.engine.board.columns;
-    self.tileView.row = self.engine.board.rows;
-    self.tileView.column = self.engine.board.columns;
+    //self.pixelView.row = self.engine.board.rows;
+    //self.pixelView.column = self.engine.board.columns;
+    //self.tileView.row = self.engine.board.rows;
+    //self.tileView.column = self.engine.board.columns;
     
     [self addKVO];
 }
