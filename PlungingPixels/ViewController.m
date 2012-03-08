@@ -90,12 +90,20 @@
 
 - (void) updateGrid
 {
+    if (!self.pixelView.grid) {
+        [self.pixelView setColor:[UIColor blackColor] forIndex:PixelArrIdx([self.engine width], [self.engine height])];
+    }
+    
     for(int column = 0; column < [self.engine width]; column++) {
         for(int row = 0; row < [self.engine height]; row++) {
+            NSLog(@"grid index: %d", PixelArrIdx(row, column));
             Tile *piece = [self.engine tileAtGridIndex:PixelArrIdx(row, column)];
             
-            if (piece.color == [UIColor blackColor]) {
-                
+            if ([piece.color isEqual: [UIColor blackColor]]) {
+                [self.pixelView setColor:[UIColor blackColor] forIndex:PixelArrIdx(row, column)];
+            }
+            else if ([piece.color isEqual: [UIColor whiteColor]]) {
+                [self.pixelView setColor:[UIColor whiteColor] forIndex:PixelArrIdx(row, column)];
             }
         }
     }
@@ -136,7 +144,7 @@
 
 - (void) refreshView
 {
-    [self updateGrid];
+    //[self updateGrid];
 }
 
 
@@ -203,6 +211,7 @@
     if ([keyPath isEqualToString:@"timer"]) 
     {
         self.timeLabel.text = [NSString stringWithFormat:@"%d", self.engine.timer];
+        [self refreshView];
     }
     /*
     if([keyPath isEqualToString:@"gridVersion"])

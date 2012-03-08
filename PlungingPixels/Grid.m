@@ -42,6 +42,11 @@ static int invaderWhite[] = {0,1,3,4,5,6,7,9,10,11,12,13,15,16,17,19,20,21,22,23
     return self;
 }
 
+- (Tile *) tileAtIndex: (int) idx
+{
+    return [self.grid objectAtIndex:idx];
+}
+
 - (BOOL) binarySearchOn: (int*) vals ofSize: (int) length finding: (int) test {
     int lo, mid, hi;
     lo = mid = 0;

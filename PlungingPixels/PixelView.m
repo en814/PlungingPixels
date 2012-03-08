@@ -46,12 +46,34 @@
             CGContextAddRect(context, box);
             CGContextClosePath(context);
             //[[UIColor whiteColor] setFill];
-            Tile *tile = [self.grid objectAtIndex:PixelArrIdx(row, column)];
+            Tile *tile = [self.grid tileAtIndex:PixelArrIdx(row, column)];
+            //NSLog(@"tile color %@", tile.color.description);
             [tile.color setFill];
             [[UIColor blackColor] setStroke];
             CGContextDrawPath(context,kCGPathFillStroke);
         }
     }
+}
+
+- (void) setColor: (UIColor *) color forIndex: (int) idx
+{
+    NSLog(@"setColor");
+    if (!self.grid) {
+        self.grid = [[Grid alloc] init: 0];
+    }
+    
+    /*
+    if (!self.colorGrid) {
+        self.colorGrid = [[NSMutableArray alloc] initWithCapacity: self.column * self.row];
+        for(int i = 0; i < TetrisArrIdx(self.row, self.column); i++)
+            [self.colorGrid addObject: [UIColor whiteColor]];
+    }
+    
+    if (![[self.colorGrid objectAtIndex: TetrisArrIdx(row, col)] isEqual: color])
+        [self.colorGrid replaceObjectAtIndex:TetrisArrIdx(row, col) 
+                                  withObject:color];
+    [self setNeedsDisplay];
+     */
 }
 
 - (void) setOpacity: (float) alpha forRow: (int) row column: (int)col

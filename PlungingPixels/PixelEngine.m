@@ -126,6 +126,9 @@
 
 - (Tile *) tileAtGridIndex: (int) idx
 {
+    if (![self.objects objectAtIndex:0]) {
+        NSLog(@"PIXELENGINE GRID NOT INITIALIZED");
+    }
     return [[self.objects objectAtIndex:0] objectAtIndex:idx];
 }
 

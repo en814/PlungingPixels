@@ -17,7 +17,7 @@
 @property (readonly, nonatomic) int rows, columns;
 
 - (id) init: (int) picture;
-
+- (Tile *) tileAtIndex: (int) idx;
 - (NSMutableArray *) spaceInvader;
 
 @end
