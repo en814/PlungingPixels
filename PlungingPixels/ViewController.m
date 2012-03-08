@@ -14,6 +14,11 @@
 @property (weak, nonatomic) IBOutlet PixelView *pixelView;
 @property (weak, nonatomic) IBOutlet TileView *tileView;
 
+//Accelerometer.h
+@property (readwrite, nonatomic) float valueX;
+@property (readwrite, nonatomic) float valueY;
+@property (readwrite, strong, nonatomic) IBOutlet PixelView *tile;
+
 - (void) nextFrame: (CADisplayLink*) df;
 @end
 
@@ -23,6 +28,10 @@
 @synthesize scoreLabel = _scoreLabel;
 @synthesize pixelView = _pixelView;
 @synthesize tileView = _tileView;
+
+@synthesize valueX = _valueX;
+@synthesize valueY = _valueY;
+@synthesize tile = _tile;
 
 - (void) nilObjects
 {
@@ -47,6 +56,9 @@
         //self.engine = [[PixelEngine alloc] init];
         self.engine = [[PixelEngine alloc] initWithRect:self.view.bounds andPicture:0];
     [self.engine start];
+    
+    [[UIAccelerometer sharedAccelerometer] setUpdateInterval:1.0/30.0];
+    [[UIAccelerometer sharedAccelerometer] setDelegate:self];
 }
 
 - (void)viewDidUnload
@@ -221,4 +233,25 @@
      */
 }
 
+-(void)accelerometer:(UIAccelerometer *)accelerometer didAccelerate:(UIAcceleration *)acceleration {
+    self.valueX = acceleration.x*30.0;
+    self.valueY = acceleration.y*30.0;
+    //Adding comment here so we can test github commit and push :3
+    int newX = (int)(self.tile.center.x + self.valueX);
+    if(newX > 320 - BALL_RADIUS)
+        newX = 320 - BALL_RADIUS;
+    if (newX < 0 + BALL_RADIUS)
+        newX= 0 + BALL_RADIUS;
+    int newY = (int)(self.tile.center.y - self.valueY);
+    if(newY > 460 - BALL_RADIUS)
+        newY = 460 - BALL_RADIUS;
+    if(newY < 0 + BALL_RADIUS)
+        newY = 0 + BALL_RADIUS;
+    
+    CGPoint newCenter = CGPointMake(newX, newY);
+    
+    self.tileView.center = newCenter;
+    
+    
+}
 @end
