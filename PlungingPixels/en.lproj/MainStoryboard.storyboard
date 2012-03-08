@@ -118,7 +118,7 @@
                     </connections>
                 </swipeGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="74" y="1350"/>
+            <point key="canvasLocation" x="68" y="1350"/>
         </scene>
         <scene sceneID="3If-GU-k9u">
             <objects>
@@ -276,7 +276,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="537" y="684"/>
+            <point key="canvasLocation" x="549" y="694"/>
         </scene>
     </scenes>
     <classes>
@@ -307,7 +307,4 @@
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
-    <inferredMetricsTieBreakers>
-        <segue reference="VRc-Sh-Puj"/>
-    </inferredMetricsTieBreakers>
 </document>
