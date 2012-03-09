@@ -13,7 +13,7 @@
 #import "PixelView.h"
 #import "TileView.h"
 
-#define BALL_RADIUS 25
+#define BALL_RADIUS 20
 
 @interface ViewController : UIViewController <UIAccelerometerDelegate>
 @property (strong, nonatomic) PixelEngine *engine;

@@ -228,12 +228,12 @@
     self.valueX = acceleration.x*30.0;
     self.valueY = acceleration.y*30.0;
     //Adding comment here so we can test github commit and push :3
-    int newX = (int)(self.tile.center.x + self.valueX);
+    int newX = (int)(self.tileView.center.x + self.valueX);
     if(newX > 320 - BALL_RADIUS)
         newX = 320 - BALL_RADIUS;
     if (newX < 0 + BALL_RADIUS)
         newX= 0 + BALL_RADIUS;
-    int newY = (int)(self.tile.center.y - self.valueY);
+    int newY = (int)(self.tileView.center.y - self.valueY);
     if(newY > 460 - BALL_RADIUS)
         newY = 460 - BALL_RADIUS;
     if(newY < 0 + BALL_RADIUS)
