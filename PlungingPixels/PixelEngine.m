@@ -95,7 +95,6 @@
     self.world = rect;
     self.objects = [[NSMutableArray alloc] init];
     
-    
     Grid *grid = [[Grid alloc] init:picture];
     self.width = grid.columns;
     self.height = grid.rows;
@@ -126,10 +125,7 @@
 
 - (Tile *) tileAtGridIndex: (int) idx
 {
-    if (![self.objects objectAtIndex:0]) {
-        NSLog(@"PIXELENGINE GRID NOT INITIALIZED");
-    }
-    return [[self.objects objectAtIndex:0] objectAtIndex:idx];
+    return [[self.objects objectAtIndex:0] tileAtIndex:idx];
 }
 
 - (NSObject *) objectWithID: (int) objId

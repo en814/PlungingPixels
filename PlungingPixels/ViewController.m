@@ -57,6 +57,8 @@
         self.engine = [[PixelEngine alloc] initWithRect:self.view.bounds andPicture:0];
     [self.engine start];
     
+    [self setupLabels];
+    
     [[UIAccelerometer sharedAccelerometer] setUpdateInterval:1.0/30.0];
     [[UIAccelerometer sharedAccelerometer] setDelegate:self];
 }
@@ -100,23 +102,59 @@
     
 }
 
+- (void) setEngine:(PixelEngine *)eng
+{
+    //NSLog(@"setting engine");
+    [self view];
+    _engine = eng;
+    //[self destroyKVO];
+    [self setupLabels];
+}
+
+- (void) refreshView
+{
+    [self updateGrid];
+}
+
+- (void) setupLabels
+{    
+    CGRect tileFrame;
+    tileFrame.size.width = 16;
+    tileFrame.size.height = 26;
+    //NSLog(@"Column: %f\n", tileFrame.size.width);
+    //NSLog(@"Row: %f\n", tileFrame.size.height);
+    
+    //self.pixelView.row = self.engine.board.rows;
+    //self.pixelView.column = self.engine.board.columns;
+    //self.tileView.row = self.engine.board.rows;
+    //self.tileView.column = self.engine.board.columns;
+    
+    [self addKVO];
+}
+
 - (void) updateGrid
 {
+    /*
     if (!self.pixelView.grid) {
         [self.pixelView setColor:[UIColor blackColor] forIndex:PixelArrIdx([self.engine width], [self.engine height])];
     }
+    */
     
-    for(int column = 0; column < [self.engine width]; column++) {
-        for(int row = 0; row < [self.engine height]; row++) {
-            NSLog(@"grid index: %d", PixelArrIdx(row, column));
-            Tile *piece = [self.engine tileAtGridIndex:PixelArrIdx(row, column)];
+    //NSLog(@"pixel array size %d", PixelArrSize([self.engine width], [self.engine height]));
+    
+
+    for(int row = 0; row < [self.engine height]; row++) {
+        for(int column = 0; column < [self.engine width]; column++) {
+            //for (int i = 0; i < PixelArrSize([self.engine width], [self.engine height]); i++) {
+        NSLog(@"row %d column %d height %d width %d grid index: %d", row, column, [self.engine height], [self.engine width], PixelArrIdx(row, column, [self.engine width]));
+        Tile *piece = [self.engine tileAtGridIndex:PixelArrIdx(row, column, [self.engine width])];
             
-            if ([piece.color isEqual: [UIColor blackColor]]) {
-                [self.pixelView setColor:[UIColor blackColor] forIndex:PixelArrIdx(row, column)];
-            }
-            else if ([piece.color isEqual: [UIColor whiteColor]]) {
-                [self.pixelView setColor:[UIColor whiteColor] forIndex:PixelArrIdx(row, column)];
-            }
+        if ([piece.color isEqual: [UIColor blackColor]]) {
+            [self.pixelView setColor:[UIColor blackColor] forIndex:PixelArrIdx(row, column, [self.engine width])];
+        }
+        else if ([piece.color isEqual: [UIColor whiteColor]]) {
+            [self.pixelView setColor:[UIColor whiteColor] forIndex:PixelArrIdx(row, column, [self.engine width])];
+        }
         }
     }
     /*
@@ -154,17 +192,6 @@
      */
 }
 
-- (void) refreshView
-{
-    //[self updateGrid];
-}
-
-
-- (void) dealloc
-{
-    [self viewDidUnload];
-}
-
 - (void) addKVO
 {
     [self.engine addObserver:self forKeyPath:@"score" 
@@ -183,32 +210,6 @@
     [self.engine removeObserver:self forKeyPath:@"score"];
     [self.engine removeObserver:self forKeyPath:@"timer"];
     //[self.engine removeObserver:self forKeyPath:@"gridVersion"];
-}
-
-- (void) setupLabels
-{    
-    CGRect tileFrame;
-    tileFrame.size.width = 16;
-    tileFrame.size.height = 26;
-    NSLog(@"Column: %f\n", tileFrame.size.width);
-    NSLog(@"Row: %f\n", tileFrame.size.height);
-    
-    //self.pixelView.row = self.engine.board.rows;
-    //self.pixelView.column = self.engine.board.columns;
-    //self.tileView.row = self.engine.board.rows;
-    //self.tileView.column = self.engine.board.columns;
-    
-    [self addKVO];
-}
-
-- (void) setEngine:(PixelEngine *)eng
-{
-    NSLog(@"setting engine");
-    [self view];
-    _engine = eng;
-    //[self destroyKVO];
-    [self addKVO];
-    //[self setupLabels];
 }
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
@@ -233,7 +234,8 @@
      */
 }
 
--(void)accelerometer:(UIAccelerometer *)accelerometer didAccelerate:(UIAcceleration *)acceleration {
+-(void)accelerometer:(UIAccelerometer *)accelerometer didAccelerate:(UIAcceleration *)acceleration 
+{
     self.valueX = acceleration.x*30.0;
     self.valueY = acceleration.y*30.0;
     //Adding comment here so we can test github commit and push :3
@@ -251,7 +253,11 @@
     CGPoint newCenter = CGPointMake(newX, newY);
     
     self.tileView.center = newCenter;
-    
-    
 }
+
+- (void) dealloc
+{
+    [self viewDidUnload];
+}
+
 @end

@@ -23,4 +23,17 @@
 @property (readonly, nonatomic) float valueY;
 @property (readonly, strong, nonatomic) IBOutlet PixelView *tile;
 
+- (void) refreshView;
+- (void) setupLabels;
+- (void) updateGrid;
+
+- (void) addKVO;
+- (void) destroyKVO;
+- (void)observeValueForKeyPath:(NSString *)keyPath 
+                      ofObject:(id)object 
+                        change:(NSDictionary *)change 
+                       context:(void *)context;
+
+-(void)accelerometer:(UIAccelerometer *)accelerometer didAccelerate:(UIAcceleration *)acceleration;
+
 @end

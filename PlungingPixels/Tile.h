@@ -9,10 +9,8 @@
 #import <Foundation/Foundation.h>
 
 #define TopLevel 10
-#define PixelNumRows 32
-#define PixelNumCols 32
 #define PixelArrSize(row, col) ( row * col )
-#define PixelArrIdx(row, col) ( (row) * PixelNumCols + (col) * PixelNumRows )
+#define PixelArrIdx(row, col, pictureNumCols) ( (row) * pictureNumCols + (col) )
 
 @interface Tile : NSObject
 @property (readonly, strong, nonatomic) UIColor *color;

@@ -38,16 +38,16 @@
     NSLog(@"width %f", box.size.width);
     NSLog(@"height %f", box.size.height);
     
-    for (int column=0; column<8; column++) {
-        for (int row=0; row<11; row++) {
+    for (int row=0; row<11; row++) {
+        for (int column=0; column<8; column++) {
             box.origin.x = box.size.width * column;
             box.origin.y = box.size.height * row;
             CGContextBeginPath(context);
             CGContextAddRect(context, box);
             CGContextClosePath(context);
             //[[UIColor whiteColor] setFill];
-            Tile *tile = [self.grid tileAtIndex:PixelArrIdx(row, column)];
-            //NSLog(@"tile color %@", tile.color.description);
+            Tile *tile = [self.grid tileAtIndex:PixelArrIdx(row, column, 8)];
+            NSLog(@"index %d tile color %@", PixelArrSize(row, column), tile.color.description);
             [tile.color setFill];
             [[UIColor blackColor] setStroke];
             CGContextDrawPath(context,kCGPathFillStroke);
@@ -57,7 +57,7 @@
 
 - (void) setColor: (UIColor *) color forIndex: (int) idx
 {
-    NSLog(@"setColor");
+    //NSLog(@"setColor");
     if (!self.grid) {
         self.grid = [[Grid alloc] init: 0];
     }
