@@ -146,14 +146,14 @@
     for(int row = 0; row < [self.engine height]; row++) {
         for(int column = 0; column < [self.engine width]; column++) {
             //for (int i = 0; i < PixelArrSize([self.engine width], [self.engine height]); i++) {
-        NSLog(@"row %d column %d height %d width %d grid index: %d", row, column, [self.engine height], [self.engine width], PixelArrIdx(row, column, [self.engine width]));
+        //NSLog(@"row %d column %d height %d width %d grid index: %d", row, column, [self.engine height], [self.engine width], PixelArrIdx(row, column, [self.engine width]));
         Tile *piece = [self.engine tileAtGridIndex:PixelArrIdx(row, column, [self.engine width])];
             
-        if ([piece.color isEqual: [UIColor blackColor]]) {
-            [self.pixelView setColor:[UIColor blackColor] forIndex:PixelArrIdx(row, column, [self.engine width])];
+        if ([piece.color isEqual: [UIColor blueColor]]) {
+            [self.pixelView setColor:[UIColor blueColor] forIndex:PixelArrIdx(row, column, [self.engine width])];
         }
-        else if ([piece.color isEqual: [UIColor whiteColor]]) {
-            [self.pixelView setColor:[UIColor whiteColor] forIndex:PixelArrIdx(row, column, [self.engine width])];
+        else if ([piece.color isEqual: [UIColor blackColor]]) {
+            [self.pixelView setColor:[UIColor blackColor] forIndex:PixelArrIdx(row, column, [self.engine width])];
         }
         }
     }

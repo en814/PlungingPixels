@@ -44,14 +44,6 @@ static int invaderWhite[] = {0,1,2,3,7,8,9,10,13,14,15,17,23,24,27,30,32,33,38,4
 
 - (Tile *) tileAtIndex: (int) idx
 {
-    if (!self.grid) {
-        NSLog(@"PIXELENGINE GRID NOT INITIALIZED");
-    }
-    
-    if ([self.grid isMemberOfClass:[Grid class]]) {
-        NSLog(@"its a grid");
-    }
-    
     //NSLog(@"idx %d", idx);
     
     return [self.grid objectAtIndex:idx];
@@ -83,13 +75,13 @@ static int invaderWhite[] = {0,1,2,3,7,8,9,10,13,14,15,17,23,24,27,30,32,33,38,4
     int whiteSize = (sizeof invaderWhite) / (sizeof invaderWhite[0]);
     BOOL setTile;
     
-    NSLog(@"grid tile numbers: %d", PixelArrSize(self.rows, self.columns));
+    //NSLog(@"grid tile numbers: %d", PixelArrSize(self.rows, self.columns));
     
     for(int i = 0; i < PixelArrSize(self.rows, self.columns); i++) {
         setTile = NO;
         if ([self binarySearchOn:invaderBlack ofSize: blackSize finding:i]) {
             Tile *addedTile = [[Tile alloc] initWithType:0 
-                                                andColor:[UIColor blackColor] 
+                                                andColor:[UIColor blueColor] 
                                                 andLevel:0 
                                                   filled:NO];
             [invader insertObject:addedTile atIndex:i];      
@@ -97,7 +89,7 @@ static int invaderWhite[] = {0,1,2,3,7,8,9,10,13,14,15,17,23,24,27,30,32,33,38,4
         }
         else if ([self binarySearchOn:invaderWhite ofSize: whiteSize finding:i]) {
             Tile *addedTile = [[Tile alloc] initWithType:0 
-                                                andColor:[UIColor whiteColor] 
+                                                andColor:[UIColor blackColor] 
                                                 andLevel:0 
                                                   filled:NO];
             [invader insertObject:addedTile atIndex:i];

@@ -62,7 +62,7 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
-        NSLog(@"I has been initialized\n");
+        //NSLog(@"I has been initialized\n");
     }
     return self;
 }

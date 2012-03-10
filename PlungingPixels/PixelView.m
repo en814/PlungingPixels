@@ -35,8 +35,8 @@
     box.size.width = self.bounds.size.width / 8; // self.column;
     box.size.height = self.bounds.size.height / 11; // self.row;
 
-    NSLog(@"width %f", box.size.width);
-    NSLog(@"height %f", box.size.height);
+    //NSLog(@"width %f", box.size.width);
+    //NSLog(@"height %f", box.size.height);
     
     for (int row=0; row<11; row++) {
         for (int column=0; column<8; column++) {
@@ -47,7 +47,7 @@
             CGContextClosePath(context);
             //[[UIColor whiteColor] setFill];
             Tile *tile = [self.grid tileAtIndex:PixelArrIdx(row, column, 8)];
-            NSLog(@"index %d tile color %@", PixelArrSize(row, column), tile.color.description);
+            //NSLog(@"index %d tile color %@", PixelArrSize(row, column), tile.color.description);
             [tile.color setFill];
             [[UIColor blackColor] setStroke];
             CGContextDrawPath(context,kCGPathFillStroke);
