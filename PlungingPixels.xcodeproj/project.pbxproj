@@ -171,7 +171,7 @@
 		BB0D88EF14E8C8E1004FD11A /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0420;
+				LastUpgradeCheck = 0430;
 				ORGANIZATIONNAME = "Cal Poly San Luis Obispo";
 			};
 			buildConfigurationList = BB0D88F214E8C8E1004FD11A /* Build configuration list for PBXProject "PlungingPixels" */;
