@@ -94,7 +94,8 @@
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     // Return YES for supported orientations
-    return (interfaceOrientation != UIInterfaceOrientationPortraitUpsideDown);
+    //return (interfaceOrientation != UIInterfaceOrientationPortraitUpsideDown);
+    return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
 - (void) nextFrame: (CADisplayLink*) df
@@ -133,63 +134,20 @@
 }
 
 - (void) updateGrid
-{
-    /*
-    if (!self.pixelView.grid) {
-        [self.pixelView setColor:[UIColor blackColor] forIndex:PixelArrIdx([self.engine width], [self.engine height])];
-    }
-    */
-    
+{    
     //NSLog(@"pixel array size %d", PixelArrSize([self.engine width], [self.engine height]));
-    
 
     for(int row = 0; row < [self.engine height]; row++) {
         for(int column = 0; column < [self.engine width]; column++) {
-            //for (int i = 0; i < PixelArrSize([self.engine width], [self.engine height]); i++) {
-        //NSLog(@"row %d column %d height %d width %d grid index: %d", row, column, [self.engine height], [self.engine width], PixelArrIdx(row, column, [self.engine width]));
-        Tile *piece = [self.engine tileAtGridIndex:PixelArrIdx(row, column, [self.engine width])];
+            //NSLog(@"row %d column %d height %d width %d grid index: %d", row, column, [self.engine height], [self.engine width], PixelArrIdx(row, column, [self.engine width]));
+            Tile *piece = [self.engine tileAtGridIndex:PixelArrIdx(row, column, [self.engine width])];
             
-        if ([piece.color isEqual: [UIColor blueColor]]) {
-            [self.pixelView setColor:[UIColor blueColor] forIndex:PixelArrIdx(row, column, [self.engine width])];
-        }
-        else if ([piece.color isEqual: [UIColor blackColor]]) {
-            [self.pixelView setColor:[UIColor blackColor] forIndex:PixelArrIdx(row, column, [self.engine width])];
-        }
+            if ([piece.color isEqual: [UIColor blueColor]])
+                [self.pixelView setColor:[UIColor blueColor] forIndex:PixelArrIdx(row, column, [self.engine width])];
+            else if ([piece.color isEqual: [UIColor blackColor]])
+                [self.pixelView setColor:[UIColor blackColor] forIndex:PixelArrIdx(row, column, [self.engine width])];
         }
     }
-    /*
-    for(int column = 0; column < [self.engine width]; column++) {
-        for(int row = 0; row < [self.engine height]; row++) {
-            int piece = [self.engine pieceAtRow:row column:column];
-            if(piece == NoTetromino) {
-                [self.tetrisView setColor:[UIColor whiteColor] forRow:11-row column:column];
-                //[[self.gridLabels objectAtIndex: TetrisArrIdx(row, column)] setText: @"."];
-            }
-            else if (piece  == ITetromino) {
-                [self.tetrisView setColor:[UIColor cyanColor] forRow:11-row column:column];
-                //[[self.gridLabels objectAtIndex: TetrisArrIdx(row, column)] setText: @"X"];
-            }
-            else if (piece == JTetromino) {
-                [self.tetrisView setColor:[UIColor blueColor] forRow:11-row column:column];
-            }
-            else if (piece == LTetromino) {
-                [self.tetrisView setColor:[UIColor orangeColor] forRow:11-row column:column];
-            }
-            else if (piece == OTetromino) {
-                [self.tetrisView setColor:[UIColor yellowColor] forRow:11-row column:column];
-            }
-            else if (piece == STetromino) {
-                [self.tetrisView setColor:[UIColor greenColor] forRow:11-row column:column];
-            }
-            else if (piece == TTetromino) {
-                [self.tetrisView setColor:[UIColor purpleColor] forRow:11-row column:column];
-            }
-            else if (piece == ZTetromino) {
-                [self.tetrisView setColor:[UIColor redColor] forRow:11-row column:column];
-            }
-        }
-    }
-     */
 }
 
 - (void) addKVO
