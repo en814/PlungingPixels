@@ -194,8 +194,10 @@
 
 -(void)accelerometer:(UIAccelerometer *)accelerometer didAccelerate:(UIAcceleration *)acceleration 
 {
-    self.valueX = acceleration.x*30.0;
-    self.valueY = acceleration.y*30.0;
+    self.valueX = acceleration.x*BALL_RADIUS;
+    self.valueY = acceleration.y*BALL_RADIUS;
+    NSLog(@"X: %f", self.tileView.center.x);
+    NSLog(@"Y: %f", self.tileView.center.y);
     //Adding comment here so we can test github commit and push :3
     int newX = (int)(self.tileView.center.x + self.valueX);
     if(newX > 320 - BALL_RADIUS)
