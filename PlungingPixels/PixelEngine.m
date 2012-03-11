@@ -9,7 +9,7 @@
 #import "PixelEngine.h"
 
 @interface PixelEngine()
-@property (nonatomic, strong) NSMutableArray *objects;
+@property (strong, nonatomic) NSMutableArray *objects;
 @property (nonatomic) CGRect world;
 @property (nonatomic) int timer, score, width, height;
 @property (readwrite, strong, nonatomic) NSTimer *stepTimer;
@@ -31,6 +31,8 @@
 @synthesize gameOver = _gameOver;
 @synthesize width = _width;
 @synthesize height = _height;
+@synthesize tileWidth = _tileWidth;
+@synthesize tileHeight = _tileHeight;
 @dynamic running;
 //@synthesize board = _board;
 //@synthesize tileQueue = _tileQueue;
@@ -98,6 +100,8 @@
     Grid *grid = [[Grid alloc] init:picture];
     self.width = grid.columns;
     self.height = grid.rows;
+    
+    //self.tileWidth =
     TileQueue *tileQueue = [[TileQueue alloc] init:picture];
     
     [self.objects addObject:grid];

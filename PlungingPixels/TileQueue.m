@@ -8,10 +8,10 @@
 
 #import "TileQueue.h"
 
-static int invaderBlack[] = {2,8,14,18,24,25,26,27,28,29,30,34,35,37,38,39,41,42,44,45,46,47,48,
-    49,50,51,52,53,54,55,57,58,59,60,61,62,63,65,66,68,74,76,80,81,83,84};
-static int invaderWhite[] = {0,1,3,4,5,6,7,9,10,11,12,13,15,16,17,19,20,21,22,23,31,32,33,36,40,
-    43,56,64,67,69,70,71,72,73,75,77,78,79,82,85,86,87};
+static int invaderBlack[] = {4,5,6,11,12,16,18,19,20,21,22,25,26,28,29,31,34,35,36,37,39,42,43,44,45,
+    50,51,52,53,55,57,58,60,61,63,64,66,67,68,69,70,75,76,84,85,86};
+static int invaderWhite[] = {0,1,2,3,7,8,9,10,13,14,15,17,23,24,27,30,32,33,38,40,41,46,47,48,49,54,
+    56,59,62,65,71,72,73,74,77,78,79,80,81,82,83,87};
 
 @interface TileQueue()
 @property (nonatomic) int picture;
@@ -44,6 +44,12 @@ static int invaderWhite[] = {0,1,3,4,5,6,7,9,10,11,12,13,15,16,17,19,20,21,22,23
     [self.queue removeObjectAtIndex:0];
 }
 
+- (Tile *) tileAtIndex: (int) idx
+{
+    //NSLog(@"idx %d", idx);
+    
+    return [self.queue objectAtIndex:idx];
+}
 
 - (BOOL) binarySearchOn: (int*) vals ofSize: (int) length finding: (int) test {
     int lo, mid, hi;
@@ -74,7 +80,7 @@ static int invaderWhite[] = {0,1,3,4,5,6,7,9,10,11,12,13,15,16,17,19,20,21,22,23
         if ([self binarySearchOn:invaderBlack ofSize: blackSize finding:i]) {
             Tile *addedTile = [[Tile alloc] initWithType:0 
                                                 andColor:[UIColor blackColor] 
-                                                andLevel:0 
+                                                andLevel:TopLevel
                                                   filled:NO];
             [invader insertObject:addedTile atIndex:i];
             setTile = YES;
@@ -82,7 +88,7 @@ static int invaderWhite[] = {0,1,3,4,5,6,7,9,10,11,12,13,15,16,17,19,20,21,22,23
         else if ([self binarySearchOn:invaderWhite ofSize:whiteSize finding:i]) {
             Tile *addedTile = [[Tile alloc] initWithType:0 
                                                 andColor:[UIColor whiteColor] 
-                                                andLevel:0 
+                                                andLevel:TopLevel
                                                   filled:NO];
             [invader insertObject:addedTile atIndex:i];
             setTile = YES;

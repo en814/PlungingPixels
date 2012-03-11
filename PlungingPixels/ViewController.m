@@ -17,7 +17,6 @@
 //Accelerometer.h
 @property (readwrite, nonatomic) float valueX;
 @property (readwrite, nonatomic) float valueY;
-@property (readwrite, strong, nonatomic) IBOutlet PixelView *tile;
 
 - (void) nextFrame: (CADisplayLink*) df;
 @end
@@ -53,11 +52,29 @@
 {
     [super viewDidLoad];
     if (self.engine == nil)
-        //self.engine = [[PixelEngine alloc] init];
         self.engine = [[PixelEngine alloc] initWithRect:self.view.bounds andPicture:0];
     [self.engine start];
     
     [self setupLabels];
+    
+    Grid *picture = [self.engine.objects objectAtIndex:0];
+    
+    int frameWidth = self.pixelView.superview.frame.size.width;
+    int frameHeight = self.pixelView.superview.frame.size.height;
+    
+    self.engine.tileWidth = (float)frameWidth / picture.columns;
+    self.engine.tileHeight = (float)frameWidth / picture.columns;
+    
+    int level = ([[self.engine.objects objectAtIndex:1] tileAtIndex:0]).level;
+    
+    float initWidth = self.engine.tileWidth * level;
+    float initHeight = self.engine.tileHeight * level;
+    
+    int middleX = frameWidth / 2 - initWidth / 2;
+    int middleY = frameHeight / 2 - initHeight / 2;
+    
+    CGRect box = { middleX, middleY, initWidth, initHeight };
+    [self.tileView setFrame:box];
     
     [[UIAccelerometer sharedAccelerometer] setUpdateInterval:1.0/30.0];
     [[UIAccelerometer sharedAccelerometer] setDelegate:self];
@@ -122,13 +139,6 @@
     CGRect tileFrame;
     tileFrame.size.width = 16;
     tileFrame.size.height = 26;
-    //NSLog(@"Column: %f\n", tileFrame.size.width);
-    //NSLog(@"Row: %f\n", tileFrame.size.height);
-    
-    //self.pixelView.row = self.engine.board.rows;
-    //self.pixelView.column = self.engine.board.columns;
-    //self.tileView.row = self.engine.board.rows;
-    //self.tileView.column = self.engine.board.columns;
     
     [self addKVO];
 }
@@ -175,13 +185,35 @@
     if(!self.engine)
         return;
     
-    if([keyPath isEqualToString:@"score"])
-    {
+    if([keyPath isEqualToString:@"score"]) {
         self.scoreLabel.text = [NSString stringWithFormat:@"%d", self.engine.score];
     }
-    if ([keyPath isEqualToString:@"timer"]) 
-    {
+    if ([keyPath isEqualToString:@"timer"]) {
         self.timeLabel.text = [NSString stringWithFormat:@"%d", self.engine.timer];
+        
+        ([[self.engine.objects objectAtIndex:1] tileAtIndex:0]);
+        
+        CGRect rect = [self.tileView frame];
+        
+        int frameWidth = self.pixelView.superview.frame.size.width;
+        int frameHeight = self.pixelView.superview.frame.size.height;
+        
+        if (rect.size.width > self.engine.tileWidth && rect.size.height > self.engine.tileHeight) {
+            rect.size.width -= 10;
+            rect.size.height -= 10;
+        }
+        else {
+            int level = ([[self.engine.objects objectAtIndex:1] tileAtIndex:0]).level;
+            float initWidth = self.engine.tileWidth * level;
+            float initHeight = self.engine.tileHeight * level;
+            rect.size.width = initWidth;
+            rect.size.height = initHeight;
+        }
+        
+        rect.origin.x = frameWidth / 2 - rect.size.width / 2;
+        rect.origin.y = frameHeight / 2 - rect.size.height / 2;
+        [self.tileView setFrame:rect];
+
         [self refreshView];
     }
     /*

@@ -17,6 +17,7 @@
 - (id) init: (int) picture;
 - (void) reinsertTile;
 - (void) removeTile;
+- (Tile *) tileAtIndex: (int) idx;
 
 - (NSMutableArray *) spaceInvader;
 

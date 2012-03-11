@@ -17,7 +17,6 @@
     self = [super initWithFrame:frame];
     if (self) {
         // Initialization code
-        
     }
     return self;
 }
@@ -28,11 +27,22 @@
 
 - (void)drawRect:(CGRect)rect
 {
+    NSLog(@"drawing tile?");
+    
     // Drawing code
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    
+    CGRect box = self.bounds;
+    CGContextBeginPath(context);
+    CGContextAddRect(context, box);
+    CGContextClosePath(context);
+    [[UIColor purpleColor] setFill];
+    [[UIColor blackColor] setStroke];
+    
+    CGContextDrawPath(context,kCGPathFillStroke);
+    
     self.backgroundColor = nil;
     self.alpha = .75;
-    CGContextRef context = UIGraphicsGetCurrentContext();
-    CGRect box = self.bounds;
     
     //float tileWidth = self.bounds.size.width / 8;
     //float tileHeight = self.bounds.size.height / 11;
@@ -49,13 +59,6 @@
     //self = [[UIView alloc] initWithFrame:viewRect];
     
     //NSLog(@"width %f height %f", box.size.width, box.size.height);
-    
-    CGContextBeginPath(context);
-    CGContextAddRect(context, box);
-    CGContextClosePath(context);
-    [[UIColor purpleColor] setFill];
-    [[UIColor blackColor] setStroke];
-    CGContextDrawPath(context,kCGPathFillStroke);
 }
 
 @end
