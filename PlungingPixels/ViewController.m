@@ -230,6 +230,12 @@
     self.valueY = acceleration.y*BALL_RADIUS;
     NSLog(@"X: %f", self.tileView.center.x);
     NSLog(@"Y: %f", self.tileView.center.y);
+    if(acceleration.x > acceleration.y) {
+        //Move to the x direction
+    }
+    else {
+        //Move it to the y direction
+    }
     //Adding comment here so we can test github commit and push :3
     int newX = (int)(self.tileView.center.x + self.valueX);
     if(newX > 320 - BALL_RADIUS)
