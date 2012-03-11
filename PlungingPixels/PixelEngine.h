@@ -13,6 +13,7 @@
 
 
 @interface PixelEngine : NSObject
+@property (readonly, strong, nonatomic) NSMutableArray *objects;
 @property (readonly, nonatomic) int timer;
 @property (readonly, nonatomic) int score;
 @property (readonly, nonatomic) BOOL pause;
@@ -20,6 +21,8 @@
 @property (readonly, nonatomic) BOOL running;
 @property (readonly, nonatomic) int width;
 @property (readonly, nonatomic) int height;
+@property (nonatomic) float tileWidth;
+@property (nonatomic) float tileHeight;
 //@property (readonly, strong, nonatomic) Grid *board;
 
 - (int) timer;

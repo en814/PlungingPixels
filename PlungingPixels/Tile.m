@@ -11,7 +11,7 @@
 @interface Tile()
 @property (strong, nonatomic) UIColor *color;
 @property (nonatomic) BOOL filled;
-@property (nonatomic) int level;
+//@property (nonatomic) int level;
 @property (nonatomic) int type;
 @end
 
@@ -20,7 +20,7 @@
 @synthesize level = _level;
 @synthesize color = _color;
 @synthesize type = _type;
-@synthesize location = _location;
+@synthesize size = _size;
 @synthesize velocity = _velocity;
 @synthesize acceleration = _acceleration;
 
@@ -38,24 +38,23 @@
     self.level = level;
     
     // initialization values will change
-    self.location = CGRectMake(0, 0, 100, 100);
+    self.size = CGRectMake(0, 0, 100, 100);
     self.velocity = CGPointMake(-100, 0);
     self.acceleration = CGPointMake(0, 480);
     
     return self;
 }
 
-- (id) initWithLocation:(CGRect)loc
+- (id) initWithSize:(CGRect)sz
 {
-    self.location = loc;
+    self.size = sz;
     return self;
 }
 
 - (void) stepInRect: (CGRect) rect withInterval: (CFTimeInterval) intv {
-    // calls method each frame
-    // TODO 
-    // if ()
-    //  update location, velocity, and acceleration
+
+    //CGRect size = self.size;
+      
 }
 
 @end
