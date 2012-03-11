@@ -32,22 +32,17 @@
     CGContextRef context = UIGraphicsGetCurrentContext();
     CGRect box = self.bounds;
     
-    box.size.width = self.bounds.size.width / 8; // self.column;
-    box.size.height = self.bounds.size.height / 11; // self.row;
-
-    //NSLog(@"width %f", box.size.width);
-    //NSLog(@"height %f", box.size.height);
+    box.size.width = self.bounds.size.width / self.column;
+    box.size.height = self.bounds.size.height / self.row;
     
-    for (int row=0; row<11; row++) {
-        for (int column=0; column<8; column++) {
+    for (int row=0; row<self.row; row++) {
+        for (int column=0; column<self.column; column++) {
             box.origin.x = box.size.width * column;
             box.origin.y = box.size.height * row;
             CGContextBeginPath(context);
             CGContextAddRect(context, box);
             CGContextClosePath(context);
-            //[[UIColor whiteColor] setFill];
-            Tile *tile = [self.grid tileAtIndex:PixelArrIdx(row, column, 8)];
-            //NSLog(@"index %d tile color %@", PixelArrSize(row, column), tile.color.description);
+            Tile *tile = [self.grid tileAtIndex:PixelArrIdx(row, column, self.column)];
             [tile.color setFill];
             [[UIColor blackColor] setStroke];
             CGContextDrawPath(context,kCGPathFillStroke);
@@ -57,23 +52,11 @@
 
 - (void) setColor: (UIColor *) color forIndex: (int) idx
 {
-    //NSLog(@"setColor");
     if (!self.grid) {
         self.grid = [[Grid alloc] init: 0];
     }
     
-    /*
-    if (!self.colorGrid) {
-        self.colorGrid = [[NSMutableArray alloc] initWithCapacity: self.column * self.row];
-        for(int i = 0; i < TetrisArrIdx(self.row, self.column); i++)
-            [self.colorGrid addObject: [UIColor whiteColor]];
-    }
-    
-    if (![[self.colorGrid objectAtIndex: TetrisArrIdx(row, col)] isEqual: color])
-        [self.colorGrid replaceObjectAtIndex:TetrisArrIdx(row, col) 
-                                  withObject:color];
-    [self setNeedsDisplay];
-     */
+    // TODO logic for setting the grid colors when tile has reached the grid
 }
 
 - (void) setOpacity: (float) alpha forRow: (int) row column: (int)col

@@ -7,9 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "TileQueue.h"
 
 @interface TileView : UIView
 
+@property (strong, nonatomic) TileQueue *queue;
 @property (nonatomic) int row;
 @property (nonatomic) int column;
 
