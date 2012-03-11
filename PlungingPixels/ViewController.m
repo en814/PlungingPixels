@@ -63,7 +63,7 @@
     int frameHeight = self.pixelView.superview.frame.size.height;
     
     self.engine.tileWidth = (float)frameWidth / picture.columns;
-    self.engine.tileHeight = (float)frameHeight / picture.rows;
+    self.engine.tileHeight = (float)frameWidth / picture.columns;
     
     int level = ([[self.engine.objects objectAtIndex:1] tileAtIndex:0]).level;
     
@@ -194,19 +194,25 @@
         ([[self.engine.objects objectAtIndex:1] tileAtIndex:0]);
         
         CGRect rect = [self.tileView frame];
-        if (rect.size.width > 40 && rect.size.height > 40) {
-            int frameWidth = self.pixelView.superview.frame.size.width;
-            int frameHeight = self.pixelView.superview.frame.size.height;
-            
-            rect.size.width -= 5;
-            rect.size.height -= 5;
-            
-            rect.origin.x = frameWidth / 2 - rect.size.width / 2;
-            rect.origin.y = frameHeight / 2 - rect.size.height / 2;
-            
-            [self.tileView setFrame:rect];
+        
+        int frameWidth = self.pixelView.superview.frame.size.width;
+        int frameHeight = self.pixelView.superview.frame.size.height;
+        
+        if (rect.size.width > self.engine.tileWidth && rect.size.height > self.engine.tileHeight) {
+            rect.size.width -= 10;
+            rect.size.height -= 10;
         }
-
+        else {
+            int level = ([[self.engine.objects objectAtIndex:1] tileAtIndex:0]).level;
+            float initWidth = self.engine.tileWidth * level;
+            float initHeight = self.engine.tileHeight * level;
+            rect.size.width = initWidth;
+            rect.size.height = initHeight;
+        }
+        
+        rect.origin.x = frameWidth / 2 - rect.size.width / 2;
+        rect.origin.y = frameHeight / 2 - rect.size.height / 2;
+        [self.tileView setFrame:rect];
 
         [self refreshView];
     }
