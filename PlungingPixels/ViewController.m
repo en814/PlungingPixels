@@ -59,6 +59,9 @@
     
     Grid *picture = [self.engine.objects objectAtIndex:0];
     
+    self.pixelView.row = picture.rows;
+    self.pixelView.column = picture.columns;
+    
     int frameWidth = self.pixelView.superview.frame.size.width;
     int frameHeight = self.pixelView.superview.frame.size.height;
     
@@ -212,6 +215,7 @@
         
         rect.origin.x = frameWidth / 2 - rect.size.width / 2;
         rect.origin.y = frameHeight / 2 - rect.size.height / 2;
+        
         [self.tileView setFrame:rect];
 
         [self refreshView];
