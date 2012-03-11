@@ -23,6 +23,7 @@
 @property (readonly, nonatomic) int height;
 @property (nonatomic) float tileWidth;
 @property (nonatomic) float tileHeight;
+@property (nonatomic) int tileLevel;
 //@property (readonly, strong, nonatomic) Grid *board;
 
 - (int) timer;

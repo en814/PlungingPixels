@@ -44,8 +44,6 @@ static int invaderWhite[] = {0,1,2,3,7,8,9,10,13,14,15,17,23,24,27,30,32,33,38,4
 
 - (Tile *) tileAtIndex: (int) idx
 {
-    //NSLog(@"idx %d", idx);
-    
     return [self.grid objectAtIndex:idx];
 }
 
