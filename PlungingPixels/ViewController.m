@@ -81,7 +81,7 @@
     CGRect box = { middleX, middleY, initWidth, initHeight };
     [self.tileView setFrame:box];
     
-    [[UIAccelerometer sharedAccelerometer] setUpdateInterval:1.0/2.0];
+    [[UIAccelerometer sharedAccelerometer] setUpdateInterval:1.0/5.0];
     [[UIAccelerometer sharedAccelerometer] setDelegate:self];
 }
 
