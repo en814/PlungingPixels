@@ -79,7 +79,7 @@
     CGRect box = { middleX, middleY, initWidth, initHeight };
     [self.tileView setFrame:box];
     
-    [[UIAccelerometer sharedAccelerometer] setUpdateInterval:1.0/30.0];
+    [[UIAccelerometer sharedAccelerometer] setUpdateInterval:1.0/2.0];
     [[UIAccelerometer sharedAccelerometer] setDelegate:self];
 }
 
@@ -230,89 +230,34 @@
 
 -(void)accelerometer:(UIAccelerometer *)accelerometer didAccelerate:(UIAcceleration *)acceleration 
 {
-    self.valueX = acceleration.x*BALL_RADIUS;
-    self.valueY = acceleration.y*BALL_RADIUS;
-   /* int newX = 0;
-    int newY = 0;
     int xcol = 320 / self.pixelView.column;
     int yrow = 460 / self.pixelView.row;
-    int a = 0;
-    int b = 0;
-    NSLog(@"Before X: %f", self.tileView.center.x);
-    NSLog(@"Before Y: %f", self.tileView.center.y);
-    NSLog(@"Acceleration X: %f", acceleration.x);
-    NSLog(@"Acceleration Y: %f", acceleration.y);
-    NSLog(@"Column X: %d", xcol);
-    NSLog(@"Row Y: %d", yrow);*/
-    
-
+    self.valueX = acceleration.x*xcol;
+    self.valueY = acceleration.y*yrow;
+ 
+   // NSLog(@"Before X: %f", self.tileView.center.x);
+   // NSLog(@"Before Y: %f", self.tileView.center.y);
+    //NSLog(@"Acceleration X: %f", acceleration.x);
+    //NSLog(@"Acceleration Y: %f", acceleration.y);
+  //  NSLog(@"Column X: %d", xcol);
+  //  NSLog(@"Row Y: %d", yrow);
     //Move in the x direction
-   /* if(acceleration.x > acceleration.y) {
-        //Tilt forward
-        if(acceleration.x >= 0) {
-            newX = (((int)self.tileView.center.x) / xcol) * xcol;
-            if(((int)self.tileView.center.y - yrow) < 0) {
-                a = yrow;
-            }
-            else {
-                a =((int)self.tileView.center.y - yrow);
-            }
-            newY = (a / yrow) * yrow;
-        }
-        //Tilt backward
-        else {
-            newX = (((int)self.tileView.center.x) / xcol) * xcol;
-            if(((int)self.tileView.center.y + yrow) > 460) {
-                a = 460;
-            }
-            else {
-                a =((int)self.tileView.center.y + yrow);
-            }
-            newY = (a / yrow) * yrow;
-            
-        }
-    }
-    //Move it to the y direction
-    else {
-        //Tilt left
-        if(acceleration.y >= 0) {
-            if(((int)self.tileView.center.x - xcol) < 0) {
-                b = xcol;
-            }
-            else {
-                b = ((int)self.tileView.center.x - xcol);
-            }
-            newX = (b / xcol) * xcol;
-            newY = (((int)self.tileView.center.y) / yrow) * yrow;
-            
-        }
-        //Tilt right
-        else {
-            if(((int)self.tileView.center.x + xcol) > 320) {
-                b = 320;
-            }
-            else {
-                b = ((int)self.tileView.center.x + xcol);
-            }
-            newX = (b / xcol) * xcol;
-            newY = (((int)self.tileView.center.y) / yrow) * yrow;
-        }
-    }*/
+ 
     //Adding comment here so we can test github commit and push :3
-    int newX = (int)(self.tileView.center.x + self.valueX);
-    if(newX > 320 - BALL_RADIUS)
-        newX = 320 - BALL_RADIUS;
-    if (newX < 0 + BALL_RADIUS)
-        newX= 0 + BALL_RADIUS;
-    int newY = (int)(self.tileView.center.y - self.valueY);
-    if(newY > 460 - BALL_RADIUS)
-        newY = 460 - BALL_RADIUS;
-    if(newY < 0 + BALL_RADIUS)
-        newY = 0 + BALL_RADIUS;
+    int newX = (int)(((self.tileView.center.x + self.valueX) / xcol) * xcol);
+    if(newX > 320 - xcol)
+        newX = 320 - xcol;
+    if (newX < 0 + xcol)
+        newX= 0 + xcol;
+    int newY = (int)(((self.tileView.center.y - self.valueY) / yrow) * yrow);
+    if(newY > 460 - yrow)
+        newY = 460 - yrow;
+    if(newY < 0 + yrow)
+        newY = 0 + yrow;
     
     CGPoint newCenter = CGPointMake(newX, newY);
-    NSLog(@"After X : %d", newX);
-    NSLog(@"After Y : %d", newY);
+  //  NSLog(@"After X : %d", newX);
+   // NSLog(@"After Y : %d", newY);
     
     self.tileView.center = newCenter;
 }

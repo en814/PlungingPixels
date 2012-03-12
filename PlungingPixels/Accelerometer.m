@@ -38,6 +38,8 @@
         newY = 0 + BALL_RADIUS;
     
     CGPoint newCenter = CGPointMake(newX, newY);
+    NSLog(@"X: %f", acceleration.x*BALL_RADIUS);
+    NSLog(@"Y: %f", acceleration.y*BALL_RADIUS);
     
     self.tile.center = newCenter;
     
