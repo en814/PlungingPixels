@@ -11,8 +11,10 @@
 
 @interface TileView : UIView
 
-@property (strong, nonatomic) TileQueue *queue;
-@property (nonatomic) int row;
-@property (nonatomic) int column;
+@property (strong, nonatomic) TileQueue *tileQueue;
+@property (nonatomic) BOOL changeTile;
+
+- (void) setColor: (UIColor *) color forIndex: (int) idx;
+- (void) setOpacity: (float) alpha;
 
 @end

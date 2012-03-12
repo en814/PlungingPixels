@@ -8,10 +8,14 @@
 
 #import "TileView.h"
 
+@interface TileView()
+@property (nonatomic) int curIdx;
+@end
+
 @implementation TileView
-@synthesize queue = _queue;
-@synthesize row = _row;
-@synthesize column = _column;
+@synthesize tileQueue = _tileQueue;
+@synthesize changeTile = _changeTile;
+@synthesize curIdx = _curIdx;
 
 - (id)initWithFrame:(CGRect)frame
 {
@@ -35,17 +39,35 @@
     CGContextBeginPath(context);
     CGContextAddRect(context, box);
     CGContextClosePath(context);
-    int randTile = arc4random() % 88;
-    NSLog(@"random number is %d", randTile);
-    Tile *tile = [self.queue tileAtIndex:randTile];
-    [tile.color setFill];
-    //[[UIColor purpleColor] setFill];
+    
+    Tile *tile;
+    
+    if (self.changeTile) {
+        self.curIdx = arc4random() % 88;
+        tile = [self.tileQueue tileAtIndex:self.curIdx];
+        [tile.color setFill];
+        self.changeTile = NO;
+    }
+    else {
+        tile = [self.tileQueue tileAtIndex:self.curIdx];
+        [tile.color setFill];
+    }
     [[UIColor blackColor] setStroke];
     
     CGContextDrawPath(context,kCGPathFillStroke);
     
     self.backgroundColor = nil;
-    //self.alpha = .75;
+    self.alpha = .75;
+}
+
+- (void) setColor: (UIColor *) color forIndex: (int) idx
+{
+    
+}
+
+- (void) setOpacity: (float) alpha
+{
+    
 }
 
 @end

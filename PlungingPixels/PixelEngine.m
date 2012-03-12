@@ -33,6 +33,7 @@
 @synthesize height = _height;
 @synthesize tileWidth = _tileWidth;
 @synthesize tileHeight = _tileHeight;
+@synthesize tileLevel = _tileLevel;
 @dynamic running;
 //@synthesize board = _board;
 //@synthesize tileQueue = _tileQueue;

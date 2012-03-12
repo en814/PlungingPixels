@@ -9,9 +9,9 @@
 #import "TileQueue.h"
 
 static int invaderBlack[] = {4,5,6,11,12,16,18,19,20,21,22,25,26,28,29,31,34,35,36,37,39,42,43,44,45,
-    50,51,52,53,55,57,58,60,61,63,64,66,67,68,69,70,75,76,84,85,86};
+                             50,51,52,53,55,57,58,60,61,63,64,66,67,68,69,70,75,76,84,85,86};
 static int invaderWhite[] = {0,1,2,3,7,8,9,10,13,14,15,17,23,24,27,30,32,33,38,40,41,46,47,48,49,54,
-    56,59,62,65,71,72,73,74,77,78,79,80,81,82,83,87};
+                             56,59,62,65,71,72,73,74,77,78,79,80,81,82,83,87};
 
 @interface TileQueue()
 @property (nonatomic) int picture;
@@ -87,7 +87,7 @@ static int invaderWhite[] = {0,1,2,3,7,8,9,10,13,14,15,17,23,24,27,30,32,33,38,4
         }
         else if ([self binarySearchOn:invaderWhite ofSize:whiteSize finding:i]) {
             Tile *addedTile = [[Tile alloc] initWithType:0 
-                                                andColor:[UIColor whiteColor] 
+                                                andColor:[UIColor blueColor] 
                                                 andLevel:TopLevel
                                                   filled:NO];
             [invader insertObject:addedTile atIndex:i];

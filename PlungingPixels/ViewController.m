@@ -13,6 +13,7 @@
 @property (readwrite, weak, nonatomic) IBOutlet UILabel *scoreLabel;
 @property (weak, nonatomic) IBOutlet PixelView *pixelView;
 @property (weak, nonatomic) IBOutlet TileView *tileView;
+@property (nonatomic) CGRect box;
 
 //Accelerometer.h
 @property (readwrite, nonatomic) float valueX;
@@ -27,6 +28,7 @@
 @synthesize scoreLabel = _scoreLabel;
 @synthesize pixelView = _pixelView;
 @synthesize tileView = _tileView;
+@synthesize box = _box;
 
 @synthesize valueX = _valueX;
 @synthesize valueY = _valueY;
@@ -57,27 +59,7 @@
     
     [self setupLabels];
     
-    Grid *picture = [self.engine.objects objectAtIndex:0];
-    
-    self.pixelView.row = picture.rows;
-    self.pixelView.column = picture.columns;
-    
-    int frameWidth = self.pixelView.superview.frame.size.width;
-    int frameHeight = self.pixelView.superview.frame.size.height;
-    
-    self.engine.tileWidth = (float)frameWidth / picture.columns;
-    self.engine.tileHeight = (float)frameWidth / picture.columns;
-    
-    int level = ([[self.engine.objects objectAtIndex:1] tileAtIndex:0]).level;
-    
-    float initWidth = self.engine.tileWidth * level;
-    float initHeight = self.engine.tileHeight * level;
-    
-    int middleX = frameWidth / 2 - initWidth / 2;
-    int middleY = frameHeight / 2 - initHeight / 2;
-    
-    CGRect box = { middleX, middleY, initWidth, initHeight };
-    [self.tileView setFrame:box];
+    [self.tileView setFrame:self.box];
     
     [[UIAccelerometer sharedAccelerometer] setUpdateInterval:1.0/2.0];
     [[UIAccelerometer sharedAccelerometer] setDelegate:self];
@@ -125,7 +107,6 @@
 
 - (void) setEngine:(PixelEngine *)eng
 {
-    //NSLog(@"setting engine");
     [self view];
     _engine = eng;
     //[self destroyKVO];
@@ -144,6 +125,29 @@
     tileFrame.size.height = 26;
     
     [self addKVO];
+    
+    Grid *picture = [self.engine.objects objectAtIndex:0];
+    
+    self.pixelView.row = picture.rows;
+    self.pixelView.column = picture.columns;
+    self.tileView.tileQueue = [self.engine.objects objectAtIndex:1];
+    self.tileView.changeTile = YES;
+    
+    int frameWidth = self.pixelView.superview.frame.size.width;
+    int frameHeight = self.pixelView.superview.frame.size.height;
+    int level = ([[self.engine.objects objectAtIndex:1] tileAtIndex:0]).level;
+    
+    self.engine.tileWidth = (float)frameWidth / picture.columns;
+    self.engine.tileHeight = (float)frameWidth / picture.columns;
+    self.engine.tileLevel = level;
+    
+    float initWidth = self.engine.tileWidth * level;
+    float initHeight = self.engine.tileHeight * level;
+    
+    int middleX = frameWidth / 2 - initWidth / 2;
+    int middleY = frameHeight / 2 - initHeight / 2;
+    
+    self.box = CGRectMake( middleX, middleY, initWidth, initHeight );
 }
 
 - (void) updateGrid
@@ -192,6 +196,7 @@
         self.scoreLabel.text = [NSString stringWithFormat:@"%d", self.engine.score];
     }
     if ([keyPath isEqualToString:@"timer"]) {
+        //NSLog(@"-------------");
         self.timeLabel.text = [NSString stringWithFormat:@"%d", self.engine.timer];
         
         ([[self.engine.objects objectAtIndex:1] tileAtIndex:0]);
@@ -201,23 +206,29 @@
         int frameWidth = self.pixelView.superview.frame.size.width;
         int frameHeight = self.pixelView.superview.frame.size.height;
         
-        if (rect.size.width > self.engine.tileWidth && rect.size.height > self.engine.tileHeight) {
-            rect.size.width -= 10;
-            rect.size.height -= 10;
+        float level = ([[self.engine.objects objectAtIndex:1] tileAtIndex:0]).level;
+        
+        float initWidth = self.engine.tileWidth * level;
+        float initHeight = self.engine.tileHeight * level;
+        
+        // tile is still falling
+        if (rect.size.width >= self.engine.tileWidth && rect.size.height >= self.engine.tileHeight) {
+            rect.size.width -= self.engine.tileWidth / 2;
+            rect.size.height -= self.engine.tileHeight / 2;
         }
+        // tile has hit the grid
         else {
-            int level = ([[self.engine.objects objectAtIndex:1] tileAtIndex:0]).level;
-            float initWidth = self.engine.tileWidth * level;
-            float initHeight = self.engine.tileHeight * level;
             rect.size.width = initWidth;
             rect.size.height = initHeight;
+            self.tileView.changeTile = YES;
         }
         
         rect.origin.x = frameWidth / 2 - rect.size.width / 2;
         rect.origin.y = frameHeight / 2 - rect.size.height / 2;
         
+        [self.tileView setNeedsDisplay];
         [self.tileView setFrame:rect];
-
+        
         [self refreshView];
     }
     /*
