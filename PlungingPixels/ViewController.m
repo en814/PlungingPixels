@@ -61,6 +61,26 @@
     
     [self.tileView setFrame:self.box];
     
+    //self.pixelView.row = picture.rows;
+    //self.pixelView.column = picture.columns;
+    
+    int frameWidth = self.pixelView.superview.frame.size.width;
+    int frameHeight = self.pixelView.superview.frame.size.height;
+    
+   // self.engine.tileWidth = (float)frameWidth / picture.columns;
+    //self.engine.tileHeight = (float)frameWidth / picture.columns;
+    
+    int level = ([[self.engine.objects objectAtIndex:1] tileAtIndex:0]).level;
+    
+    float initWidth = self.engine.tileWidth * level;
+    float initHeight = self.engine.tileHeight * level;
+    
+    int middleX = frameWidth / 2 - initWidth / 2;
+    int middleY = frameHeight / 2 - initHeight / 2;
+    
+    CGRect box = { middleX, middleY, initWidth, initHeight };
+    [self.tileView setFrame:box];
+    
     [[UIAccelerometer sharedAccelerometer] setUpdateInterval:1.0/2.0];
     [[UIAccelerometer sharedAccelerometer] setDelegate:self];
 }
