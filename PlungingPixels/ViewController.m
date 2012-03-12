@@ -243,32 +243,36 @@
 {
     int xcol = 320 / self.pixelView.column;
     int yrow = 460 / self.pixelView.row;
-    self.valueX = acceleration.x*xcol;
-    self.valueY = acceleration.y*yrow;
+    
+    self.valueX = acceleration.x * xcol;
+    self.valueY = acceleration.y * yrow;
  
-   // NSLog(@"Before X: %f", self.tileView.center.x);
-   // NSLog(@"Before Y: %f", self.tileView.center.y);
+    //NSLog(@"Before X: %f", self.tileView.center.x);
+    //NSLog(@"Before Y: %f", self.tileView.center.y);
     //NSLog(@"Acceleration X: %f", acceleration.x);
     //NSLog(@"Acceleration Y: %f", acceleration.y);
-  //  NSLog(@"Column X: %d", xcol);
-  //  NSLog(@"Row Y: %d", yrow);
+    //NSLog(@"Column X: %d", xcol);
+    //NSLog(@"Row Y: %d", yrow);
     //Move in the x direction
  
     //Adding comment here so we can test github commit and push :3
     int newX = (int)(((self.tileView.center.x + self.valueX) / xcol) * xcol);
-    if(newX > 320 - xcol)
+    
+    if (newX > 320 - xcol)
         newX = 320 - xcol;
     if (newX < 0 + xcol)
         newX= 0 + xcol;
+    
     int newY = (int)(((self.tileView.center.y - self.valueY) / yrow) * yrow);
-    if(newY > 460 - yrow)
+    
+    if (newY > 460 - yrow)
         newY = 460 - yrow;
-    if(newY < 0 + yrow)
+    if (newY < 0 + yrow)
         newY = 0 + yrow;
     
     CGPoint newCenter = CGPointMake(newX, newY);
-  //  NSLog(@"After X : %d", newX);
-   // NSLog(@"After Y : %d", newY);
+    //NSLog(@"After X : %d", newX);
+    //NSLog(@"After Y : %d", newY);
     
     self.tileView.center = newCenter;
 }
