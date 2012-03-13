@@ -142,7 +142,8 @@
     int level = ([[self.engine.objects objectAtIndex:1] tileAtIndex:0]).level;
     
     self.engine.tileWidth = (float)frameWidth / picture.columns;
-    self.engine.tileHeight = (float)frameWidth / picture.columns;
+    self.engine.tileHeight = (float)frameHeight / picture.rows;
+    
     self.engine.tileLevel = level;
     
     self.newCenter = CGPointMake(frameWidth / self.engine.tileWidth, frameHeight / self.engine.tileHeight);
@@ -152,7 +153,7 @@
     
     int middleX = frameWidth / 2 - initWidth / 2;
     int middleY = frameHeight / 2 - initHeight / 2;
-    NSLog(@"initializing x %d y %d", middleX, middleY);
+
     self.box = CGRectMake( middleX, middleY, initWidth, initHeight );
 }
 
@@ -222,19 +223,8 @@
             rect.size.width -= self.engine.tileWidth / 2;
             rect.size.height -= self.engine.tileHeight / 2;
             
-            /*
-            if (self.newCenter.x - rect.size.width / 2 < 0  && self.newCenter.y - rect.size.height / 2 < 0) {
-                rect.origin.x = frameWidth / 2 - rect.size.width / 2;
-                rect.origin.y = frameHeight / 2 - rect.size.height / 2;
-                NSLog(@"resetting to middle");
-            }
-            else {*/
-                rect.origin.x = self.newCenter.x - rect.size.width / 2;      
-                rect.origin.y = self.newCenter.y - rect.size.height / 2;
-            //}
-            //NSLog(@"newCenter x %f y %f", self.newCenter.x, self.newCenter.y);
-            
-            //NSLog(@"falling x %f y %f", rect.origin.x, rect.origin.y);
+            rect.origin.x = self.newCenter.x - rect.size.width / 2;      
+            rect.origin.y = self.newCenter.y - rect.size.height / 2;
         }
         // tile has hit the grid
         else {
@@ -243,7 +233,6 @@
             
             rect.origin.x = frameWidth / 2 - rect.size.width / 2;
             rect.origin.y = frameHeight / 2 - rect.size.height / 2;
-            //NSLog(@"reset x %f y %f", rect.origin.x, rect.origin.y);
             
             self.tileView.changeTile = YES;
         }
@@ -264,20 +253,20 @@
 
 -(void)accelerometer:(UIAccelerometer *)accelerometer didAccelerate:(UIAcceleration *)acceleration 
 {
-    int xcol = self.pixelView.superview.frame.size.width / self.pixelView.column;
-    int yrow = self.pixelView.superview.frame.size.height / self.pixelView.row;
+    //int xcol = self.pixelView.superview.frame.size.width / self.pixelView.column;
+    //int yrow = self.pixelView.superview.frame.size.height / self.pixelView.row;
     
-    self.valueX = acceleration.x * xcol;
-    self.valueY = acceleration.y * yrow;
+    self.valueX = acceleration.x * self.engine.tileHeight;
+    self.valueY = acceleration.y * self.engine.tileWidth;
  
     //Adding comment here so we can test github commit and push :3
-    int gridColumn = (int)(((self.tileView.center.x + self.valueX) / xcol) + .5);
+    int gridColumn = (int)(((self.tileView.center.x + self.valueX) / self.engine.tileHeight) + .5);
     
     if (gridColumn > self.pixelView.column - 1) {
         gridColumn = self.pixelView.column - 1;
     }
 
-    int gridRow = (int)(((self.tileView.center.y - self.valueY) / yrow) + .5);
+    int gridRow = (int)(((self.tileView.center.y - self.valueY) / self.engine.tileWidth) + .5);
     
     if (gridRow > self.pixelView.row - 1) {
         gridRow = self.pixelView.row - 1;  
@@ -286,7 +275,10 @@
     CGPoint newPoint = [[self.pixelView.gridOrigins objectAtIndex:PixelArrIdx(gridRow, gridColumn, self.pixelView.column)] CGPointValue];
     
     self.newCenter = newPoint;
-    self.tileView.center = self.newCenter;
+    
+    CGPoint newOrigin = CGPointMake(newPoint.x + self.engine.tileWidth / 2, newPoint.y + self.engine.tileHeight / 2);
+    
+    self.tileView.center = newOrigin;//self.newCenter;
 }
 
 - (void) dealloc
