@@ -13,11 +13,12 @@
 @property (readwrite, weak, nonatomic) IBOutlet UILabel *scoreLabel;
 @property (weak, nonatomic) IBOutlet PixelView *pixelView;
 @property (weak, nonatomic) IBOutlet TileView *tileView;
-@property (nonatomic) CGRect box;
+@property (readwrite, nonatomic) CGRect box;
 
 //Accelerometer.h
 @property (readwrite, nonatomic) float valueX;
 @property (readwrite, nonatomic) float valueY;
+@property (nonatomic) CGPoint newCenter;
 
 - (void) nextFrame: (CADisplayLink*) df;
 @end
@@ -32,6 +33,7 @@
 
 @synthesize valueX = _valueX;
 @synthesize valueY = _valueY;
+@synthesize newCenter = _newCenter;
 @synthesize tile = _tile;
 
 - (void) nilObjects
@@ -61,7 +63,7 @@
     
     [self.tileView setFrame:self.box];
     
-    [[UIAccelerometer sharedAccelerometer] setUpdateInterval:1.0/2.0];
+    [[UIAccelerometer sharedAccelerometer] setUpdateInterval:1.0/30.0];
     [[UIAccelerometer sharedAccelerometer] setDelegate:self];
 }
 
@@ -215,17 +217,25 @@
         if (rect.size.width >= self.engine.tileWidth && rect.size.height >= self.engine.tileHeight) {
             rect.size.width -= self.engine.tileWidth / 2;
             rect.size.height -= self.engine.tileHeight / 2;
+            
+            rect.origin.x =  self.newCenter.x - rect.size.width / 2;
+            rect.origin.y =  self.newCenter.y - rect.size.height / 2;
+            
+            //NSLog(@"falling x %f y %f", rect.origin.x, rect.origin.y);
         }
         // tile has hit the grid
         else {
             rect.size.width = initWidth;
             rect.size.height = initHeight;
+            
+            rect.origin.x = frameWidth / 2 - rect.size.width / 2;
+            rect.origin.y = frameHeight / 2 - rect.size.height / 2;
+            //NSLog(@"reset x %f y %f", rect.origin.x, rect.origin.y);
+            
             self.tileView.changeTile = YES;
         }
         
-        rect.origin.x = frameWidth / 2 - rect.size.width / 2;
-        rect.origin.y = frameHeight / 2 - rect.size.height / 2;
-        
+        self.box = rect;
         [self.tileView setNeedsDisplay];
         [self.tileView setFrame:rect];
         
@@ -256,25 +266,26 @@
     //Move in the x direction
  
     //Adding comment here so we can test github commit and push :3
-    int newX = (int)(((self.tileView.center.x + self.valueX) / xcol) * xcol);
+    int newX = ((int)(((self.tileView.center.x + self.valueX) / xcol) + .5) * xcol);
     
     if (newX > 320 - xcol)
         newX = 320 - xcol;
     if (newX < 0 + xcol)
         newX= 0 + xcol;
     
-    int newY = (int)(((self.tileView.center.y - self.valueY) / yrow) * yrow);
+    int newY = ((int)(((self.tileView.center.y - self.valueY) / yrow) + .5) * yrow);
     
     if (newY > 460 - yrow)
         newY = 460 - yrow;
     if (newY < 0 + yrow)
         newY = 0 + yrow;
     
-    CGPoint newCenter = CGPointMake(newX, newY);
-    //NSLog(@"After X : %d", newX);
-    //NSLog(@"After Y : %d", newY);
+    self.newCenter = CGPointMake(newX, newY);
+    //NSLog(@"newX %f newY %f", (newX - self.engine.tileWidth), (newY - self.engine.tileHeight));
+    //NSLog(@"After X : %f", acceleration.x);
+    //NSLog(@"After Y : %f", acceleration.y);
     
-    self.tileView.center = newCenter;
+    self.tileView.center = self.newCenter;
 }
 
 - (void) dealloc
