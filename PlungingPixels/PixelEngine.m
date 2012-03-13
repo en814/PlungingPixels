@@ -15,9 +15,6 @@
 @property (readwrite, strong, nonatomic) NSTimer *stepTimer;
 @property (readwrite, nonatomic) BOOL running;
 @property (nonatomic) BOOL gameOver;
-//@property (strong, nonatomic) Grid *board;
-//@property (strong, nonatomic) NSMutableArray *tileQueue;
-//@property (strong, nonatomic) Tile *currTile;
 @end
 
 @implementation PixelEngine
@@ -35,9 +32,6 @@
 @synthesize tileHeight = _tileHeight;
 @synthesize tileLevel = _tileLevel;
 @dynamic running;
-//@synthesize board = _board;
-//@synthesize tileQueue = _tileQueue;
-//@synthesize currTile = _currTile;
 
 - (id) init
 {
@@ -107,12 +101,6 @@
     
     [self.objects addObject:grid];
     [self.objects addObject:tileQueue];
-    
-    //self.board.grid = [[NSMutableArray alloc] initWithCapacity: PixelArrSize()];
-    //for(int i = 0; i < PixelArrSize(); i++)
-    //    [self.board.grid addObject:[[Tile alloc] init:[UIColor whiteColor] filled:NO withLevel:0]];
-    
-    //self.currTile = [[Tile alloc] init:[UIColor purpleColor] filled:FALSE withLevel:TopLevel];
     
     return self;
 }
