@@ -63,6 +63,8 @@
     
     [self.tileView setFrame:self.box];
     
+    self.newCenter = CGPointMake(160, 230);
+    
     [[UIAccelerometer sharedAccelerometer] setUpdateInterval:1.0/30.0];
     [[UIAccelerometer sharedAccelerometer] setDelegate:self];
 }
@@ -143,12 +145,14 @@
     self.engine.tileHeight = (float)frameWidth / picture.columns;
     self.engine.tileLevel = level;
     
+    self.newCenter = CGPointMake(frameWidth / self.engine.tileWidth, frameHeight / self.engine.tileHeight);
+    
     float initWidth = self.engine.tileWidth * level;
     float initHeight = self.engine.tileHeight * level;
     
     int middleX = frameWidth / 2 - initWidth / 2;
     int middleY = frameHeight / 2 - initHeight / 2;
-    
+    NSLog(@"initializing x %d y %d", middleX, middleY);
     self.box = CGRectMake( middleX, middleY, initWidth, initHeight );
 }
 
@@ -214,12 +218,21 @@
         float initHeight = self.engine.tileHeight * level;
         
         // tile is still falling
-        if (rect.size.width >= self.engine.tileWidth && rect.size.height >= self.engine.tileHeight) {
+        if (self.box.size.width >= self.engine.tileWidth && self.box.size.height >= self.engine.tileHeight) {
             rect.size.width -= self.engine.tileWidth / 2;
             rect.size.height -= self.engine.tileHeight / 2;
             
-            rect.origin.x =  self.newCenter.x - rect.size.width / 2;
-            rect.origin.y =  self.newCenter.y - rect.size.height / 2;
+            /*
+            if (self.newCenter.x - rect.size.width / 2 < 0  && self.newCenter.y - rect.size.height / 2 < 0) {
+                rect.origin.x = frameWidth / 2 - rect.size.width / 2;
+                rect.origin.y = frameHeight / 2 - rect.size.height / 2;
+                NSLog(@"resetting to middle");
+            }
+            else {*/
+                rect.origin.x = self.newCenter.x - rect.size.width / 2;      
+                rect.origin.y = self.newCenter.y - rect.size.height / 2;
+            //}
+            //NSLog(@"newCenter x %f y %f", self.newCenter.x, self.newCenter.y);
             
             //NSLog(@"falling x %f y %f", rect.origin.x, rect.origin.y);
         }
@@ -251,40 +264,28 @@
 
 -(void)accelerometer:(UIAccelerometer *)accelerometer didAccelerate:(UIAcceleration *)acceleration 
 {
-    int xcol = 320 / self.pixelView.column;
-    int yrow = 460 / self.pixelView.row;
+    int xcol = self.pixelView.superview.frame.size.width / self.pixelView.column;
+    int yrow = self.pixelView.superview.frame.size.height / self.pixelView.row;
     
     self.valueX = acceleration.x * xcol;
     self.valueY = acceleration.y * yrow;
  
-    //NSLog(@"Before X: %f", self.tileView.center.x);
-    //NSLog(@"Before Y: %f", self.tileView.center.y);
-    //NSLog(@"Acceleration X: %f", acceleration.x);
-    //NSLog(@"Acceleration Y: %f", acceleration.y);
-    //NSLog(@"Column X: %d", xcol);
-    //NSLog(@"Row Y: %d", yrow);
-    //Move in the x direction
- 
     //Adding comment here so we can test github commit and push :3
-    int newX = ((int)(((self.tileView.center.x + self.valueX) / xcol) + .5) * xcol);
+    int gridColumn = (int)(((self.tileView.center.x + self.valueX) / xcol) + .5);
     
-    if (newX > 320 - xcol)
-        newX = 320 - xcol;
-    if (newX < 0 + xcol)
-        newX= 0 + xcol;
+    if (gridColumn > self.pixelView.column - 1) {
+        gridColumn = self.pixelView.column - 1;
+    }
+
+    int gridRow = (int)(((self.tileView.center.y - self.valueY) / yrow) + .5);
     
-    int newY = ((int)(((self.tileView.center.y - self.valueY) / yrow) + .5) * yrow);
+    if (gridRow > self.pixelView.row - 1) {
+        gridRow = self.pixelView.row - 1;  
+    }
     
-    if (newY > 460 - yrow)
-        newY = 460 - yrow;
-    if (newY < 0 + yrow)
-        newY = 0 + yrow;
+    CGPoint newPoint = [[self.pixelView.gridOrigins objectAtIndex:PixelArrIdx(gridRow, gridColumn, self.pixelView.column)] CGPointValue];
     
-    self.newCenter = CGPointMake(newX, newY);
-    //NSLog(@"newX %f newY %f", (newX - self.engine.tileWidth), (newY - self.engine.tileHeight));
-    //NSLog(@"After X : %f", acceleration.x);
-    //NSLog(@"After Y : %f", acceleration.y);
-    
+    self.newCenter = newPoint;
     self.tileView.center = self.newCenter;
 }
 

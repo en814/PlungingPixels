@@ -13,8 +13,11 @@
 @interface PixelView : UIView
 
 @property (strong, nonatomic) Grid *grid;
+@property (strong, readonly, nonatomic) NSMutableArray *gridOrigins;
 @property (nonatomic) int column;
 @property (nonatomic) int row;
+@property (nonatomic) float tileWidth;
+@property (nonatomic) float tileHeight;
 
 - (void) setColor: (UIColor *) color forIndex: (int) idx;
 - (void) setOpacity: (float) alpha forRow: (int) row column: (int)col;
