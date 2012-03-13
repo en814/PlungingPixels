@@ -25,6 +25,7 @@
 		BB76EF8714E8D4CC00FEEDD2 /* Tile.m in Sources */ = {isa = PBXBuildFile; fileRef = BB76EF8614E8D4CC00FEEDD2 /* Tile.m */; };
 		BB76EF8A14E8E93C00FEEDD2 /* PixelEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = BB76EF8914E8E93C00FEEDD2 /* PixelEngine.m */; };
 		BB76EF8D14E8EA7900FEEDD2 /* Grid.m in Sources */ = {isa = PBXBuildFile; fileRef = BB76EF8C14E8EA7900FEEDD2 /* Grid.m */; };
+		BBEC62811510066000270A88 /* PictureSelectSpaceInvaderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BBEC62801510066000270A88 /* PictureSelectSpaceInvaderViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -59,6 +60,8 @@
 		BB76EF8914E8E93C00FEEDD2 /* PixelEngine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PixelEngine.m; sourceTree = "<group>"; };
 		BB76EF8B14E8EA7900FEEDD2 /* Grid.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Grid.h; sourceTree = "<group>"; };
 		BB76EF8C14E8EA7900FEEDD2 /* Grid.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Grid.m; sourceTree = "<group>"; };
+		BBEC627F1510066000270A88 /* PictureSelectSpaceInvaderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PictureSelectSpaceInvaderViewController.h; sourceTree = "<group>"; };
+		BBEC62801510066000270A88 /* PictureSelectSpaceInvaderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PictureSelectSpaceInvaderViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -126,6 +129,8 @@
 				533CB2891505BB7700F4B36E /* MovableTile.m */,
 				BB0D891114E8C8E1004FD11A /* ViewController.h */,
 				BB0D891214E8C8E1004FD11A /* ViewController.m */,
+				BBEC627F1510066000270A88 /* PictureSelectSpaceInvaderViewController.h */,
+				BBEC62801510066000270A88 /* PictureSelectSpaceInvaderViewController.m */,
 				BB0D890B14E8C8E1004FD11A /* AppDelegate.h */,
 				BB0D890C14E8C8E1004FD11A /* AppDelegate.m */,
 				BB0D890E14E8C8E1004FD11A /* MainStoryboard.storyboard */,
@@ -220,6 +225,7 @@
 				533CB27D15056CF200F4B36E /* TileView.m in Sources */,
 				533CB2871505BA9C00F4B36E /* TileQueue.m in Sources */,
 				533CB28A1505BB7700F4B36E /* MovableTile.m in Sources */,
+				BBEC62811510066000270A88 /* PictureSelectSpaceInvaderViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

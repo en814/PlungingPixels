@@ -174,7 +174,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="2" kind="modal" id="wFI-KE-VMV"/>
+                                    <segue destination="2" kind="modal" modalTransitionStyle="crossDissolve" id="wFI-KE-VMV"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -187,44 +187,20 @@
                 </viewController>
                 <swipeGestureRecognizer direction="down" id="mL6-z2-Fsg">
                     <connections>
-                        <segue destination="ZQA-bV-Djq" kind="modal" id="ikH-8g-G6Z"/>
+                        <segue destination="ZQA-bV-Djq" kind="modal" modalTransitionStyle="coverVertical" id="ikH-8g-G6Z"/>
                     </connections>
                 </swipeGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="74" y="1961"/>
         </scene>
-        <!--View Controller - Selector-->
+        <!--Picture Select Space Invader View Controller - Selector-->
         <scene sceneID="pFD-VE-TTB">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dWb-Bw-3WF" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <viewController title="Selector" id="htf-01-k4b" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="ERT-Yh-Qeb">
+                <viewController title="Selector" id="htf-01-k4b" customClass="PictureSelectSpaceInvaderViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ERT-Yh-Qeb" customClass="PixelView">
                         <rect key="frame" x="0.0" y="20" width="320" height="460"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="5ze-XI-09g">
-                                <rect key="frame" x="20" y="20" width="93" height="37"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal" title="Main Menu">
-                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <state key="highlighted">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <segue destination="2" kind="modal" modalTransitionStyle="crossDissolve" id="ier-YM-U7R"/>
-                                </connections>
-                            </button>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Picture 1" lineBreakMode="tailTruncation" minimumFontSize="10" id="fSf-Ey-hIB">
-                                <rect key="frame" x="126" y="65" width="68" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <gestureRecognizers/>
                         <connections>
@@ -233,10 +209,13 @@
                         </connections>
                     </view>
                     <navigationItem key="navigationItem" id="po2-2W-Ety"/>
+                    <connections>
+                        <outlet property="pixelView" destination="ERT-Yh-Qeb" id="pJc-yy-yIV"/>
+                    </connections>
                 </viewController>
                 <swipeGestureRecognizer direction="left" id="jjA-gz-v1e">
                     <connections>
-                        <segue destination="8tq-QE-13r" kind="modal" id="awO-gX-H7G"/>
+                        <segue destination="8tq-QE-13r" kind="modal" modalTransitionStyle="flipHorizontal" id="awO-gX-H7G"/>
                     </connections>
                 </swipeGestureRecognizer>
                 <tapGestureRecognizer id="3rP-2R-l9J">
@@ -274,7 +253,7 @@
                 </viewController>
                 <swipeGestureRecognizer direction="right" id="JnI-Ws-50T">
                     <connections>
-                        <segue destination="htf-01-k4b" kind="modal" id="GOg-F3-OTx"/>
+                        <segue destination="htf-01-k4b" kind="modal" modalTransitionStyle="flipHorizontal" id="GOg-F3-OTx"/>
                     </connections>
                 </swipeGestureRecognizer>
                 <tapGestureRecognizer id="Z09-1C-yAb">
@@ -293,6 +272,9 @@
                 <relationship kind="outlet" name="tile" candidateClass="PixelView"/>
             </relationships>
         </class>
+        <class className="PictureSelectSpaceInvaderViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/PictureSelectSpaceInvaderViewController.h"/>
+        </class>
         <class className="PixelView" superclassName="UIView">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/PixelView.h"/>
         </class>
@@ -305,6 +287,7 @@
                 <relationship kind="outlet" name="pixelView" candidateClass="PixelView"/>
                 <relationship kind="outlet" name="scoreLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="tile" candidateClass="PixelView"/>
+                <relationship kind="outlet" name="tileView" candidateClass="TileView"/>
                 <relationship kind="outlet" name="timeLabel" candidateClass="UILabel"/>
             </relationships>
         </class>
@@ -316,6 +299,5 @@
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
         <segue reference="VRc-Sh-Puj"/>
-        <segue reference="ier-YM-U7R"/>
     </inferredMetricsTieBreakers>
 </document>
