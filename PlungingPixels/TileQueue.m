@@ -157,7 +157,7 @@ static int marioYellow[] = {29,30,38,40,41,42,44,45,46,50,53,54,55,57,58,59,63,6
         }
         else if ([self binarySearchOn:marioYellow ofSize: yellowSize finding:i]) {
             Tile *addedTile = [[Tile alloc] initWithType:0 
-                                                andColor:[UIColor yellowColor] 
+                                                andColor:[UIColor colorWithRed:.9 green:.64706 blue:0 alpha:1] 
                                                 andLevel:0 
                                                   filled:NO];
             [marioArray insertObject:addedTile atIndex:i];
