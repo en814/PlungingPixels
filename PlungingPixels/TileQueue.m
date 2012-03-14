@@ -44,7 +44,13 @@ static int marioYellow[] = {29,30,38,40,41,42,44,45,46,50,53,54,55,57,58,59,63,6
         self.queue = [self spaceInvader];
     }
     else if (pic == 1) {
+        self.queue = [self spaceInvaderComplete];
+    }
+    else if (pic == 2) {
         self.queue = [self mario];
+    }
+    else if (pic == 3) {
+        self.queue = [self marioComplete];
     }
     
     return self;
@@ -118,6 +124,40 @@ static int marioYellow[] = {29,30,38,40,41,42,44,45,46,50,53,54,55,57,58,59,63,6
     
     return invader;
 }
+
+- (NSMutableArray *) spaceInvaderComplete
+{
+    NSMutableArray *invader = [[NSMutableArray alloc] initWithCapacity: PixelArrSize(11, 8)];
+    int blackSize = (sizeof invaderBlack) / (sizeof invaderBlack[0]);
+    int whiteSize = (sizeof invaderWhite) / (sizeof invaderWhite[0]);
+    BOOL setTile;
+    
+    for(int i = 0; i < PixelArrSize(8, 11); i++) {
+        setTile = NO;
+        if ([self binarySearchOn:invaderBlack ofSize: blackSize finding:i]) {
+            Tile *addedTile = [[Tile alloc] initWithType:0 
+                                                andColor:[UIColor blueColor]
+                                                andLevel:TopLevel
+                                                  filled:NO];
+            [invader insertObject:addedTile atIndex:i];
+            setTile = YES;
+        }
+        else if ([self binarySearchOn:invaderWhite ofSize:whiteSize finding:i]) {
+            Tile *addedTile = [[Tile alloc] initWithType:0 
+                                                andColor:[UIColor blackColor] 
+                                                andLevel:TopLevel
+                                                  filled:NO];
+            [invader insertObject:addedTile atIndex:i];
+            setTile = YES;
+        }
+        
+        if (setTile == NO) {
+            NSLog(@"HAVEN'T SET INDEX %d TILE", i);
+        }
+    }
+    
+    return invader;
+}
                       
 - (NSMutableArray * ) mario
 {            
@@ -133,7 +173,61 @@ static int marioYellow[] = {29,30,38,40,41,42,44,45,46,50,53,54,55,57,58,59,63,6
         setTile = NO;
         if ([self binarySearchOn:marioBlack ofSize: blackSize finding:i]) {
             Tile *addedTile = [[Tile alloc] initWithType:0 
-                                                andColor:[UIColor whiteColor] 
+                                                andColor:[UIColor colorWithRed:.6 green:.6 blue:.6 alpha:1] 
+                                                andLevel:0 
+                                                  filled:NO];
+            [marioArray insertObject:addedTile atIndex:i];      
+            setTile = YES;
+        }
+        else if ([self binarySearchOn:marioRed ofSize: redSize finding:i]) {
+            Tile *addedTile = [[Tile alloc] initWithType:0 
+                                                andColor:[UIColor colorWithRed:.5 green:0 blue:0 alpha:1] 
+                                                andLevel:0 
+                                                  filled:NO];
+            [marioArray insertObject:addedTile atIndex:i];
+            setTile = YES;
+        }
+        else if ([self binarySearchOn:marioBrown ofSize: brownSize finding:i]) {
+            Tile *addedTile = [[Tile alloc] initWithType:0 
+                                                andColor:[UIColor colorWithRed:.7 green:.5 blue:.3 alpha:1] 
+                                                andLevel:0 
+                                                  filled:NO];
+            [marioArray insertObject:addedTile atIndex:i];
+            setTile = YES;
+        }
+        else if ([self binarySearchOn:marioYellow ofSize: yellowSize finding:i]) {
+            Tile *addedTile = [[Tile alloc] initWithType:0 
+                                                andColor:[UIColor colorWithRed:.95686 green:.64314 blue:.37647 alpha:1] 
+                                                andLevel:0 
+                                                  filled:NO];
+            [marioArray insertObject:addedTile atIndex:i];
+            setTile = YES;
+        }
+        
+        if (setTile == NO) {
+            NSLog(@"GRID HAVEN'T SET INDEX %d TILE", i);
+        }
+        
+    }
+    
+    return marioArray;
+}
+
+- (NSMutableArray * ) marioComplete
+{            
+    
+    NSMutableArray *marioArray = [[NSMutableArray alloc] initWithCapacity: PixelArrSize(16, 12)];
+    int blackSize = (sizeof marioBlack) / (sizeof marioBlack[0]);
+    int redSize = (sizeof marioRed) / (sizeof marioRed[0]);
+    int brownSize = (sizeof marioBrown) / (sizeof marioBrown[0]);
+    int yellowSize = (sizeof marioYellow) / (sizeof marioYellow[0]);
+    BOOL setTile;
+    
+    for(int i = 0; i < PixelArrSize(16, 12); i++) {
+        setTile = NO;
+        if ([self binarySearchOn:marioBlack ofSize: blackSize finding:i]) {
+            Tile *addedTile = [[Tile alloc] initWithType:0 
+                                                andColor:[UIColor colorWithRed:.3 green:.3 blue:.3 alpha:1] 
                                                 andLevel:0 
                                                   filled:NO];
             [marioArray insertObject:addedTile atIndex:i];      
@@ -172,5 +266,6 @@ static int marioYellow[] = {29,30,38,40,41,42,44,45,46,50,53,54,55,57,58,59,63,6
     
     return marioArray;
 }
+
 
 @end

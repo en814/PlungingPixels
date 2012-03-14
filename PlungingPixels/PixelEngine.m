@@ -112,6 +112,19 @@
     //[self.currTile stepInRect: self.world];
 }
 
+- (void) updateObjects: (int) gridIndex
+{
+    // if falling tile is the same color as the grid its over
+    if ([[[[self.objects objectAtIndex:1] objectAtIndex:0] color] isEqual:[[self.objects objectAtIndex:0] tileAtIndex:gridIndex]]) {
+        if ([[self.objects objectAtIndex:0] picture] == 0) {
+            
+        }
+        else if ([[self.objects objectAtIndex:0] picture] == 1) {
+            
+        }
+    }
+}
+
 - (void) addObject: (NSObject *) tile {
     // update curTile with new color and toplevel
 }

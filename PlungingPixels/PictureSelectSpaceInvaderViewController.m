@@ -32,7 +32,7 @@
     self.pixelView.row = 11;
     self.pixelView.column = 8;
 
-    self.pixelView.grid = [[Grid alloc] init:0];
+    self.pixelView.grid = [[Grid alloc] init:1];
 }
 
 - (void)viewDidUnload
