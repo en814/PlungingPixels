@@ -166,10 +166,10 @@
             //NSLog(@"row %d column %d height %d width %d grid index: %d", row, column, [self.engine height], [self.engine width], PixelArrIdx(row, column, [self.engine width]));
             Tile *piece = [self.engine tileAtGridIndex:PixelArrIdx(row, column, [self.engine width])];
             
-            if ([piece.color isEqual: [UIColor blueColor]])
-                [self.pixelView setColor:[UIColor blueColor] forIndex:PixelArrIdx(row, column, [self.engine width])];
-            else if ([piece.color isEqual: [UIColor blackColor]])
-                [self.pixelView setColor:[UIColor blackColor] forIndex:PixelArrIdx(row, column, [self.engine width])];
+            if ([piece.color isEqual: [UIColor colorWithRed:.196078 green:.6 blue:.8 alpha:1] ])
+                [self.pixelView setColor:[UIColor colorWithRed:.196078 green:.6 blue:.8 alpha:1] forIndex:PixelArrIdx(row, column, [self.engine width])];
+            else if ([piece.color isEqual: [UIColor colorWithRed:.2 green:.2 blue:.2 alpha:1]])
+                [self.pixelView setColor:[UIColor colorWithRed:.2 green:.2 blue:.2 alpha:1] forIndex:PixelArrIdx(row, column, [self.engine width])];
         }
     }
 }
@@ -256,17 +256,17 @@
     //int xcol = self.pixelView.superview.frame.size.width / self.pixelView.column;
     //int yrow = self.pixelView.superview.frame.size.height / self.pixelView.row;
     
-    self.valueX = acceleration.x * self.engine.tileHeight;
-    self.valueY = acceleration.y * self.engine.tileWidth;
+    self.valueX = acceleration.x * self.engine.tileWidth;
+    self.valueY = acceleration.y * self.engine.tileHeight;
  
     //Adding comment here so we can test github commit and push :3
-    int gridColumn = (int)(((self.tileView.center.x + self.valueX) / self.engine.tileHeight) + .5);
+    int gridColumn = (int)(((self.tileView.center.x + self.valueX) / self.engine.tileWidth) + .5);
     
     if (gridColumn > self.pixelView.column - 1) {
         gridColumn = self.pixelView.column - 1;
     }
 
-    int gridRow = (int)(((self.tileView.center.y - self.valueY) / self.engine.tileWidth) + .5);
+    int gridRow = (int)(((self.tileView.center.y - self.valueY) / self.engine.tileHeight) + .5);
     
     if (gridRow > self.pixelView.row - 1) {
         gridRow = self.pixelView.row - 1;  
@@ -276,7 +276,7 @@
     
     self.newCenter = newPoint;
     
-    CGPoint newOrigin = CGPointMake(newPoint.x + self.engine.tileWidth / 2, newPoint.y + self.engine.tileHeight / 2);
+    CGPoint newOrigin = CGPointMake(newPoint.x + self.engine.tileWidth / 2, newPoint.y - self.engine.tileHeight / 2);
     
     self.tileView.center = newOrigin;//self.newCenter;
 }

@@ -13,6 +13,7 @@
 		533CB2871505BA9C00F4B36E /* TileQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 533CB2861505BA9C00F4B36E /* TileQueue.m */; };
 		533CB28A1505BB7700F4B36E /* MovableTile.m in Sources */ = {isa = PBXBuildFile; fileRef = 533CB2891505BB7700F4B36E /* MovableTile.m */; };
 		5382643414F1E8A20032E40C /* plungingpixels.png in Resources */ = {isa = PBXBuildFile; fileRef = 5382643314F1E8A20032E40C /* plungingpixels.png */; };
+		53EDC711151104560065BCB0 /* PictureSelectMarioViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 53EDC710151104560065BCB0 /* PictureSelectMarioViewController.m */; };
 		BB0D88FD14E8C8E1004FD11A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB0D88FC14E8C8E1004FD11A /* UIKit.framework */; };
 		BB0D88FF14E8C8E1004FD11A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB0D88FE14E8C8E1004FD11A /* Foundation.framework */; };
 		BB0D890114E8C8E1004FD11A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB0D890014E8C8E1004FD11A /* CoreGraphics.framework */; };
@@ -39,6 +40,8 @@
 		533CB2881505BB7700F4B36E /* MovableTile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MovableTile.h; sourceTree = "<group>"; };
 		533CB2891505BB7700F4B36E /* MovableTile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MovableTile.m; sourceTree = "<group>"; };
 		5382643314F1E8A20032E40C /* plungingpixels.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = plungingpixels.png; path = ../plungingpixels.png; sourceTree = "<group>"; };
+		53EDC70F151104560065BCB0 /* PictureSelectMarioViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PictureSelectMarioViewController.h; sourceTree = "<group>"; };
+		53EDC710151104560065BCB0 /* PictureSelectMarioViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PictureSelectMarioViewController.m; sourceTree = "<group>"; };
 		BB0D88F814E8C8E1004FD11A /* PlungingPixels.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PlungingPixels.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BB0D88FC14E8C8E1004FD11A /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		BB0D88FE14E8C8E1004FD11A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -131,6 +134,8 @@
 				BB0D891214E8C8E1004FD11A /* ViewController.m */,
 				BBEC627F1510066000270A88 /* PictureSelectSpaceInvaderViewController.h */,
 				BBEC62801510066000270A88 /* PictureSelectSpaceInvaderViewController.m */,
+				53EDC70F151104560065BCB0 /* PictureSelectMarioViewController.h */,
+				53EDC710151104560065BCB0 /* PictureSelectMarioViewController.m */,
 				BB0D890B14E8C8E1004FD11A /* AppDelegate.h */,
 				BB0D890C14E8C8E1004FD11A /* AppDelegate.m */,
 				BB0D890E14E8C8E1004FD11A /* MainStoryboard.storyboard */,
@@ -226,6 +231,7 @@
 				533CB2871505BA9C00F4B36E /* TileQueue.m in Sources */,
 				533CB28A1505BB7700F4B36E /* MovableTile.m in Sources */,
 				BBEC62811510066000270A88 /* PictureSelectSpaceInvaderViewController.m in Sources */,
+				53EDC711151104560065BCB0 /* PictureSelectMarioViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
