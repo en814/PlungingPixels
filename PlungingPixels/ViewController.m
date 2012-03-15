@@ -263,18 +263,7 @@
     
     self.valueX = acceleration.x * self.engine.tileWidth;
     self.valueY = acceleration.y * self.engine.tileHeight;
-    
-    NSLog(@"Distance of valueX %f", self.engine.tileWidth);
-    NSLog(@"Distance of valueY %f", self.engine.tileHeight);
-    if (fabs(self.valueX) < self.engine.tileWidth) {
-        self.distanceX += self.valueX;
-        NSLog(@"Accumlated X %f", self.distanceX);
-    }
-    if (fabs(self.valueY) < self.engine.tileHeight) {
-        self.distanceY += self.valueY;
-        NSLog(@"Accumlated Y %f", self.distanceY);
-    }
-    
+         
     //Adding comment here so we can test github commit and push :3
     //int gridColumn = (int)(((self.tileView.center.x + self.valueX) / self.engine.tileWidth) + .5);
     int gridColumn = (int)((self.tileView.center.x / self.engine.tileWidth) + .5);
@@ -286,10 +275,6 @@
         if (gridColumn < 1) 
             gridColumn = 1;
     }
-    /*if (self.distanceX >= self.engine.width) {
-        gridColumn = gridColumn - 1;
-        self.distanceX = 0.0;
-    }*/
     
     //NSLog(@"GridColumn %d", gridColumn);
     if (gridColumn > self.pixelView.column - 1) {
