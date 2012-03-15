@@ -21,6 +21,8 @@
 @property (readwrite, nonatomic) float valueX;
 @property (readwrite, nonatomic) float valueY;
 @property (nonatomic) CGPoint newCenter;
+@property (nonatomic) float distanceX;
+@property (nonatomic) float distanceY;
 
 - (void) nextFrame: (CADisplayLink*) df;
 @end
@@ -39,6 +41,8 @@
 @synthesize valueY = _valueY;
 @synthesize newCenter = _newCenter;
 @synthesize tile = _tile;
+@synthesize distanceX = _distanceX;
+@synthesize distanceY = _distanceY;
 
 - (void) nilObjects
 {
@@ -69,8 +73,9 @@
     
     self.newCenter = CGPointMake(160, 230);
     
-    
+    [[UIAccelerometer sharedAccelerometer] setUpdateInterval:1.0/4.0];
     [[UIAccelerometer sharedAccelerometer] setDelegate:self];
+    NSLog(@"LOVEY DOVEY!");
 }
 
 - (void)viewDidUnload
@@ -265,18 +270,36 @@
     
     self.valueX = acceleration.x * self.engine.tileWidth;
     self.valueY = acceleration.y * self.engine.tileHeight;
- 
+         
     //Adding comment here so we can test github commit and push :3
-    self.gridColumn = (int)(((self.tileView.center.x + self.valueX) / self.engine.tileWidth) + .5);
+    //int gridColumn = (int)(((self.tileView.center.x + self.valueX) / self.engine.tileWidth) + .5);
+    int gridColumn = (int)((self.tileView.center.x / self.engine.tileWidth) + .5);
+    if (acceleration.x > 0) {
+        gridColumn += 1;   
+    }
+    else {
+        gridColumn -= 1;
+        if (gridColumn < 1) 
+            gridColumn = 1;
+    }
     
     if (self.gridColumn > self.pixelView.column - 1) {
         self.gridColumn = self.pixelView.column - 1;
     }
 
-    self.gridRow = (int)(((self.tileView.center.y - self.valueY) / self.engine.tileHeight) + .5);
-    
-    if (self.gridRow > self.pixelView.row - 1) {
-        self.gridRow = self.pixelView.row - 1;  
+    //int gridRow = (int)(((self.tileView.center.y - self.valueY) / self.engine.tileHeight) + .5);
+    int gridRow = (int)((self.tileView.center.y/ self.engine.tileHeight) + .5);
+    if (acceleration.y > 0) {
+        gridRow -= 1; 
+        if (gridRow < 1) 
+            gridRow = 1;
+    }
+    else {
+        gridRow += 1;
+    }
+    //NSLog(@"GridRow %d", gridRow);
+    if (gridRow > self.pixelView.row - 1) {
+        gridRow = self.pixelView.row - 1;  
     }
     
     CGPoint newPoint = [[self.pixelView.gridOrigins objectAtIndex:PixelArrIdx(self.gridRow, self.gridColumn, self.pixelView.column)] CGPointValue];
