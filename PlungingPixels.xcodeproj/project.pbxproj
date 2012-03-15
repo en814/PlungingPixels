@@ -16,6 +16,7 @@
 		53A99FA9151189640074C6F6 /* plungepixicon.png in Resources */ = {isa = PBXBuildFile; fileRef = 53A99FA8151189640074C6F6 /* plungepixicon.png */; };
 		53A99FAB151189730074C6F6 /* plungepixmenu.png in Resources */ = {isa = PBXBuildFile; fileRef = 53A99FAA151189730074C6F6 /* plungepixmenu.png */; };
 		53A99FAD1511897B0074C6F6 /* plungepixmenuHD.png in Resources */ = {isa = PBXBuildFile; fileRef = 53A99FAC1511897B0074C6F6 /* plungepixmenuHD.png */; };
+		53A99FB8151299870074C6F6 /* PauseMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 53A99FB7151299870074C6F6 /* PauseMenuViewController.m */; };
 		53EDC711151104560065BCB0 /* PictureSelectMarioViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 53EDC710151104560065BCB0 /* PictureSelectMarioViewController.m */; };
 		BB0D88FD14E8C8E1004FD11A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB0D88FC14E8C8E1004FD11A /* UIKit.framework */; };
 		BB0D88FF14E8C8E1004FD11A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB0D88FE14E8C8E1004FD11A /* Foundation.framework */; };
@@ -47,6 +48,8 @@
 		53A99FA8151189640074C6F6 /* plungepixicon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = plungepixicon.png; sourceTree = "<group>"; };
 		53A99FAA151189730074C6F6 /* plungepixmenu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = plungepixmenu.png; path = PlungingPixels/plungepixmenu.png; sourceTree = "<group>"; };
 		53A99FAC1511897B0074C6F6 /* plungepixmenuHD.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = plungepixmenuHD.png; path = PlungingPixels/plungepixmenuHD.png; sourceTree = "<group>"; };
+		53A99FB6151299870074C6F6 /* PauseMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PauseMenuViewController.h; sourceTree = "<group>"; };
+		53A99FB7151299870074C6F6 /* PauseMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PauseMenuViewController.m; sourceTree = "<group>"; };
 		53EDC70F151104560065BCB0 /* PictureSelectMarioViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PictureSelectMarioViewController.h; sourceTree = "<group>"; };
 		53EDC710151104560065BCB0 /* PictureSelectMarioViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PictureSelectMarioViewController.m; sourceTree = "<group>"; };
 		BB0D88F814E8C8E1004FD11A /* PlungingPixels.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PlungingPixels.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -147,6 +150,8 @@
 				53EDC710151104560065BCB0 /* PictureSelectMarioViewController.m */,
 				5382DDDA1511841B009C1923 /* MainMenuViewController.h */,
 				5382DDDB1511841B009C1923 /* MainMenuViewController.m */,
+				53A99FB6151299870074C6F6 /* PauseMenuViewController.h */,
+				53A99FB7151299870074C6F6 /* PauseMenuViewController.m */,
 				BB0D890B14E8C8E1004FD11A /* AppDelegate.h */,
 				BB0D890C14E8C8E1004FD11A /* AppDelegate.m */,
 				BB0D890E14E8C8E1004FD11A /* MainStoryboard.storyboard */,
@@ -246,6 +251,7 @@
 				BBEC62811510066000270A88 /* PictureSelectSpaceInvaderViewController.m in Sources */,
 				53EDC711151104560065BCB0 /* PictureSelectMarioViewController.m in Sources */,
 				5382DDDC1511841B009C1923 /* MainMenuViewController.m in Sources */,
+				53A99FB8151299870074C6F6 /* PauseMenuViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

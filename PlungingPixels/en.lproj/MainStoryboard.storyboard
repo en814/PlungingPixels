@@ -102,15 +102,19 @@
             </objects>
             <point key="canvasLocation" x="74" y="1350"/>
         </scene>
-        <!--View Controller - Pause-->
+        <!--Pause Menu View Controller - Pause-->
         <scene sceneID="TBJ-2R-66G">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0FL-g0-Ods" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <viewController storyboardIdentifier="Pause" title="Pause" id="3WN-aE-Dhs" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Pause" title="Pause" id="3WN-aE-Dhs" customClass="PauseMenuViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="lcP-lD-tRu">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="460"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" id="YJm-9P-Qmo">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="460"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Pause Menu" lineBreakMode="tailTruncation" minimumFontSize="10" id="Cwj-IH-brr">
                                 <rect key="frame" x="112" y="57" width="96" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -221,6 +225,12 @@
                 <relationship kind="outlet" name="backgroundImage" candidateClass="UIImageView"/>
             </relationships>
         </class>
+        <class className="PauseMenuViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/PauseMenuViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="backgroundImage" candidateClass="UIImageView"/>
+            </relationships>
+        </class>
         <class className="PictureSelectMarioViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/PictureSelectMarioViewController.h"/>
         </class>
@@ -237,7 +247,6 @@
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ViewController.h"/>
             <relationships>
                 <relationship kind="outlet" name="pixelView" candidateClass="PixelView"/>
-                <relationship kind="outlet" name="scoreLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="tile" candidateClass="PixelView"/>
                 <relationship kind="outlet" name="tileView" candidateClass="TileView"/>
                 <relationship kind="outlet" name="timeLabel" candidateClass="UILabel"/>

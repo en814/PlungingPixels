@@ -111,6 +111,10 @@
 
 - (void) updateObjects: (int) gridIndex
 {
+    if ([[[self.objects objectAtIndex:1] queue] count] == 0) {
+        self.gameOver = YES;
+    }
+    
     // if falling tile is the same color as the grid its over
     if ([[[[self.objects objectAtIndex:1] tileAtIndex:0] color] isEqual:[[[self.objects objectAtIndex:0] tileAtIndex:gridIndex] color]]) {
         if ([[self.objects objectAtIndex:0] picture] == 0) {

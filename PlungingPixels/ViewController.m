@@ -118,6 +118,14 @@
     
 }
 
+- (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:@"GametoPause"]) {
+        PauseMenuViewController *pause = segue.destinationViewController;
+    }
+}
+
+
 - (void) setEngine:(PixelEngine *)eng
 {
     [self view];
@@ -216,7 +224,7 @@
             rect.size.width -= self.engine.tileWidth / 2;
             rect.size.height -= self.engine.tileHeight / 2;
             
-            rect.origin.x = self.newCenter.x - rect.size.width / 2;      
+            rect.origin.x = self.newCenter.x - rect.size.width / 2;
             rect.origin.y = self.newCenter.y - rect.size.height / 2;
         }
         // tile has hit the grid

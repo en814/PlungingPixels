@@ -12,6 +12,7 @@
 #import "PixelEngine.h"
 #import "PixelView.h"
 #import "TileView.h"
+#import "PauseMenuViewController.h"
 
 #define BALL_RADIUS 20
 
