@@ -21,7 +21,6 @@
 		BB0D88FF14E8C8E1004FD11A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB0D88FE14E8C8E1004FD11A /* Foundation.framework */; };
 		BB0D890114E8C8E1004FD11A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB0D890014E8C8E1004FD11A /* CoreGraphics.framework */; };
 		BB0D890714E8C8E1004FD11A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = BB0D890514E8C8E1004FD11A /* InfoPlist.strings */; };
-		BB0D890914E8C8E1004FD11A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BB0D890814E8C8E1004FD11A /* main.m */; };
 		BB0D890D14E8C8E1004FD11A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BB0D890C14E8C8E1004FD11A /* AppDelegate.m */; };
 		BB0D891014E8C8E1004FD11A /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB0D890E14E8C8E1004FD11A /* MainStoryboard.storyboard */; };
 		BB0D891314E8C8E1004FD11A /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB0D891214E8C8E1004FD11A /* ViewController.m */; };
@@ -30,6 +29,8 @@
 		BB76EF8A14E8E93C00FEEDD2 /* PixelEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = BB76EF8914E8E93C00FEEDD2 /* PixelEngine.m */; };
 		BB76EF8D14E8EA7900FEEDD2 /* Grid.m in Sources */ = {isa = PBXBuildFile; fileRef = BB76EF8C14E8EA7900FEEDD2 /* Grid.m */; };
 		BBEC62811510066000270A88 /* PictureSelectSpaceInvaderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BBEC62801510066000270A88 /* PictureSelectSpaceInvaderViewController.m */; };
+		BBEC62B61511B3E800270A88 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BB0D890814E8C8E1004FD11A /* main.m */; };
+		BBEC62C31511B78E00270A88 /* MemoryHound.m in Sources */ = {isa = PBXBuildFile; fileRef = BBEC62C11511B70500270A88 /* MemoryHound.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -72,6 +73,8 @@
 		BB76EF8C14E8EA7900FEEDD2 /* Grid.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Grid.m; sourceTree = "<group>"; };
 		BBEC627F1510066000270A88 /* PictureSelectSpaceInvaderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PictureSelectSpaceInvaderViewController.h; sourceTree = "<group>"; };
 		BBEC62801510066000270A88 /* PictureSelectSpaceInvaderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PictureSelectSpaceInvaderViewController.m; sourceTree = "<group>"; };
+		BBEC62C01511B70500270A88 /* MemoryHound.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MemoryHound.h; sourceTree = "<group>"; };
+		BBEC62C11511B70500270A88 /* MemoryHound.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MemoryHound.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -123,6 +126,8 @@
 		BB0D890214E8C8E1004FD11A /* PlungingPixels */ = {
 			isa = PBXGroup;
 			children = (
+				BBEC62C01511B70500270A88 /* MemoryHound.h */,
+				BBEC62C11511B70500270A88 /* MemoryHound.m */,
 				BB686C9214F05D6A00759EB6 /* Accelerometer.h */,
 				BB686C9314F05D6A00759EB6 /* Accelerometer.m */,
 				BB76EF8514E8D4CC00FEEDD2 /* Tile.h */,
@@ -232,7 +237,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BB0D890914E8C8E1004FD11A /* main.m in Sources */,
+				BBEC62C31511B78E00270A88 /* MemoryHound.m in Sources */,
+				BBEC62B61511B3E800270A88 /* main.m in Sources */,
 				BB0D890D14E8C8E1004FD11A /* AppDelegate.m in Sources */,
 				BB0D891314E8C8E1004FD11A /* ViewController.m in Sources */,
 				BB76EF8714E8D4CC00FEEDD2 /* Tile.m in Sources */,

@@ -150,4 +150,20 @@
     return [[NSObject alloc] init];
 }
 
+-(void)dealloc {
+    _objects = nil;
+    _timer = 0;
+    _score = 0;
+    _quit = 0;
+    _pause = 0;
+    [_stepTimer invalidate];
+    _stepTimer = nil;
+    _gameOver = 0;
+    _width = 0;
+    _height = 0;
+    _tileWidth = 0;
+    _tileHeight = 0;
+    _tileLevel = 0;
+}
+
 @end

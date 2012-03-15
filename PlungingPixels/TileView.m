@@ -70,4 +70,11 @@
     
 }
 
+-(void)dealloc {
+    _tileQueue = nil;
+    _changeTile = 0;
+    _curIdx = 0;
+
+}
+
 @end

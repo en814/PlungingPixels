@@ -87,4 +87,14 @@
     
 }
 
+-(void)dealloc {
+    _grid = nil;
+    _column = 0;
+    _row = 0;
+    _tileWidth = 0;
+    _tileHeight = 0;
+    _gridOrigins = nil;
+    _gridInitalized = 0;
+}
+
 @end

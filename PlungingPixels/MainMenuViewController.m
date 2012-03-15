@@ -36,6 +36,8 @@
 {
     [super viewDidUnload];
     // Release any retained subviews of the main view.
+    [_backgroundImage stopAnimating];
+    _backgroundImage = nil;
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -43,4 +45,8 @@
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
+-(void)dealloc {
+    [_backgroundImage stopAnimating];
+    _backgroundImage = nil;
+}
 @end

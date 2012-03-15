@@ -267,5 +267,9 @@ static int marioYellow[] = {29,30,38,40,41,42,44,45,46,50,53,54,55,57,58,59,63,6
     return marioArray;
 }
 
+-(void)dealloc {
+    _picture = 0;
+    _queue = nil;
+}
 
 @end

@@ -7,6 +7,9 @@
 //
 
 #import "AppDelegate.h"
+#import "MemoryHound.h"
+
+
 
 @interface AppDelegate ()
 @property (readwrite, nonatomic) BOOL active;
@@ -22,6 +25,8 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
+    
+    [MemoryHound startRotateHound];
 
     if (self.engine == nil)
         self.engine = [[PixelEngine alloc] init];
@@ -30,7 +35,7 @@
     
     return YES;
 }
-							
+					
 - (void)applicationWillResignActive:(UIApplication *)application
 {
     /*

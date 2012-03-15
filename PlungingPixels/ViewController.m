@@ -50,6 +50,9 @@
     _scoreLabel = nil;
     _pixelView = nil;
     _tileView = nil;
+    _tile = nil;
+    [_engine stop];
+    _engine = nil;
 }
 
 - (void)didReceiveMemoryWarning

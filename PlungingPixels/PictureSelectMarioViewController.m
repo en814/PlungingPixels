@@ -39,6 +39,7 @@
 {
     [super viewDidUnload];
     // Release any retained subviews of the main view.
+    _pixelView = nil;
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -46,4 +47,7 @@
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
+-(void)dealloc {
+    _pixelView = nil;
+}
 @end

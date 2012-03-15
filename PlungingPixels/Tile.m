@@ -62,4 +62,11 @@
       
 }
 
+-(void)dealloc {
+    _filled = 0;
+    _level = 0;
+    _color = nil;
+    _type = 0;
+}
+
 @end
