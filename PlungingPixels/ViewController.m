@@ -279,14 +279,32 @@
     self.valueY = acceleration.y * self.engine.tileHeight;
 
     //Adding comment here so we can test github commit and push :3
-    self.gridColumn = (int)(((self.tileView.center.x + self.valueX) / self.engine.tileWidth) + .5);
+    //int gridColumn = (int)(((self.tileView.center.x + self.valueX) / self.engine.tileWidth) + .5);
+    self.gridColumn = (int)((self.tileView.center.x / self.engine.tileWidth) + .5);
+    if (acceleration.x > 0) {
+        self.gridColumn += 1;   
+    }
+    else {
+        self.gridColumn -= 1;
+        if (self.gridColumn < 1) 
+            self.gridColumn = 1;
+    }
     
     if (self.gridColumn > self.pixelView.column - 1) {
         self.gridColumn = self.pixelView.column - 1;
     }
-    
-    self.gridRow = (int)(((self.tileView.center.y - self.valueY) / self.engine.tileHeight) + .5);
-    
+
+    //int gridRow = (int)(((self.tileView.center.y - self.valueY) / self.engine.tileHeight) + .5);
+    self.gridRow = (int)((self.tileView.center.y/ self.engine.tileHeight) + .5);
+    if (acceleration.y > 0) {
+        self.gridRow -= 1; 
+        if (self.gridRow < 1) 
+            self.gridRow = 1;
+    }
+    else {
+        self.gridRow += 1;
+    }
+    //NSLog(@"GridRow %d", gridRow);
     if (self.gridRow > self.pixelView.row - 1) {
         self.gridRow = self.pixelView.row - 1;  
     }
