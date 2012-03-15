@@ -273,14 +273,14 @@
          
     //Adding comment here so we can test github commit and push :3
     //int gridColumn = (int)(((self.tileView.center.x + self.valueX) / self.engine.tileWidth) + .5);
-    int gridColumn = (int)((self.tileView.center.x / self.engine.tileWidth) + .5);
+    self.gridColumn = (int)((self.tileView.center.x / self.engine.tileWidth) + .5);
     if (acceleration.x > 0) {
-        gridColumn += 1;   
+        self.gridColumn += 1;   
     }
     else {
-        gridColumn -= 1;
-        if (gridColumn < 1) 
-            gridColumn = 1;
+        self.gridColumn -= 1;
+        if (self.gridColumn < 1) 
+            self.gridColumn = 1;
     }
     
     if (self.gridColumn > self.pixelView.column - 1) {
@@ -288,18 +288,18 @@
     }
 
     //int gridRow = (int)(((self.tileView.center.y - self.valueY) / self.engine.tileHeight) + .5);
-    int gridRow = (int)((self.tileView.center.y/ self.engine.tileHeight) + .5);
+    self.gridRow = (int)((self.tileView.center.y/ self.engine.tileHeight) + .5);
     if (acceleration.y > 0) {
-        gridRow -= 1; 
-        if (gridRow < 1) 
-            gridRow = 1;
+        self.gridRow -= 1; 
+        if (self.gridRow < 1) 
+            self.gridRow = 1;
     }
     else {
-        gridRow += 1;
+        self.gridRow += 1;
     }
     //NSLog(@"GridRow %d", gridRow);
-    if (gridRow > self.pixelView.row - 1) {
-        gridRow = self.pixelView.row - 1;  
+    if (self.gridRow > self.pixelView.row - 1) {
+        self.gridRow = self.pixelView.row - 1;  
     }
     
     CGPoint newPoint = [[self.pixelView.gridOrigins objectAtIndex:PixelArrIdx(self.gridRow, self.gridColumn, self.pixelView.column)] CGPointValue];
