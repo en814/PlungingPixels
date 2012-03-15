@@ -93,6 +93,7 @@
     [super viewDidLoad];
     [self initDraw];
     [[UIAccelerometer sharedAccelerometer] setUpdateInterval:1.0/30.0];
+    NSLog(@"LOVEY DOVEY!");
     [[UIAccelerometer sharedAccelerometer] setDelegate:self];
     
 }

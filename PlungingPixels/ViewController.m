@@ -19,6 +19,8 @@
 @property (readwrite, nonatomic) float valueX;
 @property (readwrite, nonatomic) float valueY;
 @property (nonatomic) CGPoint newCenter;
+@property (nonatomic) float distanceX;
+@property (nonatomic) float distanceY;
 
 - (void) nextFrame: (CADisplayLink*) df;
 @end
@@ -35,6 +37,8 @@
 @synthesize valueY = _valueY;
 @synthesize newCenter = _newCenter;
 @synthesize tile = _tile;
+@synthesize distanceX = _distanceX;
+@synthesize distanceY = _distanceY;
 
 - (void) nilObjects
 {
@@ -65,8 +69,9 @@
     
     self.newCenter = CGPointMake(160, 230);
     
-    
+    [[UIAccelerometer sharedAccelerometer] setUpdateInterval:1.0/4.0];
     [[UIAccelerometer sharedAccelerometer] setDelegate:self];
+    NSLog(@"LOVEY DOVEY!");
 }
 
 - (void)viewDidUnload
@@ -256,27 +261,62 @@
     //int xcol = self.pixelView.superview.frame.size.width / self.pixelView.column;
     //int yrow = self.pixelView.superview.frame.size.height / self.pixelView.row;
     
-    self.valueX = acceleration.x * self.engine.tileHeight;
-    self.valueY = acceleration.y * self.engine.tileWidth;
- 
-    //Adding comment here so we can test github commit and push :3
-    int gridColumn = (int)(((self.tileView.center.x + self.valueX) / self.engine.tileHeight) + .5);
+    self.valueX = acceleration.x * self.engine.tileWidth;
+    self.valueY = acceleration.y * self.engine.tileHeight;
     
+    NSLog(@"Distance of valueX %f", self.engine.tileWidth);
+    NSLog(@"Distance of valueY %f", self.engine.tileHeight);
+    if (fabs(self.valueX) < self.engine.tileWidth) {
+        self.distanceX += self.valueX;
+        NSLog(@"Accumlated X %f", self.distanceX);
+    }
+    if (fabs(self.valueY) < self.engine.tileHeight) {
+        self.distanceY += self.valueY;
+        NSLog(@"Accumlated Y %f", self.distanceY);
+    }
+    
+    //Adding comment here so we can test github commit and push :3
+    //int gridColumn = (int)(((self.tileView.center.x + self.valueX) / self.engine.tileWidth) + .5);
+    int gridColumn = (int)((self.tileView.center.x / self.engine.tileWidth) + .5);
+    if (acceleration.x > 0) {
+        gridColumn += 1;   
+    }
+    else {
+        gridColumn -= 1;
+        if (gridColumn < 1) 
+            gridColumn = 1;
+    }
+    /*if (self.distanceX >= self.engine.width) {
+        gridColumn = gridColumn - 1;
+        self.distanceX = 0.0;
+    }*/
+    
+    //NSLog(@"GridColumn %d", gridColumn);
     if (gridColumn > self.pixelView.column - 1) {
         gridColumn = self.pixelView.column - 1;
     }
 
-    int gridRow = (int)(((self.tileView.center.y - self.valueY) / self.engine.tileWidth) + .5);
-    
+    //int gridRow = (int)(((self.tileView.center.y - self.valueY) / self.engine.tileHeight) + .5);
+    int gridRow = (int)((self.tileView.center.y/ self.engine.tileHeight) + .5);
+    if (acceleration.y > 0) {
+        gridRow -= 1; 
+        if (gridRow < 1) 
+            gridRow = 1;
+    }
+    else {
+        gridRow += 1;
+    }
+    //NSLog(@"GridRow %d", gridRow);
     if (gridRow > self.pixelView.row - 1) {
         gridRow = self.pixelView.row - 1;  
     }
+    
     
     CGPoint newPoint = [[self.pixelView.gridOrigins objectAtIndex:PixelArrIdx(gridRow, gridColumn, self.pixelView.column)] CGPointValue];
     
     self.newCenter = newPoint;
     
-    CGPoint newOrigin = CGPointMake(newPoint.x + self.engine.tileWidth / 2, newPoint.y + self.engine.tileHeight / 2);
+    CGPoint newOrigin = CGPointMake(newPoint.x, newPoint.y);
     
     self.tileView.center = newOrigin;//self.newCenter;
 }
