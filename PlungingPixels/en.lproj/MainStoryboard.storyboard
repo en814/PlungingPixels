@@ -99,7 +99,6 @@
                         <gestureRecognizers/>
                         <connections>
                             <outletCollection property="gestureRecognizers" destination="Ms0-uq-5oN" appends="YES" id="s9A-Rc-vOq"/>
-                            <outletCollection property="gestureRecognizers" destination="pd9-9X-EBc" appends="YES" id="vKl-w3-aGa"/>
                         </connections>
                     </view>
                     <navigationItem key="navigationItem" id="wDK-da-hmC"/>
@@ -115,36 +114,8 @@
                         <segue destination="3WN-aE-Dhs" kind="modal" identifier="GametoPause" id="64e-KJ-ryP"/>
                     </connections>
                 </swipeGestureRecognizer>
-                <swipeGestureRecognizer direction="right" id="pd9-9X-EBc">
-                    <connections>
-                        <segue destination="MD0-rR-auy" kind="modal" id="PKZ-44-Dye"/>
-                    </connections>
-                </swipeGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="74" y="1350"/>
-        </scene>
-        <!--Accelerometer - Accelerometer-->
-        <scene sceneID="3If-GU-k9u">
-            <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="MWy-9u-YWi" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <viewController title="Accelerometer" id="MD0-rR-auy" customClass="Accelerometer" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="lGI-rd-CbS">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="460"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                        <gestureRecognizers/>
-                        <connections>
-                            <outletCollection property="gestureRecognizers" destination="7NB-aU-qFG" appends="YES" id="O8g-nN-PLs"/>
-                        </connections>
-                    </view>
-                </viewController>
-                <swipeGestureRecognizer direction="left" id="7NB-aU-qFG">
-                    <connections>
-                        <segue destination="ZQA-bV-Djq" kind="modal" id="7ZH-oX-0QA"/>
-                    </connections>
-                </swipeGestureRecognizer>
-            </objects>
-            <point key="canvasLocation" x="-369" y="1350"/>
         </scene>
         <!--View Controller - Pause-->
         <scene sceneID="TBJ-2R-66G">
@@ -259,12 +230,6 @@
         </scene>
     </scenes>
     <classes>
-        <class className="Accelerometer" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/Accelerometer.h"/>
-            <relationships>
-                <relationship kind="outlet" name="tile" candidateClass="PixelView"/>
-            </relationships>
-        </class>
         <class className="MainMenuViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/MainMenuViewController.h"/>
             <relationships>
