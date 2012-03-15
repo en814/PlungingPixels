@@ -232,8 +232,8 @@
         }
         // tile has hit the grid
         else {
-            NSLog(@"gridRow %d, gridColumn %d", self.gridRow-1, self.gridColumn);
-            [self.engine updateObjects:PixelArrIdx(self.gridRow-1, self.gridColumn, [[self.engine.objects objectAtIndex:0] columns])];
+            NSLog(@"gridRow %d, gridColumn %d", self.gridRow, self.gridColumn);
+            [self.engine updateObjects:PixelArrIdx(self.gridRow, self.gridColumn, [[self.engine.objects objectAtIndex:0] columns])];
             
             rect.size.width = initWidth;
             rect.size.height = initHeight;
