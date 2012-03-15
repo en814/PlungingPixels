@@ -13,7 +13,9 @@
 @property (readwrite, weak, nonatomic) IBOutlet UILabel *scoreLabel;
 @property (weak, nonatomic) IBOutlet PixelView *pixelView;
 @property (weak, nonatomic) IBOutlet TileView *tileView;
-@property (readwrite, nonatomic) CGRect box;
+@property (nonatomic) CGRect box;
+@property (nonatomic) int gridRow;
+@property (nonatomic) int gridColumn;
 
 //Accelerometer.h
 @property (readwrite, nonatomic) float valueX;
@@ -30,6 +32,8 @@
 @synthesize pixelView = _pixelView;
 @synthesize tileView = _tileView;
 @synthesize box = _box;
+@synthesize gridRow = _gridRow;
+@synthesize gridColumn = _gridColumn;
 
 @synthesize valueX = _valueX;
 @synthesize valueY = _valueY;
@@ -228,6 +232,9 @@
         }
         // tile has hit the grid
         else {
+            NSLog(@"gridRow %d, gridColumn %d", self.gridRow-1, self.gridColumn);
+            [self.engine updateObjects:PixelArrIdx(self.gridRow-1, self.gridColumn, [[self.engine.objects objectAtIndex:0] columns])];
+            
             rect.size.width = initWidth;
             rect.size.height = initHeight;
             
@@ -260,19 +267,19 @@
     self.valueY = acceleration.y * self.engine.tileHeight;
  
     //Adding comment here so we can test github commit and push :3
-    int gridColumn = (int)(((self.tileView.center.x + self.valueX) / self.engine.tileWidth) + .5);
+    self.gridColumn = (int)(((self.tileView.center.x + self.valueX) / self.engine.tileWidth) + .5);
     
-    if (gridColumn > self.pixelView.column - 1) {
-        gridColumn = self.pixelView.column - 1;
+    if (self.gridColumn > self.pixelView.column - 1) {
+        self.gridColumn = self.pixelView.column - 1;
     }
 
-    int gridRow = (int)(((self.tileView.center.y - self.valueY) / self.engine.tileHeight) + .5);
+    self.gridRow = (int)(((self.tileView.center.y - self.valueY) / self.engine.tileHeight) + .5);
     
-    if (gridRow > self.pixelView.row - 1) {
-        gridRow = self.pixelView.row - 1;  
+    if (self.gridRow > self.pixelView.row - 1) {
+        self.gridRow = self.pixelView.row - 1;  
     }
     
-    CGPoint newPoint = [[self.pixelView.gridOrigins objectAtIndex:PixelArrIdx(gridRow, gridColumn, self.pixelView.column)] CGPointValue];
+    CGPoint newPoint = [[self.pixelView.gridOrigins objectAtIndex:PixelArrIdx(self.gridRow, self.gridColumn, self.pixelView.column)] CGPointValue];
     
     self.newCenter = newPoint;
     

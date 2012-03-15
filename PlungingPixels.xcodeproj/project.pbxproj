@@ -12,7 +12,10 @@
 		533CB2841505B6AF00F4B36E /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 533CB2831505B6AE00F4B36E /* QuartzCore.framework */; };
 		533CB2871505BA9C00F4B36E /* TileQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 533CB2861505BA9C00F4B36E /* TileQueue.m */; };
 		533CB28A1505BB7700F4B36E /* MovableTile.m in Sources */ = {isa = PBXBuildFile; fileRef = 533CB2891505BB7700F4B36E /* MovableTile.m */; };
-		5382643414F1E8A20032E40C /* plungingpixels.png in Resources */ = {isa = PBXBuildFile; fileRef = 5382643314F1E8A20032E40C /* plungingpixels.png */; };
+		5382DDDC1511841B009C1923 /* MainMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5382DDDB1511841B009C1923 /* MainMenuViewController.m */; };
+		53A99FA9151189640074C6F6 /* plungepixicon.png in Resources */ = {isa = PBXBuildFile; fileRef = 53A99FA8151189640074C6F6 /* plungepixicon.png */; };
+		53A99FAB151189730074C6F6 /* plungepixmenu.png in Resources */ = {isa = PBXBuildFile; fileRef = 53A99FAA151189730074C6F6 /* plungepixmenu.png */; };
+		53A99FAD1511897B0074C6F6 /* plungepixmenuHD.png in Resources */ = {isa = PBXBuildFile; fileRef = 53A99FAC1511897B0074C6F6 /* plungepixmenuHD.png */; };
 		53EDC711151104560065BCB0 /* PictureSelectMarioViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 53EDC710151104560065BCB0 /* PictureSelectMarioViewController.m */; };
 		BB0D88FD14E8C8E1004FD11A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB0D88FC14E8C8E1004FD11A /* UIKit.framework */; };
 		BB0D88FF14E8C8E1004FD11A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB0D88FE14E8C8E1004FD11A /* Foundation.framework */; };
@@ -39,7 +42,11 @@
 		533CB2861505BA9C00F4B36E /* TileQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TileQueue.m; sourceTree = "<group>"; };
 		533CB2881505BB7700F4B36E /* MovableTile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MovableTile.h; sourceTree = "<group>"; };
 		533CB2891505BB7700F4B36E /* MovableTile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MovableTile.m; sourceTree = "<group>"; };
-		5382643314F1E8A20032E40C /* plungingpixels.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = plungingpixels.png; path = ../plungingpixels.png; sourceTree = "<group>"; };
+		5382DDDA1511841B009C1923 /* MainMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainMenuViewController.h; sourceTree = "<group>"; };
+		5382DDDB1511841B009C1923 /* MainMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainMenuViewController.m; sourceTree = "<group>"; };
+		53A99FA8151189640074C6F6 /* plungepixicon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = plungepixicon.png; sourceTree = "<group>"; };
+		53A99FAA151189730074C6F6 /* plungepixmenu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = plungepixmenu.png; path = PlungingPixels/plungepixmenu.png; sourceTree = "<group>"; };
+		53A99FAC1511897B0074C6F6 /* plungepixmenuHD.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = plungepixmenuHD.png; path = PlungingPixels/plungepixmenuHD.png; sourceTree = "<group>"; };
 		53EDC70F151104560065BCB0 /* PictureSelectMarioViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PictureSelectMarioViewController.h; sourceTree = "<group>"; };
 		53EDC710151104560065BCB0 /* PictureSelectMarioViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PictureSelectMarioViewController.m; sourceTree = "<group>"; };
 		BB0D88F814E8C8E1004FD11A /* PlungingPixels.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PlungingPixels.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -85,6 +92,9 @@
 		BB0D88ED14E8C8E1004FD11A = {
 			isa = PBXGroup;
 			children = (
+				53A99FA8151189640074C6F6 /* plungepixicon.png */,
+				53A99FAC1511897B0074C6F6 /* plungepixmenuHD.png */,
+				53A99FAA151189730074C6F6 /* plungepixmenu.png */,
 				533CB2831505B6AE00F4B36E /* QuartzCore.framework */,
 				BB0D890214E8C8E1004FD11A /* PlungingPixels */,
 				BB0D88FB14E8C8E1004FD11A /* Frameworks */,
@@ -113,7 +123,6 @@
 		BB0D890214E8C8E1004FD11A /* PlungingPixels */ = {
 			isa = PBXGroup;
 			children = (
-				5382643314F1E8A20032E40C /* plungingpixels.png */,
 				BB686C9214F05D6A00759EB6 /* Accelerometer.h */,
 				BB686C9314F05D6A00759EB6 /* Accelerometer.m */,
 				BB76EF8514E8D4CC00FEEDD2 /* Tile.h */,
@@ -136,6 +145,8 @@
 				BBEC62801510066000270A88 /* PictureSelectSpaceInvaderViewController.m */,
 				53EDC70F151104560065BCB0 /* PictureSelectMarioViewController.h */,
 				53EDC710151104560065BCB0 /* PictureSelectMarioViewController.m */,
+				5382DDDA1511841B009C1923 /* MainMenuViewController.h */,
+				5382DDDB1511841B009C1923 /* MainMenuViewController.m */,
 				BB0D890B14E8C8E1004FD11A /* AppDelegate.h */,
 				BB0D890C14E8C8E1004FD11A /* AppDelegate.m */,
 				BB0D890E14E8C8E1004FD11A /* MainStoryboard.storyboard */,
@@ -208,7 +219,9 @@
 			files = (
 				BB0D890714E8C8E1004FD11A /* InfoPlist.strings in Resources */,
 				BB0D891014E8C8E1004FD11A /* MainStoryboard.storyboard in Resources */,
-				5382643414F1E8A20032E40C /* plungingpixels.png in Resources */,
+				53A99FA9151189640074C6F6 /* plungepixicon.png in Resources */,
+				53A99FAB151189730074C6F6 /* plungepixmenu.png in Resources */,
+				53A99FAD1511897B0074C6F6 /* plungepixmenuHD.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -232,6 +245,7 @@
 				533CB28A1505BB7700F4B36E /* MovableTile.m in Sources */,
 				BBEC62811510066000270A88 /* PictureSelectSpaceInvaderViewController.m in Sources */,
 				53EDC711151104560065BCB0 /* PictureSelectMarioViewController.m in Sources */,
+				5382DDDC1511841B009C1923 /* MainMenuViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

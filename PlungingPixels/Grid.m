@@ -68,6 +68,11 @@ static int marioYellow[] = {29,30,38,40,41,42,44,45,46,50,53,54,55,57,58,59,63,6
     return [self.grid objectAtIndex:idx];
 }
 
+- (void) setTileAtIndex: (int) idx toColor: (UIColor*) color
+{
+    [[self.grid objectAtIndex:idx] setNewColor:color];
+}
+
 - (BOOL) binarySearchOn: (int*) vals ofSize: (int) length finding: (int) test {
     int lo, mid, hi;
     lo = mid = 0;

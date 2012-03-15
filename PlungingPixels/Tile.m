@@ -45,6 +45,11 @@
     return self;
 }
 
+- (void) setNewColor: (UIColor*) color
+{
+    self.color = color;
+}
+
 - (id) initWithSize:(CGRect)sz
 {
     self.size = sz;
