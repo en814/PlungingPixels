@@ -115,16 +115,6 @@
 - (void) updateObjects: (int) gridIndex
 {
     // if falling tile is the same color as the grid its over
-    if (![[[self.objects objectAtIndex:1] tileAtIndex:0] color]) {
-        NSLog(@"tile queue color is nil");
-    }
-    if (![[[self.objects objectAtIndex:0] tileAtIndex:gridIndex] color]) {
-        NSLog(@"grid color is nil");
-    }
-    
-    NSLog(@"tile color %@", [[[self.objects objectAtIndex:0] tileAtIndex:0] color].description);
-    NSLog(@"grid color %@", [[[self.objects objectAtIndex:0] tileAtIndex:gridIndex] color].description);
-    
     if ([[[[self.objects objectAtIndex:1] tileAtIndex:0] color] isEqual:[[[self.objects objectAtIndex:0] tileAtIndex:gridIndex] color]]) {
         if ([[self.objects objectAtIndex:0] picture] == 0) {
             // if its blue
@@ -136,14 +126,12 @@
                 [[self.objects objectAtIndex:0] setTileAtIndex:gridIndex toColor:[UIColor blackColor]];
             }
         }
-        NSLog(@"about to remove tile");
+        
         [[self.objects objectAtIndex:1] removeTile];
     }
     // falling tile is NOT the same color as the grid its over
     else {
-        NSLog(@"about to reinsert tile");
         [[self.objects objectAtIndex:1] reinsertTile];
-       
     }
 }
 
