@@ -283,9 +283,8 @@
             gridColumn = 1;
     }
     
-    //NSLog(@"GridColumn %d", gridColumn);
-    if (gridColumn > self.pixelView.column - 1) {
-        gridColumn = self.pixelView.column - 1;
+    if (self.gridColumn > self.pixelView.column - 1) {
+        self.gridColumn = self.pixelView.column - 1;
     }
 
     //int gridRow = (int)(((self.tileView.center.y - self.valueY) / self.engine.tileHeight) + .5);
@@ -303,8 +302,7 @@
         gridRow = self.pixelView.row - 1;  
     }
     
-    
-    CGPoint newPoint = [[self.pixelView.gridOrigins objectAtIndex:PixelArrIdx(gridRow, gridColumn, self.pixelView.column)] CGPointValue];
+    CGPoint newPoint = [[self.pixelView.gridOrigins objectAtIndex:PixelArrIdx(self.gridRow, self.gridColumn, self.pixelView.column)] CGPointValue];
     
     self.newCenter = newPoint;
     
