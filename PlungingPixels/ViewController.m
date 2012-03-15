@@ -10,7 +10,6 @@
 
 @interface ViewController()
 @property (readwrite, weak, nonatomic) IBOutlet UILabel *timeLabel;
-@property (readwrite, weak, nonatomic) IBOutlet UILabel *scoreLabel;
 @property (weak, nonatomic) IBOutlet PixelView *pixelView;
 @property (weak, nonatomic) IBOutlet TileView *tileView;
 @property (nonatomic) CGRect box;
@@ -30,7 +29,6 @@
 @implementation ViewController
 @synthesize engine = _engine;
 @synthesize timeLabel = _timeLabel;
-@synthesize scoreLabel = _scoreLabel;
 @synthesize pixelView = _pixelView;
 @synthesize tileView = _tileView;
 @synthesize box = _box;
@@ -47,7 +45,6 @@
 - (void) nilObjects
 {
     _timeLabel = nil;
-    _scoreLabel = nil;
     _pixelView = nil;
     _tileView = nil;
     _tile = nil;
@@ -76,7 +73,7 @@
     
     self.newCenter = CGPointMake(160, 230);
     
-    //[[UIAccelerometer sharedAccelerometer] setUpdateInterval:1.0/5.0];
+    [[UIAccelerometer sharedAccelerometer] setUpdateInterval:1.0/5.0];
     [[UIAccelerometer sharedAccelerometer] setDelegate:self];
     NSLog(@"LOVEY DOVEY!");
 }
@@ -171,12 +168,9 @@
 }
 
 - (void) updateGrid
-{    
-    //NSLog(@"pixel array size %d", PixelArrSize([self.engine width], [self.engine height]));
-
+{
     for(int row = 0; row < [self.engine height]; row++) {
         for(int column = 0; column < [self.engine width]; column++) {
-            //NSLog(@"row %d column %d height %d width %d grid index: %d", row, column, [self.engine height], [self.engine width], PixelArrIdx(row, column, [self.engine width]));
             Tile *piece = [self.engine tileAtGridIndex:PixelArrIdx(row, column, [self.engine width])];
             
             if ([piece.color isEqual: [UIColor colorWithRed:.196078 green:.6 blue:.8 alpha:1] ])
@@ -189,22 +183,14 @@
 
 - (void) addKVO
 {
-    [self.engine addObserver:self forKeyPath:@"score" 
-                     options: (NSKeyValueObservingOptionNew | NSKeyValueObservingOptionInitial) 
-                     context: nil];
     [self.engine addObserver:self forKeyPath:@"timer" 
                      options: (NSKeyValueObservingOptionNew | NSKeyValueObservingOptionInitial) 
                      context: nil];
-    //[self.engine addObserver:self forKeyPath:@"gridVersion" 
-      //               options: (NSKeyValueObservingOptionNew | NSKeyValueObservingOptionInitial) 
-        //             context: nil];
 }
 
 - (void) destroyKVO
 {
-    [self.engine removeObserver:self forKeyPath:@"score"];
     [self.engine removeObserver:self forKeyPath:@"timer"];
-    //[self.engine removeObserver:self forKeyPath:@"gridVersion"];
 }
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
@@ -212,14 +198,8 @@
     if(!self.engine)
         return;
     
-    if([keyPath isEqualToString:@"score"]) {
-        self.scoreLabel.text = [NSString stringWithFormat:@"%d", self.engine.score];
-    }
     if ([keyPath isEqualToString:@"timer"]) {
-        //NSLog(@"-------------");
         self.timeLabel.text = [NSString stringWithFormat:@"%d", self.engine.timer];
-        
-        //([[self.engine.objects objectAtIndex:1] tileAtIndex:0]);
         
         CGRect rect = [self.tileView frame];
         
@@ -235,8 +215,6 @@
         if (self.box.size.width >= self.engine.tileWidth && self.box.size.height >= self.engine.tileHeight) {
             rect.size.width -= self.engine.tileWidth / 2;
             rect.size.height -= self.engine.tileHeight / 2;
-            
-            //NSLog(@"new origin %f %f", self.newCenter.x, self.newCenter.y);
             
             rect.origin.x = self.newCenter.x - rect.size.width / 2;      
             rect.origin.y = self.newCenter.y - rect.size.height / 2;
@@ -265,25 +243,15 @@
         
         [self refreshView];
     }
-    /*
-    if([keyPath isEqualToString:@"gridVersion"])
-    {
-        [self refreshView];
-    }
-     */
 }
 
 -(void)accelerometer:(UIAccelerometer *)accelerometer didAccelerate:(UIAcceleration *)acceleration 
 {
-    //int xcol = self.pixelView.superview.frame.size.width / self.pixelView.column;
-    //int yrow = self.pixelView.superview.frame.size.height / self.pixelView.row;
-    
     self.valueX = acceleration.x * self.engine.tileWidth;
     self.valueY = acceleration.y * self.engine.tileHeight;
 
-    //Adding comment here so we can test github commit and push :3
-    //int gridColumn = (int)(((self.tileView.center.x + self.valueX) / self.engine.tileWidth) + .5);
     self.gridColumn = (int)((self.tileView.center.x / self.engine.tileWidth) + .5);
+    
     if (acceleration.x > 0) {
         self.gridColumn += 1;   
     }
@@ -297,8 +265,8 @@
         self.gridColumn = self.pixelView.column - 1;
     }
 
-    //int gridRow = (int)(((self.tileView.center.y - self.valueY) / self.engine.tileHeight) + .5);
     self.gridRow = (int)((self.tileView.center.y/ self.engine.tileHeight) + .5);
+    
     if (acceleration.y > 0) {
         self.gridRow -= 1; 
         if (self.gridRow < 1) 
@@ -307,16 +275,12 @@
     else {
         self.gridRow += 1;
     }
-    //NSLog(@"GridRow %d", gridRow);
+    
     if (self.gridRow > self.pixelView.row - 1) {
         self.gridRow = self.pixelView.row - 1;  
     }
     
-    //NSLog(@"column %d row %d", self.gridColumn, self.gridRow);
-    
-    CGPoint newOrigin = [[self.pixelView.gridOrigins objectAtIndex:PixelArrIdx(self.gridRow, self.gridColumn, self.pixelView.column)] CGPointValue];
-    
-    self.newCenter = CGPointMake(newOrigin.x, newOrigin.y);
+    self.newCenter = [[self.pixelView.gridOrigins objectAtIndex:PixelArrIdx(self.gridRow, self.gridColumn, self.pixelView.column)] CGPointValue];
     
     self.tileView.center = self.newCenter;
     

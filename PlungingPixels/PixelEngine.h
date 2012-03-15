@@ -15,7 +15,6 @@
 @interface PixelEngine : NSObject
 @property (readonly, strong, nonatomic) NSMutableArray *objects;
 @property (readonly, nonatomic) int timer;
-@property (readonly, nonatomic) int score;
 @property (readonly, nonatomic) BOOL pause;
 @property (readonly, nonatomic) BOOL quit;
 @property (readonly, nonatomic) BOOL running;

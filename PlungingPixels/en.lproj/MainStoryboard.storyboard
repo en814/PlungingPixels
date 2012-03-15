@@ -80,20 +80,6 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Score" lineBreakMode="tailTruncation" minimumFontSize="10" id="8hD-Si-2nA">
-                                <rect key="frame" x="170" y="419" width="45" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="-0000" lineBreakMode="tailTruncation" minimumFontSize="10" id="F5S-Ih-aMc">
-                                <rect key="frame" x="257" y="419" width="45" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <gestureRecognizers/>
@@ -104,7 +90,6 @@
                     <navigationItem key="navigationItem" id="wDK-da-hmC"/>
                     <connections>
                         <outlet property="pixelView" destination="ggt-v1-zMe" id="Re5-bj-kYh"/>
-                        <outlet property="scoreLabel" destination="F5S-Ih-aMc" id="whB-qn-IR9"/>
                         <outlet property="tileView" destination="tRh-P8-DYV" id="kr5-NX-Id7"/>
                         <outlet property="timeLabel" destination="FTS-la-MCB" id="NtI-17-mOh"/>
                     </connections>

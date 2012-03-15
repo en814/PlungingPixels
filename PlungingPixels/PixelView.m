@@ -44,8 +44,6 @@
     box.size.width = self.bounds.size.width / self.column;
     box.size.height = self.bounds.size.height / self.row;
     
-    //int c = 0;
-    
     for (int row=0; row<self.row; row++) {
         for (int column=0; column<self.column; column++) {
             box.origin.x = box.size.width * column;
@@ -54,12 +52,9 @@
             if (!self.gridInitalized) {
                 if (!self.gridOrigins) 
                     self.gridOrigins = [[NSMutableArray alloc] initWithCapacity:self.row * self.column];
-                //NSLog(@"grid origin %f %f", box.origin.x, box.origin.y);
                 [self.gridOrigins addObject:[NSValue valueWithCGPoint:CGPointMake(box.origin.x, box.origin.y)]];
-                //NSLog(@"adding a grid origin %d", c++);
             }
             
-            //NSLog(@"grid: row %d column %d origin: x %f y %f", row, column, box.origin.x, box.origin.y);
             CGContextBeginPath(context);
             CGContextAddRect(context, box);
             CGContextClosePath(context);

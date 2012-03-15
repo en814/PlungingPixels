@@ -11,7 +11,7 @@
 @interface PixelEngine()
 @property (strong, nonatomic) NSMutableArray *objects;
 @property (nonatomic) CGRect world;
-@property (nonatomic) int timer, score, width, height;
+@property (nonatomic) int timer, width, height;
 @property (readwrite, strong, nonatomic) NSTimer *stepTimer;
 @property (readwrite, nonatomic) BOOL running;
 @property (nonatomic) BOOL gameOver;
@@ -21,7 +21,6 @@
 @synthesize objects = _objects;
 @synthesize world = _world;
 @synthesize timer = _timer;
-@synthesize score = _score;
 @synthesize pause = _pause;
 @synthesize quit =_quit;
 @synthesize stepTimer = _stepTimer;
@@ -63,8 +62,7 @@
 
 - (void) stop
 {
-    if(self.stepTimer) 
-    {
+    if(self.stepTimer) {
         [self.stepTimer invalidate];
         self.stepTimer = nil;
     }
@@ -96,7 +94,6 @@
     self.width = grid.columns;
     self.height = grid.rows;
     
-    //self.tileWidth =
     TileQueue *tileQueue = [[TileQueue alloc] init:picture];
     
     [self.objects addObject:grid];
@@ -152,7 +149,6 @@
 -(void)dealloc {
     _objects = nil;
     _timer = 0;
-    _score = 0;
     _quit = 0;
     _pause = 0;
     [_stepTimer invalidate];

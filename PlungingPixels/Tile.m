@@ -11,7 +11,6 @@
 @interface Tile()
 @property (strong, nonatomic) UIColor *color;
 @property (nonatomic) BOOL filled;
-//@property (nonatomic) int level;
 @property (nonatomic) int type;
 @end
 
@@ -56,9 +55,9 @@
     return self;
 }
 
-- (void) stepInRect: (CGRect) rect withInterval: (CFTimeInterval) intv {
+- (void) stepInRect: (CGRect) rect withInterval: (CFTimeInterval) intv 
+{
 
-    //CGRect size = self.size;
       
 }
 
