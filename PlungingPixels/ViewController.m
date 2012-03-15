@@ -73,7 +73,7 @@
     
     self.newCenter = CGPointMake(160, 230);
     
-    [[UIAccelerometer sharedAccelerometer] setUpdateInterval:1.0/4.0];
+    //[[UIAccelerometer sharedAccelerometer] setUpdateInterval:1.0/4.0];
     [[UIAccelerometer sharedAccelerometer] setDelegate:self];
     NSLog(@"LOVEY DOVEY!");
 }
@@ -215,7 +215,7 @@
         //NSLog(@"-------------");
         self.timeLabel.text = [NSString stringWithFormat:@"%d", self.engine.timer];
         
-        ([[self.engine.objects objectAtIndex:1] tileAtIndex:0]);
+        //([[self.engine.objects objectAtIndex:1] tileAtIndex:0]);
         
         CGRect rect = [self.tileView frame];
         
@@ -232,7 +232,9 @@
             rect.size.width -= self.engine.tileWidth / 2;
             rect.size.height -= self.engine.tileHeight / 2;
             
-            rect.origin.x = self.newCenter.x - rect.size.width / 2 - self.engine.tileWidth / 2;      
+            NSLog(@"new origin %f %f", self.newCenter.x, self.newCenter.y);
+            
+            rect.origin.x = self.newCenter.x - rect.size.width / 2;      
             rect.origin.y = self.newCenter.y - rect.size.height / 2;
         }
         // tile has hit the grid
@@ -243,7 +245,7 @@
             rect.size.width = initWidth;
             rect.size.height = initHeight;
             
-            rect.origin.x = frameWidth / 2 - rect.size.width / 2 - self.engine.tileWidth / 2;
+            rect.origin.x = frameWidth / 2 - rect.size.width / 2;
             rect.origin.y = frameHeight / 2 - rect.size.height / 2;
             
             self.tileView.changeTile = YES;
@@ -270,7 +272,7 @@
     
     self.valueX = acceleration.x * self.engine.tileWidth;
     self.valueY = acceleration.y * self.engine.tileHeight;
-         
+
     //Adding comment here so we can test github commit and push :3
     //int gridColumn = (int)(((self.tileView.center.x + self.valueX) / self.engine.tileWidth) + .5);
     self.gridColumn = (int)((self.tileView.center.x / self.engine.tileWidth) + .5);
@@ -302,13 +304,13 @@
         self.gridRow = self.pixelView.row - 1;  
     }
     
-    CGPoint newPoint = [[self.pixelView.gridOrigins objectAtIndex:PixelArrIdx(self.gridRow, self.gridColumn, self.pixelView.column)] CGPointValue];
+    //NSLog(@"column %d row %d", self.gridColumn, self.gridRow);
     
-    self.newCenter = newPoint;
+    CGPoint newOrigin = [[self.pixelView.gridOrigins objectAtIndex:PixelArrIdx(self.gridRow, self.gridColumn, self.pixelView.column)] CGPointValue];
     
-    CGPoint newOrigin = CGPointMake(newPoint.x, newPoint.y);
+    self.newCenter = CGPointMake(newOrigin.x, newOrigin.y);
     
-    self.tileView.center = newOrigin;//self.newCenter;
+    self.tileView.center = self.newCenter;
 }
 
 - (void) dealloc

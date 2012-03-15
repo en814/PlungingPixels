@@ -54,9 +54,9 @@
             if (!self.gridInitalized) {
                 if (!self.gridOrigins) 
                     self.gridOrigins = [[NSMutableArray alloc] initWithCapacity:self.row * self.column];
-                    
-                [self.gridOrigins addObject:[NSValue valueWithCGPoint:CGPointMake(box.origin.x + box.size.width / 2, 
-                                                                                  box.origin.y + box.size.height / 2)]];
+                //NSLog(@"grid origin %f %f", box.origin.x, box.origin.y);
+                [self.gridOrigins addObject:[NSValue valueWithCGPoint:CGPointMake(box.origin.x, box.origin.y)]];
+                //NSLog(@"adding a grid origin %d", c++);
             }
             
             //NSLog(@"grid: row %d column %d origin: x %f y %f", row, column, box.origin.x, box.origin.y);
