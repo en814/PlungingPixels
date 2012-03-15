@@ -232,18 +232,18 @@
             rect.size.width -= self.engine.tileWidth / 2;
             rect.size.height -= self.engine.tileHeight / 2;
             
-            rect.origin.x = self.newCenter.x - rect.size.width / 2;      
+            rect.origin.x = self.newCenter.x - rect.size.width / 2 - self.engine.tileWidth / 2;      
             rect.origin.y = self.newCenter.y - rect.size.height / 2;
         }
         // tile has hit the grid
         else {
-            NSLog(@"gridRow %d, gridColumn %d", self.gridRow, self.gridColumn);
+            //NSLog(@"gridRow %d, gridColumn %d", self.gridRow, self.gridColumn);
             [self.engine updateObjects:PixelArrIdx(self.gridRow, self.gridColumn, [[self.engine.objects objectAtIndex:0] columns])];
             
             rect.size.width = initWidth;
             rect.size.height = initHeight;
             
-            rect.origin.x = frameWidth / 2 - rect.size.width / 2;
+            rect.origin.x = frameWidth / 2 - rect.size.width / 2 - self.engine.tileWidth / 2;
             rect.origin.y = frameHeight / 2 - rect.size.height / 2;
             
             self.tileView.changeTile = YES;
