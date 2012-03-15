@@ -18,6 +18,6 @@
 
 - (id) init: (int) picture;
 - (Tile *) tileAtIndex: (int) idx;
-- (NSMutableArray *) spaceInvader;
+- (void) setTileAtIndex: (int) idx toColor: (UIColor*) color;
 
 @end

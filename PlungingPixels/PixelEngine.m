@@ -112,6 +112,30 @@
     //[self.currTile stepInRect: self.world];
 }
 
+- (void) updateObjects: (int) gridIndex
+{
+    // if falling tile is the same color as the grid its over
+    if ([[[[self.objects objectAtIndex:1] tileAtIndex:0] color] isEqual:[[self.objects objectAtIndex:0] tileAtIndex:gridIndex]]) {
+        if ([[self.objects objectAtIndex:0] picture] == 0) {
+            // if its blue
+            if ([[[self.objects objectAtIndex:0] tileAtIndex:gridIndex].color isEqual:[UIColor colorWithRed:.196078 green:.6 blue:.8 alpha:1]]) {
+                [[self.objects objectAtIndex:0] setTileAtIndex:gridIndex toColor:[UIColor blueColor]];
+            }
+            // if its grey
+            else if ([[[self.objects objectAtIndex:0] tileAtIndex:gridIndex].color isEqual:[UIColor colorWithRed:.2 green:.2 blue:.2 alpha:1]]) {
+                [[self.objects objectAtIndex:0] setTileAtIndex:gridIndex toColor:[UIColor blackColor]];
+            }
+        }
+        
+        [[self.objects objectAtIndex:1] removeTile];
+    }
+    // falling tile is NOT the same color as the grid its over
+    else {
+        [[self.objects objectAtIndex:1] reinsertTile];
+       
+    }
+}
+
 - (void) addObject: (NSObject *) tile {
     // update curTile with new color and toplevel
 }

@@ -13,7 +13,9 @@
 @property (readwrite, weak, nonatomic) IBOutlet UILabel *scoreLabel;
 @property (weak, nonatomic) IBOutlet PixelView *pixelView;
 @property (weak, nonatomic) IBOutlet TileView *tileView;
-@property (readwrite, nonatomic) CGRect box;
+@property (nonatomic) CGRect box;
+@property (nonatomic) int gridRow;
+@property (nonatomic) int gridColumn;
 
 //Accelerometer.h
 @property (readwrite, nonatomic) float valueX;
@@ -32,6 +34,8 @@
 @synthesize pixelView = _pixelView;
 @synthesize tileView = _tileView;
 @synthesize box = _box;
+@synthesize gridRow = _gridRow;
+@synthesize gridColumn = _gridColumn;
 
 @synthesize valueX = _valueX;
 @synthesize valueY = _valueY;
@@ -171,10 +175,10 @@
             //NSLog(@"row %d column %d height %d width %d grid index: %d", row, column, [self.engine height], [self.engine width], PixelArrIdx(row, column, [self.engine width]));
             Tile *piece = [self.engine tileAtGridIndex:PixelArrIdx(row, column, [self.engine width])];
             
-            if ([piece.color isEqual: [UIColor blueColor]])
-                [self.pixelView setColor:[UIColor blueColor] forIndex:PixelArrIdx(row, column, [self.engine width])];
-            else if ([piece.color isEqual: [UIColor blackColor]])
-                [self.pixelView setColor:[UIColor blackColor] forIndex:PixelArrIdx(row, column, [self.engine width])];
+            if ([piece.color isEqual: [UIColor colorWithRed:.196078 green:.6 blue:.8 alpha:1] ])
+                [self.pixelView setColor:[UIColor colorWithRed:.196078 green:.6 blue:.8 alpha:1] forIndex:PixelArrIdx(row, column, [self.engine width])];
+            else if ([piece.color isEqual: [UIColor colorWithRed:.2 green:.2 blue:.2 alpha:1]])
+                [self.pixelView setColor:[UIColor colorWithRed:.2 green:.2 blue:.2 alpha:1] forIndex:PixelArrIdx(row, column, [self.engine width])];
         }
     }
 }
@@ -233,6 +237,9 @@
         }
         // tile has hit the grid
         else {
+            NSLog(@"gridRow %d, gridColumn %d", self.gridRow, self.gridColumn);
+            [self.engine updateObjects:PixelArrIdx(self.gridRow, self.gridColumn, [[self.engine.objects objectAtIndex:0] columns])];
+            
             rect.size.width = initWidth;
             rect.size.height = initHeight;
             

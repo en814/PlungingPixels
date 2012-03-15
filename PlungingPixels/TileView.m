@@ -43,8 +43,8 @@
     Tile *tile;
     
     if (self.changeTile) {
-        self.curIdx = arc4random() % 88;
-        tile = [self.tileQueue tileAtIndex:self.curIdx];
+        //self.curIdx = arc4random() % 88;
+        tile = [self.tileQueue tileAtIndex:0];
         [tile.color setFill];
         self.changeTile = NO;
     }

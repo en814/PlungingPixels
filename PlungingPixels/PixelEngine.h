@@ -37,6 +37,7 @@
 - (id) initWithRect: (CGRect) rect  andPicture: (int) picture;
 - (void) step: (CFTimeInterval) intv;
 - (void) addObject: (NSObject *) obj;
+- (void) updateObjects: (int) gridIndex;
 - (Tile *) tileAtGridIndex: (int) idx;
 - (NSObject *) objectWithID: (int) objId;
 

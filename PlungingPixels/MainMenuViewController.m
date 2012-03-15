@@ -1,18 +1,19 @@
 //
-//  Picture1.m
+//  MainMenuViewController.m
 //  PlungingPixels
 //
-//  Created by Ken Li on 3/13/12.
+//  Created by Teal Owyang on 3/14/12.
 //  Copyright (c) 2012 Cal Poly San Luis Obispo. All rights reserved.
 //
 
-#import "Picture1.h"
+#import "MainMenuViewController.h"
 
-@interface Picture1 ()
-
+@interface MainMenuViewController ()
+@property (strong, nonatomic) IBOutlet UIImageView *backgroundImage;
 @end
 
-@implementation Picture1
+@implementation MainMenuViewController
+@synthesize backgroundImage = _backgroundImage;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -27,6 +28,8 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+    UIImage *image = [UIImage imageNamed: @"plungepixmenu.png"];
+    [self.backgroundImage setImage:image];
 }
 
 - (void)viewDidUnload

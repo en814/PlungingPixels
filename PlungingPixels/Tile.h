@@ -25,6 +25,7 @@
            andLevel: (int) level
              filled: (BOOL) filled;
 - (id) initWithSize: (CGRect) sz;
+- (void) setNewColor: (UIColor*) color;
 - (void) stepInRect: (CGRect) rect withInterval: (CFTimeInterval) intv;
 
 

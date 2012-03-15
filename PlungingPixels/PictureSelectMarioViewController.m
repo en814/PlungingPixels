@@ -1,18 +1,18 @@
 //
-//  PictureSelectSpaceInvaderViewController.m
+//  PictureSelectMarioViewController.m
 //  PlungingPixels
 //
-//  Created by Ken Li on 3/13/12.
+//  Created by Teal Owyang on 3/14/12.
 //  Copyright (c) 2012 Cal Poly San Luis Obispo. All rights reserved.
 //
 
-#import "PictureSelectSpaceInvaderViewController.h"
+#import "PictureSelectMarioViewController.h"
 
-@interface PictureSelectSpaceInvaderViewController ()
+@interface PictureSelectMarioViewController ()
 @property (strong, nonatomic) PixelView *pixelView;
 @end
 
-@implementation PictureSelectSpaceInvaderViewController
+@implementation PictureSelectMarioViewController
 @synthesize pixelView = _pixelView;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -29,10 +29,10 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     
-    self.pixelView.row = 11;
-    self.pixelView.column = 8;
-
-    self.pixelView.grid = [[Grid alloc] init:1];
+    self.pixelView.row = 16;
+    self.pixelView.column = 12;
+    
+    self.pixelView.grid = [[Grid alloc] init:3];
 }
 
 - (void)viewDidUnload
