@@ -76,7 +76,7 @@
     
     self.newCenter = CGPointMake(160, 230);
     
-    //[[UIAccelerometer sharedAccelerometer] setUpdateInterval:1.0/4.0];
+    //[[UIAccelerometer sharedAccelerometer] setUpdateInterval:1.0/5.0];
     [[UIAccelerometer sharedAccelerometer] setDelegate:self];
     NSLog(@"LOVEY DOVEY!");
 }
@@ -148,6 +148,7 @@
     self.pixelView.column = picture.columns;
     self.tileView.tileQueue = [self.engine.objects objectAtIndex:1];
     self.tileView.changeTile = YES;
+    self.tileView.transform = CGAffineTransformMakeTranslation(self.engine.tileWidth / 2, self.engine.tileHeight / 2);
     
     int frameWidth = self.pixelView.superview.frame.size.width;
     int frameHeight = self.pixelView.superview.frame.size.height;
@@ -235,7 +236,7 @@
             rect.size.width -= self.engine.tileWidth / 2;
             rect.size.height -= self.engine.tileHeight / 2;
             
-            NSLog(@"new origin %f %f", self.newCenter.x, self.newCenter.y);
+            //NSLog(@"new origin %f %f", self.newCenter.x, self.newCenter.y);
             
             rect.origin.x = self.newCenter.x - rect.size.width / 2;      
             rect.origin.y = self.newCenter.y - rect.size.height / 2;
@@ -245,6 +246,8 @@
             //NSLog(@"gridRow %d, gridColumn %d", self.gridRow, self.gridColumn);
             [self.engine updateObjects:PixelArrIdx(self.gridRow, self.gridColumn, [[self.engine.objects objectAtIndex:0] columns])];
             
+            self.pixelView.grid = [self.engine.objects objectAtIndex:0];
+            
             rect.size.width = initWidth;
             rect.size.height = initHeight;
             
@@ -252,9 +255,11 @@
             rect.origin.y = frameHeight / 2 - rect.size.height / 2;
             
             self.tileView.changeTile = YES;
+            [self.pixelView setNeedsDisplay];
         }
         
         self.box = rect;
+        
         [self.tileView setNeedsDisplay];
         [self.tileView setFrame:rect];
         
@@ -314,6 +319,7 @@
     self.newCenter = CGPointMake(newOrigin.x, newOrigin.y);
     
     self.tileView.center = self.newCenter;
+    
 }
 
 - (void) dealloc
